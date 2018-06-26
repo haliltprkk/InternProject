@@ -1,5 +1,6 @@
 package com.example.haliltprkk.internproject;
 
+import android.graphics.drawable.ColorDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -123,6 +125,88 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     ImageView im58;
     @BindView(R.id.timer_tv)
     TextView timerTv;
+    @BindView(R.id.ll_1_1)
+    LinearLayout ll11;
+    @BindView(R.id.ll_1_2)
+    LinearLayout ll12;
+    @BindView(R.id.ll_1_3)
+    LinearLayout ll13;
+    @BindView(R.id.ll_1_4)
+    LinearLayout ll14;
+    @BindView(R.id.ll_1_5)
+    LinearLayout ll15;
+    @BindView(R.id.ll_1_6)
+    LinearLayout ll16;
+    @BindView(R.id.ll_1_7)
+    LinearLayout ll17;
+    @BindView(R.id.ll_1_8)
+    LinearLayout ll18;
+    @BindView(R.id.ll_2_1)
+    LinearLayout ll21;
+    @BindView(R.id.ll_2_2)
+    LinearLayout ll22;
+    @BindView(R.id.ll_2_3)
+    LinearLayout ll23;
+    @BindView(R.id.ll_2_4)
+    LinearLayout ll24;
+    @BindView(R.id.ll_2_5)
+    LinearLayout ll25;
+    @BindView(R.id.ll_2_6)
+    LinearLayout ll26;
+    @BindView(R.id.ll_2_7)
+    LinearLayout ll27;
+    @BindView(R.id.ll_2_8)
+    LinearLayout ll28;
+    @BindView(R.id.ll_3_1)
+    LinearLayout ll31;
+    @BindView(R.id.ll_3_2)
+    LinearLayout ll32;
+    @BindView(R.id.ll_3_3)
+    LinearLayout ll33;
+    @BindView(R.id.ll_3_4)
+    LinearLayout ll34;
+    @BindView(R.id.ll_3_5)
+    LinearLayout ll35;
+    @BindView(R.id.ll_3_6)
+    LinearLayout ll36;
+    @BindView(R.id.ll_3_7)
+    LinearLayout ll37;
+    @BindView(R.id.ll_3_8)
+    LinearLayout ll38;
+    @BindView(R.id.ll_4_1)
+    LinearLayout ll41;
+    @BindView(R.id.ll_4_2)
+    LinearLayout ll42;
+    @BindView(R.id.ll_4_3)
+    LinearLayout ll43;
+    @BindView(R.id.ll_4_4)
+    LinearLayout ll44;
+    @BindView(R.id.ll_4_5)
+    LinearLayout ll45;
+    @BindView(R.id.ll_4_6)
+    LinearLayout ll46;
+    @BindView(R.id.ll_4_7)
+    LinearLayout ll47;
+    @BindView(R.id.ll_4_8)
+    LinearLayout ll48;
+    @BindView(R.id.ll_5_1)
+    LinearLayout ll51;
+    @BindView(R.id.ll_5_2)
+    LinearLayout ll52;
+    @BindView(R.id.ll_5_3)
+    LinearLayout ll53;
+    @BindView(R.id.ll_5_4)
+    LinearLayout ll54;
+    @BindView(R.id.ll_5_5)
+    LinearLayout ll55;
+    @BindView(R.id.ll_5_6)
+    LinearLayout ll56;
+    @BindView(R.id.ll_5_7)
+    LinearLayout ll57;
+    @BindView(R.id.ll_5_8)
+    LinearLayout ll58;
+    @BindView(R.id.text_tv)
+    TextView textTv;
     private SensorManager sensorManager;
     private Sensor accelerometerSensor;
     DecimalFormat df = new DecimalFormat();
@@ -132,7 +216,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     float calibratedXRight = 0, calibratedYRight = 0, calibratedZRight = 0;
     float calibratedXLeft = 0, calibratedYLeft = 0, calibratedZLeft = 0;
     float realX = 0, realY = 0, realZ = 0;
-
+    ArrayList<String> arraylistText = new ArrayList<>();
+    CountDownTimer textCounter;
+    boolean switchBackground = true;
+    int backColor = 0;
+    int res = 0, res2 = 0;
+    Boolean finish = true;
 
     int step = 0;
     TextView detailsTv;
@@ -237,6 +326,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 //imageView.setVisibility(View.GONE);
                 if (step == 4) {
                     dialog.dismiss();
+                    arraylistText = new ArrayList<>();
                 }
             }
         }.start();
@@ -273,177 +363,343 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         float spacing = (Math.abs(calibratedYLeft) + Math.abs(calibratedYRight)) / 8;
         if (id == R.id.ll_1) {
             if (y < calibratedYLeft) {
+                makeBackgroundWhite();
+                ll11.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im11.setVisibility(View.VISIBLE);
+                listenBackgrounds();
 
             }
             if (y > calibratedYLeft && y < (calibratedYLeft + spacing)) {
+                makeBackgroundWhite();
+                ll12.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im12.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + spacing) && y < (calibratedYLeft + 2 * spacing)) {
+                makeBackgroundWhite();
+                ll13.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im13.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 2 * spacing) && y < (calibratedYLeft + 3 * spacing)) {
+                makeBackgroundWhite();
+                ll14.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im14.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 3 * spacing) && y < (calibratedYLeft + 4 * spacing)) {
+                makeBackgroundWhite();
+                ll15.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im15.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 4 * spacing) && y < (calibratedYLeft + 5 * spacing)) {
+                makeBackgroundWhite();
+                ll16.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im16.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 5 * spacing) && y < (calibratedYLeft + 6 * spacing)) {
+                makeBackgroundWhite();
+                ll17.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im17.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 6 * spacing) && y < (calibratedYLeft + 7 * spacing)) {
+                makeBackgroundWhite();
+                ll18.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im18.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
         } else if (id == R.id.ll_2) {
             if (y < calibratedYLeft) {
+                makeBackgroundWhite();
+                ll21.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im21.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > calibratedYLeft && y < (calibratedYLeft + spacing)) {
+                makeBackgroundWhite();
+                ll22.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im22.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + spacing) && y < (calibratedYLeft + 2 * spacing)) {
+                makeBackgroundWhite();
+                ll23.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im23.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 2 * spacing) && y < (calibratedYLeft + 3 * spacing)) {
+                makeBackgroundWhite();
+                ll24.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im24.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 3 * spacing) && y < (calibratedYLeft + 4 * spacing)) {
+                countIsWordWrite(ll25.getId(), 0);
+                makeBackgroundWhite();
+                ll25.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im25.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 4 * spacing) && y < (calibratedYLeft + 5 * spacing)) {
+                makeBackgroundWhite();
+                ll26.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im26.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 5 * spacing) && y < (calibratedYLeft + 6 * spacing)) {
+                makeBackgroundWhite();
+                ll27.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im27.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 6 * spacing) && y < (calibratedYLeft + 7 * spacing)) {
+                makeBackgroundWhite();
+                ll28.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im28.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
         } else if (id == R.id.ll_3) {
             if (y < calibratedYLeft) {
+                makeBackgroundWhite();
+                ll31.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im31.setVisibility(View.VISIBLE);
+                listenBackgrounds();
 
             }
             if (y > calibratedYLeft && y < (calibratedYLeft + spacing)) {
+                makeBackgroundWhite();
+                ll32.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im32.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + spacing) && y < (calibratedYLeft + 2 * spacing)) {
+                makeBackgroundWhite();
+                ll33.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im33.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 2 * spacing) && y < (calibratedYLeft + 3 * spacing)) {
+                makeBackgroundWhite();
+                ll34.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im34.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 3 * spacing) && y < (calibratedYLeft + 4 * spacing)) {
+                makeBackgroundWhite();
+                ll35.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im35.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 4 * spacing) && y < (calibratedYLeft + 5 * spacing)) {
+                makeBackgroundWhite();
+                ll36.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im36.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 5 * spacing) && y < (calibratedYLeft + 6 * spacing)) {
+                makeBackgroundWhite();
+                ll37.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im37.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 6 * spacing) && y < (calibratedYLeft + 7 * spacing)) {
+                makeBackgroundWhite();
+                ll38.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im38.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
         } else if (id == R.id.ll_4) {
             if (y < calibratedYLeft) {
+                makeBackgroundWhite();
+                ll41.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im41.setVisibility(View.VISIBLE);
+                listenBackgrounds();
 
             }
             if (y > calibratedYLeft && y < (calibratedYLeft + spacing)) {
+                makeBackgroundWhite();
+                ll42.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im42.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + spacing) && y < (calibratedYLeft + 2 * spacing)) {
+                makeBackgroundWhite();
+                ll43.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im43.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 2 * spacing) && y < (calibratedYLeft + 3 * spacing)) {
+                makeBackgroundWhite();
+                ll44.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im44.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 3 * spacing) && y < (calibratedYLeft + 4 * spacing)) {
+                makeBackgroundWhite();
+                ll45.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im45.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 4 * spacing) && y < (calibratedYLeft + 5 * spacing)) {
+                makeBackgroundWhite();
+                ll46.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im46.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 5 * spacing) && y < (calibratedYLeft + 6 * spacing)) {
+                makeBackgroundWhite();
+                ll47.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im47.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 6 * spacing) && y < (calibratedYLeft + 7 * spacing)) {
+                makeBackgroundWhite();
+                ll48.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im48.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
         } else if (id == R.id.ll_5) {
             if (y < calibratedYLeft) {
+                makeBackgroundWhite();
+                ll51.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im51.setVisibility(View.VISIBLE);
+                listenBackgrounds();
 
             }
             if (y > calibratedYLeft && y < (calibratedYLeft + spacing)) {
+                makeBackgroundWhite();
+                ll52.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im52.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + spacing) && y < (calibratedYLeft + 2 * spacing)) {
+                makeBackgroundWhite();
+                ll53.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im53.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 2 * spacing) && y < (calibratedYLeft + 3 * spacing)) {
+                makeBackgroundWhite();
+                ll54.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im54.setVisibility(View.VISIBLE);
             }
             if (y > (calibratedYLeft + 3 * spacing) && y < (calibratedYLeft + 4 * spacing)) {
+                makeBackgroundWhite();
+                ll55.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im55.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 4 * spacing) && y < (calibratedYLeft + 5 * spacing)) {
+                makeBackgroundWhite();
+                ll56.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im56.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 5 * spacing) && y < (calibratedYLeft + 6 * spacing)) {
+                makeBackgroundWhite();
+                ll57.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im57.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
             if (y > (calibratedYLeft + 6 * spacing) && y < (calibratedYLeft + 7 * spacing)) {
+                makeBackgroundWhite();
+                ll58.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im58.setVisibility(View.VISIBLE);
+                listenBackgrounds();
             }
         }
 
     }
 
+    void makeBackgroundWhite() {
+        ll11.setBackgroundColor(getResources().getColor(R.color.white));
+        ll12.setBackgroundColor(getResources().getColor(R.color.white));
+        ll13.setBackgroundColor(getResources().getColor(R.color.white));
+        ll14.setBackgroundColor(getResources().getColor(R.color.white));
+        ll15.setBackgroundColor(getResources().getColor(R.color.white));
+        ll16.setBackgroundColor(getResources().getColor(R.color.white));
+        ll17.setBackgroundColor(getResources().getColor(R.color.white));
+        ll18.setBackgroundColor(getResources().getColor(R.color.white));
+
+        ll21.setBackgroundColor(getResources().getColor(R.color.white));
+        ll22.setBackgroundColor(getResources().getColor(R.color.white));
+        ll23.setBackgroundColor(getResources().getColor(R.color.white));
+        ll24.setBackgroundColor(getResources().getColor(R.color.white));
+        ll25.setBackgroundColor(getResources().getColor(R.color.white));
+        ll26.setBackgroundColor(getResources().getColor(R.color.white));
+        ll27.setBackgroundColor(getResources().getColor(R.color.white));
+        ll28.setBackgroundColor(getResources().getColor(R.color.white));
+
+        ll31.setBackgroundColor(getResources().getColor(R.color.white));
+        ll32.setBackgroundColor(getResources().getColor(R.color.white));
+        ll33.setBackgroundColor(getResources().getColor(R.color.white));
+        ll34.setBackgroundColor(getResources().getColor(R.color.white));
+        ll35.setBackgroundColor(getResources().getColor(R.color.white));
+        ll36.setBackgroundColor(getResources().getColor(R.color.white));
+        ll37.setBackgroundColor(getResources().getColor(R.color.white));
+        ll38.setBackgroundColor(getResources().getColor(R.color.white));
+
+        ll41.setBackgroundColor(getResources().getColor(R.color.white));
+        ll42.setBackgroundColor(getResources().getColor(R.color.white));
+        ll43.setBackgroundColor(getResources().getColor(R.color.white));
+        ll44.setBackgroundColor(getResources().getColor(R.color.white));
+        ll45.setBackgroundColor(getResources().getColor(R.color.white));
+        ll46.setBackgroundColor(getResources().getColor(R.color.white));
+        ll47.setBackgroundColor(getResources().getColor(R.color.white));
+        ll48.setBackgroundColor(getResources().getColor(R.color.white));
+
+        ll51.setBackgroundColor(getResources().getColor(R.color.white));
+        ll52.setBackgroundColor(getResources().getColor(R.color.white));
+        ll53.setBackgroundColor(getResources().getColor(R.color.white));
+        ll54.setBackgroundColor(getResources().getColor(R.color.white));
+        ll55.setBackgroundColor(getResources().getColor(R.color.white));
+        ll56.setBackgroundColor(getResources().getColor(R.color.white));
+        ll57.setBackgroundColor(getResources().getColor(R.color.white));
+        ll58.setBackgroundColor(getResources().getColor(R.color.white));
+    }
 
     void row(SensorEvent sensorEvent) {
         float x = sensorEvent.values[0];
@@ -543,7 +799,351 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-    void movePointer(float X, float Y, float Z) {
+    void countIsWordWrite(final int resorces, int cancelOrStart) {
+        if (resorces == res) {
+            return;
+        }
+        if (textCounter != null) {
+            textCounter.cancel();
+        }
+
+        res = resorces;
+
+        textCounter = new CountDownTimer(2000, 1000) {
+
+            @Override
+            public void onTick(long l) {
+            }
+
+            @Override
+            public void onFinish() {
+                decideText(resorces);
+            }
+        };
+        textCounter.start();
+
+
+    }
+
+    void decideText(int resorces) {
+        if (res2 == resorces) {
+            return;
+        }
+        if (resorces == ll11.getId()) {
+            res2 = resorces;
+            arraylistText.add("0");
+            writeText();
+        } else if (resorces == ll12.getId()) {
+            res2 = resorces;
+            arraylistText.add("1");
+            writeText();
+
+        } else if (resorces == ll13.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("2");
+            writeText();
+        } else if (resorces == ll14.getId()) {
+            res2 = resorces;
+            arraylistText.add("3");
+            writeText();
+
+        } else if (resorces == ll15.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("4");
+            writeText();
+        } else if (resorces == ll16.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("5");
+            writeText();
+        } else if (resorces == ll17.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("6");
+            writeText();
+        } else if (resorces == ll18.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("7");
+            writeText();
+        } else if (resorces == ll21.getId()) {
+            res2 = resorces;
+            arraylistText.add("8");
+            writeText();
+
+
+        } else if (resorces == ll22.getId()) {
+            res2 = resorces;
+            arraylistText.add("9");
+            writeText();
+
+        } else if (resorces == ll23.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("a");
+            writeText();
+        } else if (resorces == ll24.getId()) {
+            res2 = resorces;
+            arraylistText.add("b");
+            writeText();
+
+        } else if (resorces == ll25.getId()) {
+            res2 = resorces;
+            arraylistText.add("c");
+            writeText();
+        } else if (resorces == ll26.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("d");
+            writeText();
+        } else if (resorces == ll27.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("e");
+            writeText();
+        } else if (resorces == ll28.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("f");
+            writeText();
+        } else if (resorces == ll31.getId()) {
+            res2 = resorces;
+            arraylistText.add("g");
+            writeText();
+
+
+        } else if (resorces == ll32.getId()) {
+            res2 = resorces;
+            arraylistText.add("h");
+            writeText();
+
+        } else if (resorces == ll33.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("i");
+            writeText();
+        } else if (resorces == ll34.getId()) {
+            res2 = resorces;
+            arraylistText.add("j");
+            writeText();
+
+        } else if (resorces == ll35.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("k");
+            writeText();
+        } else if (resorces == ll36.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("l");
+            writeText();
+        } else if (resorces == ll37.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("m");
+            writeText();
+        } else if (resorces == ll38.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("n");
+            writeText();
+        } else if (resorces == ll41.getId()) {
+            res2 = resorces;
+            arraylistText.add("o");
+            writeText();
+
+
+        } else if (resorces == ll42.getId()) {
+            res2 = resorces;
+            arraylistText.add("p");
+            writeText();
+
+        } else if (resorces == ll43.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("q");
+            writeText();
+        } else if (resorces == ll44.getId()) {
+            res2 = resorces;
+            arraylistText.add("r");
+            writeText();
+
+        } else if (resorces == ll45.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("s");
+            writeText();
+        } else if (resorces == ll46.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("t");
+            writeText();
+        } else if (resorces == ll47.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("ok");
+            writeText();
+        } else if (resorces == ll48.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("ok");
+            writeText();
+        } else if (resorces == ll51.getId()) {
+            res2 = resorces;
+            arraylistText.add("u");
+            writeText();
+
+
+        } else if (resorces == ll52.getId()) {
+            res2 = resorces;
+            arraylistText.add("v");
+            writeText();
+
+        } else if (resorces == ll53.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("w");
+            writeText();
+        } else if (resorces == ll54.getId()) {
+            res2 = resorces;
+            arraylistText.add("x");
+            writeText();
+
+        } else if (resorces == ll55.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("y");
+            writeText();
+        } else if (resorces == ll56.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("z");
+            writeText();
+        } else if (resorces == ll57.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("ok");
+        } else if (resorces == ll58.getId()) {
+            res2 = resorces;
+
+            arraylistText.add("ok");
+            writeText();
+        }
+    }
+
+    void writeText() {
+        if (arraylistText.size() != 0) {
+            String string = "";
+            for (int i = 0; i < arraylistText.size(); i++) {
+                string += arraylistText.get(i);
+            }
+            textTv.setText(string);
+        } else {
+            textTv.setText("birşeyler yazın...");
+        }
+
+    }
+
+    void listenBackgrounds() {
+
+
+        if (((ColorDrawable) ll11.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll11.getId(), 1);
+        } else if (((ColorDrawable) ll12.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll12.getId(), 1);
+        } else if (((ColorDrawable) ll13.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll13.getId(), 1);
+        } else if (((ColorDrawable) ll14.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll14.getId(), 1);
+        } else if (((ColorDrawable) ll15.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll15.getId(), 1);
+        } else if (((ColorDrawable) ll16.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll16.getId(), 1);
+        } else if (((ColorDrawable) ll17.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll17.getId(), 1);
+        } else if (((ColorDrawable) ll18.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll18.getId(), 1);
+        }
+
+
+        if (((ColorDrawable) ll21.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll21.getId(), 1);
+        } else if (((ColorDrawable) ll22.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll22.getId(), 1);
+        } else if (((ColorDrawable) ll23.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll23.getId(), 1);
+        } else if (((ColorDrawable) ll24.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll24.getId(), 1);
+        } else if (((ColorDrawable) ll25.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll25.getId(), 1);
+        } else if (((ColorDrawable) ll26.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll26.getId(), 1);
+        } else if (((ColorDrawable) ll27.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll27.getId(), 1);
+        } else if (((ColorDrawable) ll28.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll28.getId(), 1);
+        }
+
+
+        if (((ColorDrawable) ll31.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll31.getId(), 1);
+        } else if (((ColorDrawable) ll32.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll32.getId(), 1);
+        } else if (((ColorDrawable) ll33.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll33.getId(), 1);
+        } else if (((ColorDrawable) ll34.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll34.getId(), 1);
+        } else if (((ColorDrawable) ll35.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll35.getId(), 1);
+        } else if (((ColorDrawable) ll36.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll36.getId(), 1);
+        } else if (((ColorDrawable) ll37.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll37.getId(), 1);
+        } else if (((ColorDrawable) ll38.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll38.getId(), 1);
+        }
+
+
+        if (((ColorDrawable) ll41.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll41.getId(), 1);
+        } else if (((ColorDrawable) ll42.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll42.getId(), 1);
+        } else if (((ColorDrawable) ll43.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll43.getId(), 1);
+        } else if (((ColorDrawable) ll44.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll44.getId(), 1);
+        } else if (((ColorDrawable) ll45.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll45.getId(), 1);
+        } else if (((ColorDrawable) ll46.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll46.getId(), 1);
+        } else if (((ColorDrawable) ll47.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll47.getId(), 1);
+        } else if (((ColorDrawable) ll48.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll48.getId(), 1);
+        }
+
+
+        if (((ColorDrawable) ll51.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll51.getId(), 1);
+        } else if (((ColorDrawable) ll52.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll52.getId(), 1);
+        } else if (((ColorDrawable) ll53.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll53.getId(), 1);
+        } else if (((ColorDrawable) ll54.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll54.getId(), 1);
+        } else if (((ColorDrawable) ll55.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll55.getId(), 1);
+        } else if (((ColorDrawable) ll56.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll56.getId(), 1);
+        } else if (((ColorDrawable) ll57.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll57.getId(), 1);
+        } else if (((ColorDrawable) ll58.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll58.getId(), 1);
+        }
+
+
     }
 
     @Override
