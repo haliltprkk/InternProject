@@ -7,6 +7,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,8 +33,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     TextView yCoordinateTextView;
     @BindView(R.id.z_coordinate_text_view)
     TextView zCoordinateTextView;
-    @BindView(R.id.square_tv)
-    TextView squareTv;
     @BindView(R.id.ll_1)
     LinearLayout ll1;
     @BindView(R.id.ll_2)
@@ -123,8 +123,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     ImageView im57;
     @BindView(R.id.im_5_8)
     ImageView im58;
-    @BindView(R.id.timer_tv)
-    TextView timerTv;
     @BindView(R.id.ll_1_1)
     LinearLayout ll11;
     @BindView(R.id.ll_1_2)
@@ -207,10 +205,29 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     LinearLayout ll58;
     @BindView(R.id.text_tv)
     TextView textTv;
+    @BindView(R.id.im_1_9)
+    ImageView im19;
+    @BindView(R.id.ll_1_9)
+    LinearLayout ll19;
+    @BindView(R.id.im_2_9)
+    ImageView im29;
+    @BindView(R.id.ll_2_9)
+    LinearLayout ll29;
+    @BindView(R.id.im_3_9)
+    ImageView im39;
+    @BindView(R.id.ll_3_9)
+    LinearLayout ll39;
+    @BindView(R.id.im_4_9)
+    ImageView im49;
+    @BindView(R.id.ll_4_9)
+    LinearLayout ll49;
+    @BindView(R.id.im_5_9)
+    ImageView im59;
+    @BindView(R.id.ll_5_9)
+    LinearLayout ll59;
     private SensorManager sensorManager;
     private Sensor accelerometerSensor;
     DecimalFormat df = new DecimalFormat();
-    int startX = 9, startY = 0, startZ = 0;
     float calibratedXTop = 0, calibratedYTop = 0, calibratedZTop = 0;
     float calibratedXDown = 0, calibratedYDown = 0, calibratedZDown = 0;
     float calibratedXRight = 0, calibratedYRight = 0, calibratedZRight = 0;
@@ -218,17 +235,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     float realX = 0, realY = 0, realZ = 0;
     ArrayList<String> arraylistText = new ArrayList<>();
     CountDownTimer textCounter;
-    boolean switchBackground = true;
-    int backColor = 0;
     int res = 0, res2 = 0;
-    Boolean finish = true;
-
+    boolean addNewLine = false, isSpeak = false;
     int step = 0;
     TextView detailsTv;
     CountDownTimer countDownTimer;
     MaterialDialog dialog;
-    ImageView imageView;
     ProgressBar progressBar;
+    TextToSpeech textToSpeech;
+    int result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -241,6 +256,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             Toast.makeText(this, "Cihazınızda İVMEÖLÇER sensörü bulunmamaktadır!", Toast.LENGTH_SHORT).show();
             finish();
         }
+        textToSpeech = new TextToSpeech(MainActivity.this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int i) {
+                if (i == TextToSpeech.SUCCESS) {
+                    result = textToSpeech.setLanguage(new Locale("tr-TR"));
+
+                } else {
+                    Toast.makeText(MainActivity.this, "Hata oluştu!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
         dialog();
     }
 
@@ -253,20 +280,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         final TextView counterTv = (TextView) view.findViewById(R.id.counter_tv);
         detailsTv = (TextView) view.findViewById(R.id.dialog_details_tv);
         progressBar = (ProgressBar) view.findViewById(R.id.dialog_pb);
-        imageView = (ImageView) view.findViewById(R.id.tick_iv);
-
 
         countDownTimer = new CountDownTimer(7000, 1000) {
             public void onTick(long millisUntilFinished) {
 
-                timerTv.setText("seconds remaining: " + millisUntilFinished / 1000);
                 counterTv.setText(millisUntilFinished / 1000 + "");
             }
 
             public void onFinish() {
                 step = ++step;
-                progressBar.setVisibility(View.GONE);
-                imageView.setVisibility(View.VISIBLE);
                 control(step);
             }
         };
@@ -280,8 +302,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             calibratedYTop = realY;
             calibratedZTop = realZ;
             detailsTv.setText("şimdi aşağıya bakın");
-
-            waitt();
+            waitt(2000);
             countDownTimer.start();
 
         } else if (step == 2) {
@@ -289,8 +310,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             calibratedYDown = realY;
             calibratedZDown = realZ;
             detailsTv.setText("şimdi sağa bakın");
-
-            waitt();
+            waitt(2000);
             countDownTimer.start();
 
         } else if (step == 3) {
@@ -298,8 +318,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             calibratedYRight = realY;
             calibratedZRight = realZ;
             detailsTv.setText("şimdi sola bakın");
-
-            waitt();
+            waitt(2000);
             countDownTimer.start();
 
         } else if (step == 4) {
@@ -307,23 +326,19 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             calibratedYLeft = realY;
             calibratedZLeft = realZ;
             detailsTv.setText("TAMAMLANDI");
-
-            waitt();
+            waitt(2000);
         }
 
     }
 
-    public void waitt() {
+    public void waitt(int time) {
         new CountDownTimer(2000, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                //progressBar.setVisibility(View.GONE);
-                //imageView.setVisibility(View.VISIBLE);
             }
 
             public void onFinish() {
-                //progressBar.setVisibility(View.VISIBLE);
-                //imageView.setVisibility(View.GONE);
+
                 if (step == 4) {
                     dialog.dismiss();
                     arraylistText = new ArrayList<>();
@@ -358,9 +373,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     void column(SensorEvent sensorEvent, int id) {
-        //-3 -2 -1 0 1 2 3 4
         float y = sensorEvent.values[1];
-        float spacing = (Math.abs(calibratedYLeft) + Math.abs(calibratedYRight)) / 8;
+        float spacing = (Math.abs(calibratedYLeft) + Math.abs(calibratedYRight)) / 9;
         if (id == R.id.ll_1) {
             if (y < calibratedYLeft) {
                 makeBackgroundWhite();
@@ -419,6 +433,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 im18.setVisibility(View.VISIBLE);
                 listenBackgrounds();
             }
+            if (y > (calibratedYLeft + 7 * spacing) && y < (calibratedYLeft + 8 * spacing)) {
+                makeBackgroundWhite();
+                ll19.setBackgroundColor(getResources().getColor(R.color.pairblue));
+                makeColumnsUnVisible();
+                im19.setVisibility(View.VISIBLE);
+                listenBackgrounds();
+            }
         } else if (id == R.id.ll_2) {
             if (y < calibratedYLeft) {
                 makeBackgroundWhite();
@@ -449,7 +470,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 listenBackgrounds();
             }
             if (y > (calibratedYLeft + 3 * spacing) && y < (calibratedYLeft + 4 * spacing)) {
-                countIsWordWrite(ll25.getId(), 0);
                 makeBackgroundWhite();
                 ll25.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
@@ -475,6 +495,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 ll28.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im28.setVisibility(View.VISIBLE);
+                listenBackgrounds();
+            }
+            if (y > (calibratedYLeft + 7 * spacing) && y < (calibratedYLeft + 8 * spacing)) {
+                makeBackgroundWhite();
+                ll29.setBackgroundColor(getResources().getColor(R.color.pairblue));
+                makeColumnsUnVisible();
+                im29.setVisibility(View.VISIBLE);
                 listenBackgrounds();
             }
         } else if (id == R.id.ll_3) {
@@ -535,6 +562,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 im38.setVisibility(View.VISIBLE);
                 listenBackgrounds();
             }
+            if (y > (calibratedYLeft + 7 * spacing) && y < (calibratedYLeft + 8 * spacing)) {
+                makeBackgroundWhite();
+                ll39.setBackgroundColor(getResources().getColor(R.color.pairblue));
+                makeColumnsUnVisible();
+                im39.setVisibility(View.VISIBLE);
+                listenBackgrounds();
+            }
         } else if (id == R.id.ll_4) {
             if (y < calibratedYLeft) {
                 makeBackgroundWhite();
@@ -591,6 +625,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 ll48.setBackgroundColor(getResources().getColor(R.color.pairblue));
                 makeColumnsUnVisible();
                 im48.setVisibility(View.VISIBLE);
+                listenBackgrounds();
+            }
+            if (y > (calibratedYLeft + 7 * spacing) && y < (calibratedYLeft + 8 * spacing)) {
+                makeBackgroundWhite();
+                ll49.setBackgroundColor(getResources().getColor(R.color.pairblue));
+                makeColumnsUnVisible();
+                im49.setVisibility(View.VISIBLE);
                 listenBackgrounds();
             }
         } else if (id == R.id.ll_5) {
@@ -650,6 +691,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 im58.setVisibility(View.VISIBLE);
                 listenBackgrounds();
             }
+            if (y > (calibratedYLeft + 7 * spacing) && y < (calibratedYLeft + 8 * spacing)) {
+                makeBackgroundWhite();
+                ll59.setBackgroundColor(getResources().getColor(R.color.pairblue));
+                makeColumnsUnVisible();
+                im59.setVisibility(View.VISIBLE);
+                listenBackgrounds();
+            }
         }
 
     }
@@ -663,6 +711,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         ll16.setBackgroundColor(getResources().getColor(R.color.white));
         ll17.setBackgroundColor(getResources().getColor(R.color.white));
         ll18.setBackgroundColor(getResources().getColor(R.color.white));
+        ll19.setBackgroundColor(getResources().getColor(R.color.white));
 
         ll21.setBackgroundColor(getResources().getColor(R.color.white));
         ll22.setBackgroundColor(getResources().getColor(R.color.white));
@@ -672,6 +721,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         ll26.setBackgroundColor(getResources().getColor(R.color.white));
         ll27.setBackgroundColor(getResources().getColor(R.color.white));
         ll28.setBackgroundColor(getResources().getColor(R.color.white));
+        ll29.setBackgroundColor(getResources().getColor(R.color.white));
 
         ll31.setBackgroundColor(getResources().getColor(R.color.white));
         ll32.setBackgroundColor(getResources().getColor(R.color.white));
@@ -681,6 +731,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         ll36.setBackgroundColor(getResources().getColor(R.color.white));
         ll37.setBackgroundColor(getResources().getColor(R.color.white));
         ll38.setBackgroundColor(getResources().getColor(R.color.white));
+        ll39.setBackgroundColor(getResources().getColor(R.color.white));
 
         ll41.setBackgroundColor(getResources().getColor(R.color.white));
         ll42.setBackgroundColor(getResources().getColor(R.color.white));
@@ -690,6 +741,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         ll46.setBackgroundColor(getResources().getColor(R.color.white));
         ll47.setBackgroundColor(getResources().getColor(R.color.white));
         ll48.setBackgroundColor(getResources().getColor(R.color.white));
+        ll49.setBackgroundColor(getResources().getColor(R.color.white));
 
         ll51.setBackgroundColor(getResources().getColor(R.color.white));
         ll52.setBackgroundColor(getResources().getColor(R.color.white));
@@ -699,6 +751,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         ll56.setBackgroundColor(getResources().getColor(R.color.white));
         ll57.setBackgroundColor(getResources().getColor(R.color.white));
         ll58.setBackgroundColor(getResources().getColor(R.color.white));
+        ll59.setBackgroundColor(getResources().getColor(R.color.white));
     }
 
     void row(SensorEvent sensorEvent) {
@@ -734,15 +787,61 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             ll5.setVisibility(View.VISIBLE);
             column(sensorEvent, ll5.getId());
         }
-        squareTv.setText("" + x);
     }
 
     void makeRowsUnVisible() {
-        ll1.setVisibility(View.INVISIBLE);
+        im11.setVisibility(View.INVISIBLE);
+        im12.setVisibility(View.INVISIBLE);
+        im13.setVisibility(View.INVISIBLE);
+        im14.setVisibility(View.INVISIBLE);
+        im15.setVisibility(View.INVISIBLE);
+        im16.setVisibility(View.INVISIBLE);
+        im17.setVisibility(View.INVISIBLE);
+        im18.setVisibility(View.INVISIBLE);
+        im19.setVisibility(View.INVISIBLE);
+        im21.setVisibility(View.INVISIBLE);
+        im22.setVisibility(View.INVISIBLE);
+        im23.setVisibility(View.INVISIBLE);
+        im24.setVisibility(View.INVISIBLE);
+        im25.setVisibility(View.INVISIBLE);
+        im26.setVisibility(View.INVISIBLE);
+        im27.setVisibility(View.INVISIBLE);
+        im28.setVisibility(View.INVISIBLE);
+        im29.setVisibility(View.INVISIBLE);
+        im31.setVisibility(View.INVISIBLE);
+        im32.setVisibility(View.INVISIBLE);
+        im33.setVisibility(View.INVISIBLE);
+        im34.setVisibility(View.INVISIBLE);
+        im35.setVisibility(View.INVISIBLE);
+        im36.setVisibility(View.INVISIBLE);
+        im37.setVisibility(View.INVISIBLE);
+        im38.setVisibility(View.INVISIBLE);
+        im39.setVisibility(View.INVISIBLE);
+        im41.setVisibility(View.INVISIBLE);
+        im42.setVisibility(View.INVISIBLE);
+        im43.setVisibility(View.INVISIBLE);
+        im44.setVisibility(View.INVISIBLE);
+        im45.setVisibility(View.INVISIBLE);
+        im46.setVisibility(View.INVISIBLE);
+        im47.setVisibility(View.INVISIBLE);
+        im48.setVisibility(View.INVISIBLE);
+        im49.setVisibility(View.INVISIBLE);
+        im51.setVisibility(View.INVISIBLE);
+        im52.setVisibility(View.INVISIBLE);
+        im53.setVisibility(View.INVISIBLE);
+        im54.setVisibility(View.INVISIBLE);
+        im55.setVisibility(View.INVISIBLE);
+        im56.setVisibility(View.INVISIBLE);
+        im57.setVisibility(View.INVISIBLE);
+        im58.setVisibility(View.INVISIBLE);
+        im59.setVisibility(View.INVISIBLE);
+
+
+        /*ll1.setVisibility(View.INVISIBLE);
         ll2.setVisibility(View.INVISIBLE);
         ll3.setVisibility(View.INVISIBLE);
         ll4.setVisibility(View.INVISIBLE);
-        ll5.setVisibility(View.INVISIBLE);
+        ll5.setVisibility(View.INVISIBLE);*/
     }
 
     void makeColumnsUnVisible() {
@@ -755,6 +854,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             im16.setVisibility(View.INVISIBLE);
             im17.setVisibility(View.INVISIBLE);
             im18.setVisibility(View.INVISIBLE);
+            im19.setVisibility(View.INVISIBLE);
 
         } else if (ll2.getVisibility() == View.VISIBLE) {
             im21.setVisibility(View.INVISIBLE);
@@ -765,6 +865,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             im26.setVisibility(View.INVISIBLE);
             im27.setVisibility(View.INVISIBLE);
             im28.setVisibility(View.INVISIBLE);
+            im29.setVisibility(View.INVISIBLE);
 
         } else if (ll3.getVisibility() == View.VISIBLE) {
             im31.setVisibility(View.INVISIBLE);
@@ -775,6 +876,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             im36.setVisibility(View.INVISIBLE);
             im37.setVisibility(View.INVISIBLE);
             im38.setVisibility(View.INVISIBLE);
+            im39.setVisibility(View.INVISIBLE);
 
         } else if (ll4.getVisibility() == View.VISIBLE) {
             im41.setVisibility(View.INVISIBLE);
@@ -785,6 +887,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             im46.setVisibility(View.INVISIBLE);
             im47.setVisibility(View.INVISIBLE);
             im48.setVisibility(View.INVISIBLE);
+            im49.setVisibility(View.INVISIBLE);
 
         } else if (ll5.getVisibility() == View.VISIBLE) {
             im51.setVisibility(View.INVISIBLE);
@@ -795,6 +898,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             im56.setVisibility(View.INVISIBLE);
             im57.setVisibility(View.INVISIBLE);
             im58.setVisibility(View.INVISIBLE);
+            im59.setVisibility(View.INVISIBLE);
 
         }
     }
@@ -802,26 +906,26 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     void countIsWordWrite(final int resorces, int cancelOrStart) {
         if (resorces == res) {
             return;
-        }
-        if (textCounter != null) {
-            textCounter.cancel();
-        }
-
-        res = resorces;
-
-        textCounter = new CountDownTimer(2000, 1000) {
-
-            @Override
-            public void onTick(long l) {
+        } else if (resorces != res) {
+            if (textCounter != null) {
+                textCounter.cancel();
             }
 
-            @Override
-            public void onFinish() {
-                decideText(resorces);
-            }
-        };
-        textCounter.start();
+            res = resorces;
 
+            textCounter = new CountDownTimer(2000, 1000) {
+
+                @Override
+                public void onTick(long l) {
+                }
+
+                @Override
+                public void onFinish() {
+                    decideText(resorces);
+                }
+            };
+            textCounter.start();
+        }
 
     }
 
@@ -840,195 +944,176 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         } else if (resorces == ll13.getId()) {
             res2 = resorces;
-
             arraylistText.add("2");
             writeText();
         } else if (resorces == ll14.getId()) {
             res2 = resorces;
             arraylistText.add("3");
             writeText();
-
         } else if (resorces == ll15.getId()) {
             res2 = resorces;
-
             arraylistText.add("4");
             writeText();
         } else if (resorces == ll16.getId()) {
             res2 = resorces;
-
             arraylistText.add("5");
             writeText();
         } else if (resorces == ll17.getId()) {
             res2 = resorces;
-
             arraylistText.add("6");
             writeText();
         } else if (resorces == ll18.getId()) {
             res2 = resorces;
-
             arraylistText.add("7");
             writeText();
-        } else if (resorces == ll21.getId()) {
+        } else if (resorces == ll19.getId()) {
             res2 = resorces;
             arraylistText.add("8");
             writeText();
-
-
-        } else if (resorces == ll22.getId()) {
+        } else if (resorces == ll21.getId()) {
             res2 = resorces;
             arraylistText.add("9");
             writeText();
-
-        } else if (resorces == ll23.getId()) {
+        } else if (resorces == ll22.getId()) {
             res2 = resorces;
-
             arraylistText.add("a");
             writeText();
-        } else if (resorces == ll24.getId()) {
+        } else if (resorces == ll23.getId()) {
             res2 = resorces;
             arraylistText.add("b");
             writeText();
-
-        } else if (resorces == ll25.getId()) {
+        } else if (resorces == ll24.getId()) {
             res2 = resorces;
             arraylistText.add("c");
             writeText();
+        } else if (resorces == ll25.getId()) {
+            res2 = resorces;
+            arraylistText.add("ç");
+            writeText();
         } else if (resorces == ll26.getId()) {
             res2 = resorces;
-
             arraylistText.add("d");
             writeText();
         } else if (resorces == ll27.getId()) {
             res2 = resorces;
-
             arraylistText.add("e");
             writeText();
         } else if (resorces == ll28.getId()) {
             res2 = resorces;
-
             arraylistText.add("f");
             writeText();
-        } else if (resorces == ll31.getId()) {
+        } else if (resorces == ll29.getId()) {
             res2 = resorces;
             arraylistText.add("g");
             writeText();
-
-
+        } else if (resorces == ll31.getId()) {
+            res2 = resorces;
+            arraylistText.add("ğ");
+            writeText();
         } else if (resorces == ll32.getId()) {
             res2 = resorces;
             arraylistText.add("h");
             writeText();
-
         } else if (resorces == ll33.getId()) {
             res2 = resorces;
-
-            arraylistText.add("i");
+            arraylistText.add("ı");
             writeText();
         } else if (resorces == ll34.getId()) {
             res2 = resorces;
-            arraylistText.add("j");
+            arraylistText.add("i");
             writeText();
-
         } else if (resorces == ll35.getId()) {
             res2 = resorces;
-
-            arraylistText.add("k");
+            arraylistText.add("j");
             writeText();
         } else if (resorces == ll36.getId()) {
             res2 = resorces;
-
-            arraylistText.add("l");
+            arraylistText.add("k");
             writeText();
         } else if (resorces == ll37.getId()) {
             res2 = resorces;
-
-            arraylistText.add("m");
+            arraylistText.add("l");
             writeText();
         } else if (resorces == ll38.getId()) {
             res2 = resorces;
-
+            addNewLine = true;
+            writeText();
+        } else if (resorces == ll39.getId()) {
+            res2 = resorces;
+            finish();
+            /*arraylistText.add("za");
+            writeText();*/
+        } else if (resorces == ll41.getId()) {
+            res2 = resorces;
+            arraylistText.add("m");
+            writeText();
+        } else if (resorces == ll42.getId()) {
+            res2 = resorces;
             arraylistText.add("n");
             writeText();
-        } else if (resorces == ll41.getId()) {
+        } else if (resorces == ll43.getId()) {
             res2 = resorces;
             arraylistText.add("o");
             writeText();
-
-
-        } else if (resorces == ll42.getId()) {
+        } else if (resorces == ll44.getId()) {
+            res2 = resorces;
+            arraylistText.add("ö");
+            writeText();
+        } else if (resorces == ll45.getId()) {
             res2 = resorces;
             arraylistText.add("p");
             writeText();
-
-        } else if (resorces == ll43.getId()) {
-            res2 = resorces;
-
-            arraylistText.add("q");
-            writeText();
-        } else if (resorces == ll44.getId()) {
+        } else if (resorces == ll46.getId()) {
             res2 = resorces;
             arraylistText.add("r");
             writeText();
-
-        } else if (resorces == ll45.getId()) {
-            res2 = resorces;
-
-            arraylistText.add("s");
-            writeText();
-        } else if (resorces == ll46.getId()) {
-            res2 = resorces;
-
-            arraylistText.add("t");
-            writeText();
         } else if (resorces == ll47.getId()) {
             res2 = resorces;
-
-            arraylistText.add("ok");
+            arraylistText.add("s");
             writeText();
         } else if (resorces == ll48.getId()) {
             res2 = resorces;
-
-            arraylistText.add("ok");
+            arraylistText.add("  ");
+            writeText();
+        } else if (resorces == ll49.getId()) {
+            res2 = resorces;
+            arraylistText.remove(arraylistText.size() - 1);
             writeText();
         } else if (resorces == ll51.getId()) {
             res2 = resorces;
-            arraylistText.add("u");
+            arraylistText.add("ş");
             writeText();
-
-
         } else if (resorces == ll52.getId()) {
             res2 = resorces;
-            arraylistText.add("v");
+            arraylistText.add("t");
             writeText();
-
         } else if (resorces == ll53.getId()) {
             res2 = resorces;
-
-            arraylistText.add("w");
+            arraylistText.add("u");
             writeText();
         } else if (resorces == ll54.getId()) {
             res2 = resorces;
-            arraylistText.add("x");
+            arraylistText.add("ü");
             writeText();
-
         } else if (resorces == ll55.getId()) {
             res2 = resorces;
-
-            arraylistText.add("y");
+            arraylistText.add("v");
             writeText();
         } else if (resorces == ll56.getId()) {
             res2 = resorces;
-
-            arraylistText.add("z");
+            arraylistText.add("y");
             writeText();
         } else if (resorces == ll57.getId()) {
             res2 = resorces;
-
-            arraylistText.add("ok");
+            arraylistText.add("z");
+            writeText();
         } else if (resorces == ll58.getId()) {
             res2 = resorces;
-
-            arraylistText.add("ok");
+            arraylistText.add(".");
+            writeText();
+        } else if (resorces == ll59.getId()) {
+            res2 = resorces;
+            isSpeak = true;
             writeText();
         }
     }
@@ -1039,16 +1124,24 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             for (int i = 0; i < arraylistText.size(); i++) {
                 string += arraylistText.get(i);
             }
-            textTv.setText(string);
+            /*if (addNewLine) {
+                addNewLine = false;
+                string += '\n';
+            }*/
+            if (isSpeak) {
+                textTv.setText(" >> : " + string);
+                speak(string);
+                isSpeak = false;
+            }
+            textTv.setText(" >> : " + string);
+
         } else {
-            textTv.setText("birşeyler yazın...");
+            textTv.setText(">> : birşeyler yazın...");
         }
 
     }
 
     void listenBackgrounds() {
-
-
         if (((ColorDrawable) ll11.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
             countIsWordWrite(ll11.getId(), 1);
         } else if (((ColorDrawable) ll12.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
@@ -1065,6 +1158,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             countIsWordWrite(ll17.getId(), 1);
         } else if (((ColorDrawable) ll18.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
             countIsWordWrite(ll18.getId(), 1);
+        } else if (((ColorDrawable) ll19.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll19.getId(), 1);
         }
 
 
@@ -1084,6 +1179,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             countIsWordWrite(ll27.getId(), 1);
         } else if (((ColorDrawable) ll28.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
             countIsWordWrite(ll28.getId(), 1);
+        } else if (((ColorDrawable) ll29.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll29.getId(), 1);
         }
 
 
@@ -1103,6 +1200,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             countIsWordWrite(ll37.getId(), 1);
         } else if (((ColorDrawable) ll38.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
             countIsWordWrite(ll38.getId(), 1);
+        } else if (((ColorDrawable) ll39.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll39.getId(), 1);
         }
 
 
@@ -1122,6 +1221,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             countIsWordWrite(ll47.getId(), 1);
         } else if (((ColorDrawable) ll48.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
             countIsWordWrite(ll48.getId(), 1);
+        } else if (((ColorDrawable) ll49.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll49.getId(), 1);
         }
 
 
@@ -1141,6 +1242,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             countIsWordWrite(ll57.getId(), 1);
         } else if (((ColorDrawable) ll58.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
             countIsWordWrite(ll58.getId(), 1);
+        } else if (((ColorDrawable) ll59.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countIsWordWrite(ll59.getId(), 1);
         }
 
 
@@ -1148,5 +1251,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
+    }
+
+    void speak(String text) {
+        if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+            Toast.makeText(this, "Telefonunuz bu özelliği desteklemiyor..", Toast.LENGTH_SHORT).show();
+        } else {
+            textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        textToSpeech.stop();
+        textToSpeech.shutdown();
     }
 }
