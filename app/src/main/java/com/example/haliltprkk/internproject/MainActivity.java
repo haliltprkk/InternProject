@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
     @BindView(R.id.x_coordinate_text_view)
     TextView xCoordinateTextView;
@@ -33,198 +35,1184 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     TextView yCoordinateTextView;
     @BindView(R.id.z_coordinate_text_view)
     TextView zCoordinateTextView;
-    @BindView(R.id.ll_1)
-    LinearLayout ll1;
-    @BindView(R.id.ll_2)
-    LinearLayout ll2;
-    @BindView(R.id.ll_3)
-    LinearLayout ll3;
-    @BindView(R.id.ll_4)
-    LinearLayout ll4;
-    @BindView(R.id.ll_5)
-    LinearLayout ll5;
-    @BindView(R.id.im_1_1)
-    ImageView im11;
-    @BindView(R.id.im_1_2)
-    ImageView im12;
-    @BindView(R.id.im_1_3)
-    ImageView im13;
-    @BindView(R.id.im_1_4)
-    ImageView im14;
-    @BindView(R.id.im_1_5)
-    ImageView im15;
-    @BindView(R.id.im_1_6)
-    ImageView im16;
-    @BindView(R.id.im_1_7)
-    ImageView im17;
-    @BindView(R.id.im_1_8)
-    ImageView im18;
-    @BindView(R.id.im_2_1)
-    ImageView im21;
-    @BindView(R.id.im_2_2)
-    ImageView im22;
-    @BindView(R.id.im_2_3)
-    ImageView im23;
-    @BindView(R.id.im_2_4)
-    ImageView im24;
-    @BindView(R.id.im_2_5)
-    ImageView im25;
-    @BindView(R.id.im_2_6)
-    ImageView im26;
-    @BindView(R.id.im_2_7)
-    ImageView im27;
-    @BindView(R.id.im_2_8)
-    ImageView im28;
-    @BindView(R.id.im_3_1)
-    ImageView im31;
-    @BindView(R.id.im_3_2)
-    ImageView im32;
-    @BindView(R.id.im_3_3)
-    ImageView im33;
-    @BindView(R.id.im_3_4)
-    ImageView im34;
-    @BindView(R.id.im_3_5)
-    ImageView im35;
-    @BindView(R.id.im_3_6)
-    ImageView im36;
-    @BindView(R.id.im_3_7)
-    ImageView im37;
-    @BindView(R.id.im_3_8)
-    ImageView im38;
-    @BindView(R.id.im_4_1)
-    ImageView im41;
-    @BindView(R.id.im_4_2)
-    ImageView im42;
-    @BindView(R.id.im_4_3)
-    ImageView im43;
-    @BindView(R.id.im_4_4)
-    ImageView im44;
-    @BindView(R.id.im_4_5)
-    ImageView im45;
-    @BindView(R.id.im_4_6)
-    ImageView im46;
-    @BindView(R.id.im_4_7)
-    ImageView im47;
-    @BindView(R.id.im_4_8)
-    ImageView im48;
-    @BindView(R.id.im_5_1)
-    ImageView im51;
-    @BindView(R.id.im_5_2)
-    ImageView im52;
-    @BindView(R.id.im_5_3)
-    ImageView im53;
-    @BindView(R.id.im_5_4)
-    ImageView im54;
-    @BindView(R.id.im_5_5)
-    ImageView im55;
-    @BindView(R.id.im_5_6)
-    ImageView im56;
-    @BindView(R.id.im_5_7)
-    ImageView im57;
-    @BindView(R.id.im_5_8)
-    ImageView im58;
-    @BindView(R.id.ll_1_1)
-    LinearLayout ll11;
-    @BindView(R.id.ll_1_2)
-    LinearLayout ll12;
-    @BindView(R.id.ll_1_3)
-    LinearLayout ll13;
-    @BindView(R.id.ll_1_4)
-    LinearLayout ll14;
-    @BindView(R.id.ll_1_5)
-    LinearLayout ll15;
-    @BindView(R.id.ll_1_6)
-    LinearLayout ll16;
-    @BindView(R.id.ll_1_7)
-    LinearLayout ll17;
-    @BindView(R.id.ll_1_8)
-    LinearLayout ll18;
-    @BindView(R.id.ll_2_1)
-    LinearLayout ll21;
-    @BindView(R.id.ll_2_2)
-    LinearLayout ll22;
-    @BindView(R.id.ll_2_3)
-    LinearLayout ll23;
-    @BindView(R.id.ll_2_4)
-    LinearLayout ll24;
-    @BindView(R.id.ll_2_5)
-    LinearLayout ll25;
-    @BindView(R.id.ll_2_6)
-    LinearLayout ll26;
-    @BindView(R.id.ll_2_7)
-    LinearLayout ll27;
-    @BindView(R.id.ll_2_8)
-    LinearLayout ll28;
-    @BindView(R.id.ll_3_1)
-    LinearLayout ll31;
-    @BindView(R.id.ll_3_2)
-    LinearLayout ll32;
-    @BindView(R.id.ll_3_3)
-    LinearLayout ll33;
-    @BindView(R.id.ll_3_4)
-    LinearLayout ll34;
-    @BindView(R.id.ll_3_5)
-    LinearLayout ll35;
-    @BindView(R.id.ll_3_6)
-    LinearLayout ll36;
-    @BindView(R.id.ll_3_7)
-    LinearLayout ll37;
-    @BindView(R.id.ll_3_8)
-    LinearLayout ll38;
-    @BindView(R.id.ll_4_1)
-    LinearLayout ll41;
-    @BindView(R.id.ll_4_2)
-    LinearLayout ll42;
-    @BindView(R.id.ll_4_3)
-    LinearLayout ll43;
-    @BindView(R.id.ll_4_4)
-    LinearLayout ll44;
-    @BindView(R.id.ll_4_5)
-    LinearLayout ll45;
-    @BindView(R.id.ll_4_6)
-    LinearLayout ll46;
-    @BindView(R.id.ll_4_7)
-    LinearLayout ll47;
-    @BindView(R.id.ll_4_8)
-    LinearLayout ll48;
-    @BindView(R.id.ll_5_1)
-    LinearLayout ll51;
-    @BindView(R.id.ll_5_2)
-    LinearLayout ll52;
-    @BindView(R.id.ll_5_3)
-    LinearLayout ll53;
-    @BindView(R.id.ll_5_4)
-    LinearLayout ll54;
-    @BindView(R.id.ll_5_5)
-    LinearLayout ll55;
-    @BindView(R.id.ll_5_6)
-    LinearLayout ll56;
-    @BindView(R.id.ll_5_7)
-    LinearLayout ll57;
-    @BindView(R.id.ll_5_8)
-    LinearLayout ll58;
+
+
+    //asdfghjklşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşşş
+
+
+    @BindView(R.id.ll1_r1_l1_im1)
+    ImageView ll1R1L1Im1;
+    @BindView(R.id.ll1_r1_l1_im2)
+    ImageView ll1R1L1Im2;
+    @BindView(R.id.ll1_r1_l1_im3)
+    ImageView ll1R1L1Im3;
+    @BindView(R.id.ll1_r1_l1)
+    LinearLayout ll1R1L1;
+    @BindView(R.id.ll1_r1_l2_im1)
+    ImageView ll1R1L2Im1;
+    @BindView(R.id.ll1_r1_l2_im2)
+    ImageView ll1R1L2Im2;
+    @BindView(R.id.ll1_r1_l2_im3)
+    ImageView ll1R1L2Im3;
+    @BindView(R.id.ll1_r1_l2)
+    LinearLayout ll1R1L2;
+    @BindView(R.id.ll1_r1_l3_im1)
+    ImageView ll1R1L3Im1;
+    @BindView(R.id.ll1_r1_l3_im2)
+    ImageView ll1R1L3Im2;
+    @BindView(R.id.ll1_r1_l3_im3)
+    ImageView ll1R1L3Im3;
+    @BindView(R.id.ll1_r1_l3)
+    LinearLayout ll1R1L3;
+    @BindView(R.id.ll1_r1)
+    RelativeLayout ll1R1;
+    @BindView(R.id.ll1_r2_l1_im1)
+    ImageView ll1R2L1Im1;
+    @BindView(R.id.ll1_r2_l1_im2)
+    ImageView ll1R2L1Im2;
+    @BindView(R.id.ll1_r2_l1_im3)
+    ImageView ll1R2L1Im3;
+    @BindView(R.id.ll1_r2_l1)
+    LinearLayout ll1R2L1;
+    @BindView(R.id.ll1_r2_l2_im1)
+    ImageView ll1R2L2Im1;
+    @BindView(R.id.ll1_r2_l2_im2)
+    ImageView ll1R2L2Im2;
+    @BindView(R.id.ll1_r2_l2_im3)
+    ImageView ll1R2L2Im3;
+    @BindView(R.id.ll1_r2_l2)
+    LinearLayout ll1R2L2;
+    @BindView(R.id.ll1_r2_l3_im1)
+    ImageView ll1R2L3Im1;
+    @BindView(R.id.ll1_r2_l3_im2)
+    ImageView ll1R2L3Im2;
+    @BindView(R.id.ll1_r2_l3_im3)
+    ImageView ll1R2L3Im3;
+    @BindView(R.id.ll1_r2_l3)
+    LinearLayout ll1R2L3;
+    @BindView(R.id.ll1_r2)
+    RelativeLayout ll1R2;
+    @BindView(R.id.ll1_r3_l1_im1)
+    ImageView ll1R3L1Im1;
+    @BindView(R.id.ll1_r3_l1_im2)
+    ImageView ll1R3L1Im2;
+    @BindView(R.id.ll1_r3_l1_im3)
+    ImageView ll1R3L1Im3;
+    @BindView(R.id.ll1_r3_l1)
+    LinearLayout ll1R3L1;
+    @BindView(R.id.ll1_r3_l2_im1)
+    ImageView ll1R3L2Im1;
+    @BindView(R.id.ll1_r3_l2_im2)
+    ImageView ll1R3L2Im2;
+    @BindView(R.id.ll1_r3_l2_im3)
+    ImageView ll1R3L2Im3;
+    @BindView(R.id.ll1_r3_l2)
+    LinearLayout ll1R3L2;
+    @BindView(R.id.ll1_r3_l3_im1)
+    ImageView ll1R3L3Im1;
+    @BindView(R.id.ll1_r3_l3_im2)
+    ImageView ll1R3L3Im2;
+    @BindView(R.id.ll1_r3_l3_im3)
+    ImageView ll1R3L3Im3;
+    @BindView(R.id.ll1_r3_l3)
+    LinearLayout ll1R3L3;
+    @BindView(R.id.ll1_r3)
+    RelativeLayout ll1R3;
+    @BindView(R.id.ll1_r4_l1_im1)
+    ImageView ll1R4L1Im1;
+    @BindView(R.id.ll1_r4_l1_im2)
+    ImageView ll1R4L1Im2;
+    @BindView(R.id.ll1_r4_l1_im3)
+    ImageView ll1R4L1Im3;
+    @BindView(R.id.ll1_r4_l1)
+    LinearLayout ll1R4L1;
+    @BindView(R.id.ll1_r4_l2_im1)
+    ImageView ll1R4L2Im1;
+    @BindView(R.id.ll1_r4_l2_im2)
+    ImageView ll1R4L2Im2;
+    @BindView(R.id.ll1_r4_l2_im3)
+    ImageView ll1R4L2Im3;
+    @BindView(R.id.ll1_r4_l2)
+    LinearLayout ll1R4L2;
+    @BindView(R.id.ll1_r4_l3_im1)
+    ImageView ll1R4L3Im1;
+    @BindView(R.id.ll1_r4_l3_im2)
+    ImageView ll1R4L3Im2;
+    @BindView(R.id.ll1_r4_l3_im3)
+    ImageView ll1R4L3Im3;
+    @BindView(R.id.ll1_r4_l3)
+    LinearLayout ll1R4L3;
+    @BindView(R.id.ll1_r4)
+    RelativeLayout ll1R4;
+    @BindView(R.id.ll1_r5_l1_im1)
+    ImageView ll1R5L1Im1;
+    @BindView(R.id.ll1_r5_l1_im2)
+    ImageView ll1R5L1Im2;
+    @BindView(R.id.ll1_r5_l1_im3)
+    ImageView ll1R5L1Im3;
+    @BindView(R.id.ll1_r5_l1)
+    LinearLayout ll1R5L1;
+    @BindView(R.id.ll1_r5_l2_im1)
+    ImageView ll1R5L2Im1;
+    @BindView(R.id.ll1_r5_l2_im2)
+    ImageView ll1R5L2Im2;
+    @BindView(R.id.ll1_r5_l2_im3)
+    ImageView ll1R5L2Im3;
+    @BindView(R.id.ll1_r5_l2)
+    LinearLayout ll1R5L2;
+    @BindView(R.id.ll1_r5_l3_im1)
+    ImageView ll1R5L3Im1;
+    @BindView(R.id.ll1_r5_l3_im2)
+    ImageView ll1R5L3Im2;
+    @BindView(R.id.ll1_r5_l3_im3)
+    ImageView ll1R5L3Im3;
+    @BindView(R.id.ll1_r5_l3)
+    LinearLayout ll1R5L3;
+    @BindView(R.id.ll1_r5)
+    RelativeLayout ll1R5;
+    @BindView(R.id.ll1_r6_l1_im1)
+    ImageView ll1R6L1Im1;
+    @BindView(R.id.ll1_r6_l1_im2)
+    ImageView ll1R6L1Im2;
+    @BindView(R.id.ll1_r6_l1_im3)
+    ImageView ll1R6L1Im3;
+    @BindView(R.id.ll1_r6_l1)
+    LinearLayout ll1R6L1;
+    @BindView(R.id.ll1_r6_l2_im1)
+    ImageView ll1R6L2Im1;
+    @BindView(R.id.ll1_r6_l2_im2)
+    ImageView ll1R6L2Im2;
+    @BindView(R.id.ll1_r6_l2_im3)
+    ImageView ll1R6L2Im3;
+    @BindView(R.id.ll1_r6_l2)
+    LinearLayout ll1R6L2;
+    @BindView(R.id.ll1_r6_l3_im1)
+    ImageView ll1R6L3Im1;
+    @BindView(R.id.ll1_r6_l3_im2)
+    ImageView ll1R6L3Im2;
+    @BindView(R.id.ll1_r6_l3_im3)
+    ImageView ll1R6L3Im3;
+    @BindView(R.id.ll1_r6_l3)
+    LinearLayout ll1R6L3;
+    @BindView(R.id.ll1_r6)
+    RelativeLayout ll1R6;
+    @BindView(R.id.ll1_r7_l1_im1)
+    ImageView ll1R7L1Im1;
+    @BindView(R.id.ll1_r7_l1_im2)
+    ImageView ll1R7L1Im2;
+    @BindView(R.id.ll1_r7_l1_im3)
+    ImageView ll1R7L1Im3;
+    @BindView(R.id.ll1_r7_l1)
+    LinearLayout ll1R7L1;
+    @BindView(R.id.ll1_r7_l2_im1)
+    ImageView ll1R7L2Im1;
+    @BindView(R.id.ll1_r7_l2_im2)
+    ImageView ll1R7L2Im2;
+    @BindView(R.id.ll1_r7_l2_im3)
+    ImageView ll1R7L2Im3;
+    @BindView(R.id.ll1_r7_l2)
+    LinearLayout ll1R7L2;
+    @BindView(R.id.ll1_r7_l3_im1)
+    ImageView ll1R7L3Im1;
+    @BindView(R.id.ll1_r7_l3_im2)
+    ImageView ll1R7L3Im2;
+    @BindView(R.id.ll1_r7_l3_im3)
+    ImageView ll1R7L3Im3;
+    @BindView(R.id.ll1_r7_l3)
+    LinearLayout ll1R7L3;
+    @BindView(R.id.ll1_r7)
+    RelativeLayout ll1R7;
+    @BindView(R.id.ll1_r8_l1_im1)
+    ImageView ll1R8L1Im1;
+    @BindView(R.id.ll1_r8_l1_im2)
+    ImageView ll1R8L1Im2;
+    @BindView(R.id.ll1_r8_l1_im3)
+    ImageView ll1R8L1Im3;
+    @BindView(R.id.ll1_r8_l1)
+    LinearLayout ll1R8L1;
+    @BindView(R.id.ll1_r8_l2_im1)
+    ImageView ll1R8L2Im1;
+    @BindView(R.id.ll1_r8_l2_im2)
+    ImageView ll1R8L2Im2;
+    @BindView(R.id.ll1_r8_l2_im3)
+    ImageView ll1R8L2Im3;
+    @BindView(R.id.ll1_r8_l2)
+    LinearLayout ll1R8L2;
+    @BindView(R.id.ll1_r8_l3_im1)
+    ImageView ll1R8L3Im1;
+    @BindView(R.id.ll1_r8_l3_im2)
+    ImageView ll1R8L3Im2;
+    @BindView(R.id.ll1_r8_l3_im3)
+    ImageView ll1R8L3Im3;
+    @BindView(R.id.ll1_r8_l3)
+    LinearLayout ll1R8L3;
+    @BindView(R.id.ll1_r8)
+    RelativeLayout ll1R8;
+    @BindView(R.id.ll1_r9_l1_im1)
+    ImageView ll1R9L1Im1;
+    @BindView(R.id.ll1_r9_l1_im2)
+    ImageView ll1R9L1Im2;
+    @BindView(R.id.ll1_r9_l1_im3)
+    ImageView ll1R9L1Im3;
+    @BindView(R.id.ll1_r9_l1)
+    LinearLayout ll1R9L1;
+    @BindView(R.id.ll1_r9_l2_im1)
+    ImageView ll1R9L2Im1;
+    @BindView(R.id.ll1_r9_l2_im2)
+    ImageView ll1R9L2Im2;
+    @BindView(R.id.ll1_r9_l2_im3)
+    ImageView ll1R9L2Im3;
+    @BindView(R.id.ll1_r9_l2)
+    LinearLayout ll1R9L2;
+    @BindView(R.id.ll1_r9_l3_im1)
+    ImageView ll1R9L3Im1;
+    @BindView(R.id.ll1_r9_l3_im2)
+    ImageView ll1R9L3Im2;
+    @BindView(R.id.ll1_r9_l3_im3)
+    ImageView ll1R9L3Im3;
+    @BindView(R.id.ll1_r9_l3)
+    LinearLayout ll1R9L3;
+    @BindView(R.id.ll1_r9)
+    RelativeLayout ll1R9;
+    @BindView(R.id.ll2_r1_l1_im1)
+    ImageView ll2R1L1Im1;
+    @BindView(R.id.ll2_r1_l1_im2)
+    ImageView ll2R1L1Im2;
+    @BindView(R.id.ll2_r1_l1_im3)
+    ImageView ll2R1L1Im3;
+    @BindView(R.id.ll2_r1_l1)
+    LinearLayout ll2R1L1;
+    @BindView(R.id.ll2_r1_l2_im1)
+    ImageView ll2R1L2Im1;
+    @BindView(R.id.ll2_r1_l2_im2)
+    ImageView ll2R1L2Im2;
+    @BindView(R.id.ll2_r1_l2_im3)
+    ImageView ll2R1L2Im3;
+    @BindView(R.id.ll2_r1_l2)
+    LinearLayout ll2R1L2;
+    @BindView(R.id.ll2_r1_l3_im1)
+    ImageView ll2R1L3Im1;
+    @BindView(R.id.ll2_r1_l3_im2)
+    ImageView ll2R1L3Im2;
+    @BindView(R.id.ll2_r1_l3_im3)
+    ImageView ll2R1L3Im3;
+    @BindView(R.id.ll2_r1_l3)
+    LinearLayout ll2R1L3;
+    @BindView(R.id.ll2_r1)
+    RelativeLayout ll2R1;
+    @BindView(R.id.ll2_r2_l1_im1)
+    ImageView ll2R2L1Im1;
+    @BindView(R.id.ll2_r2_l1_im2)
+    ImageView ll2R2L1Im2;
+    @BindView(R.id.ll2_r2_l1_im3)
+    ImageView ll2R2L1Im3;
+    @BindView(R.id.ll2_r2_l1)
+    LinearLayout ll2R2L1;
+    @BindView(R.id.ll2_r2_l2_im1)
+    ImageView ll2R2L2Im1;
+    @BindView(R.id.ll2_r2_l2_im2)
+    ImageView ll2R2L2Im2;
+    @BindView(R.id.ll2_r2_l2_im3)
+    ImageView ll2R2L2Im3;
+    @BindView(R.id.ll2_r2_l2)
+    LinearLayout ll2R2L2;
+    @BindView(R.id.ll2_r2_l3_im1)
+    ImageView ll2R2L3Im1;
+    @BindView(R.id.ll2_r2_l3_im2)
+    ImageView ll2R2L3Im2;
+    @BindView(R.id.ll2_r2_l3_im3)
+    ImageView ll2R2L3Im3;
+    @BindView(R.id.ll2_r2_l3)
+    LinearLayout ll2R2L3;
+    @BindView(R.id.ll2_r2)
+    RelativeLayout ll2R2;
+    @BindView(R.id.ll2_r3_l1_im1)
+    ImageView ll2R3L1Im1;
+    @BindView(R.id.ll2_r3_l1_im2)
+    ImageView ll2R3L1Im2;
+    @BindView(R.id.ll2_r3_l1_im3)
+    ImageView ll2R3L1Im3;
+    @BindView(R.id.ll2_r3_l1)
+    LinearLayout ll2R3L1;
+    @BindView(R.id.ll2_r3_l2_im1)
+    ImageView ll2R3L2Im1;
+    @BindView(R.id.ll2_r3_l2_im2)
+    ImageView ll2R3L2Im2;
+    @BindView(R.id.ll2_r3_l2_im3)
+    ImageView ll2R3L2Im3;
+    @BindView(R.id.ll2_r3_l2)
+    LinearLayout ll2R3L2;
+    @BindView(R.id.ll2_r3_l3_im1)
+    ImageView ll2R3L3Im1;
+    @BindView(R.id.ll2_r3_l3_im2)
+    ImageView ll2R3L3Im2;
+    @BindView(R.id.ll2_r3_l3_im3)
+    ImageView ll2R3L3Im3;
+    @BindView(R.id.ll2_r3_l3)
+    LinearLayout ll2R3L3;
+    @BindView(R.id.ll2_r3)
+    RelativeLayout ll2R3;
+    @BindView(R.id.ll2_r4_l1_im1)
+    ImageView ll2R4L1Im1;
+    @BindView(R.id.ll2_r4_l1_im2)
+    ImageView ll2R4L1Im2;
+    @BindView(R.id.ll2_r4_l1_im3)
+    ImageView ll2R4L1Im3;
+    @BindView(R.id.ll2_r4_l1)
+    LinearLayout ll2R4L1;
+    @BindView(R.id.ll2_r4_l2_im1)
+    ImageView ll2R4L2Im1;
+    @BindView(R.id.ll2_r4_l2_im2)
+    ImageView ll2R4L2Im2;
+    @BindView(R.id.ll2_r4_l2_im3)
+    ImageView ll2R4L2Im3;
+    @BindView(R.id.ll2_r4_l2)
+    LinearLayout ll2R4L2;
+    @BindView(R.id.ll2_r4_l3_im1)
+    ImageView ll2R4L3Im1;
+    @BindView(R.id.ll2_r4_l3_im2)
+    ImageView ll2R4L3Im2;
+    @BindView(R.id.ll2_r4_l3_im3)
+    ImageView ll2R4L3Im3;
+    @BindView(R.id.ll2_r4_l3)
+    LinearLayout ll2R4L3;
+    @BindView(R.id.ll2_r4)
+    RelativeLayout ll2R4;
+    @BindView(R.id.ll2_r5_l1_im1)
+    ImageView ll2R5L1Im1;
+    @BindView(R.id.ll2_r5_l1_im2)
+    ImageView ll2R5L1Im2;
+    @BindView(R.id.ll2_r5_l1_im3)
+    ImageView ll2R5L1Im3;
+    @BindView(R.id.ll2_r5_l1)
+    LinearLayout ll2R5L1;
+    @BindView(R.id.ll2_r5_l2_im1)
+    ImageView ll2R5L2Im1;
+    @BindView(R.id.ll2_r5_l2_im2)
+    ImageView ll2R5L2Im2;
+    @BindView(R.id.ll2_r5_l2_im3)
+    ImageView ll2R5L2Im3;
+    @BindView(R.id.ll2_r5_l2)
+    LinearLayout ll2R5L2;
+    @BindView(R.id.ll2_r5_l3_im1)
+    ImageView ll2R5L3Im1;
+    @BindView(R.id.ll2_r5_l3_im2)
+    ImageView ll2R5L3Im2;
+    @BindView(R.id.ll2_r5_l3_im3)
+    ImageView ll2R5L3Im3;
+    @BindView(R.id.ll2_r5_l3)
+    LinearLayout ll2R5L3;
+    @BindView(R.id.ll2_r5)
+    RelativeLayout ll2R5;
+    @BindView(R.id.ll2_r6_l1_im1)
+    ImageView ll2R6L1Im1;
+    @BindView(R.id.ll2_r6_l1_im2)
+    ImageView ll2R6L1Im2;
+    @BindView(R.id.ll2_r6_l1_im3)
+    ImageView ll2R6L1Im3;
+    @BindView(R.id.ll2_r6_l1)
+    LinearLayout ll2R6L1;
+    @BindView(R.id.ll2_r6_l2_im1)
+    ImageView ll2R6L2Im1;
+    @BindView(R.id.ll2_r6_l2_im2)
+    ImageView ll2R6L2Im2;
+    @BindView(R.id.ll2_r6_l2_im3)
+    ImageView ll2R6L2Im3;
+    @BindView(R.id.ll2_r6_l2)
+    LinearLayout ll2R6L2;
+    @BindView(R.id.ll2_r6_l3_im1)
+    ImageView ll2R6L3Im1;
+    @BindView(R.id.ll2_r6_l3_im2)
+    ImageView ll2R6L3Im2;
+    @BindView(R.id.ll2_r6_l3_im3)
+    ImageView ll2R6L3Im3;
+    @BindView(R.id.ll2_r6_l3)
+    LinearLayout ll2R6L3;
+    @BindView(R.id.ll2_r6)
+    RelativeLayout ll2R6;
+    @BindView(R.id.ll2_r7_l1_im1)
+    ImageView ll2R7L1Im1;
+    @BindView(R.id.ll2_r7_l1_im2)
+    ImageView ll2R7L1Im2;
+    @BindView(R.id.ll2_r7_l1_im3)
+    ImageView ll2R7L1Im3;
+    @BindView(R.id.ll2_r7_l1)
+    LinearLayout ll2R7L1;
+    @BindView(R.id.ll2_r7_l2_im1)
+    ImageView ll2R7L2Im1;
+    @BindView(R.id.ll2_r7_l2_im2)
+    ImageView ll2R7L2Im2;
+    @BindView(R.id.ll2_r7_l2_im3)
+    ImageView ll2R7L2Im3;
+    @BindView(R.id.ll2_r7_l2)
+    LinearLayout ll2R7L2;
+    @BindView(R.id.ll2_r7_l3_im1)
+    ImageView ll2R7L3Im1;
+    @BindView(R.id.ll2_r7_l3_im2)
+    ImageView ll2R7L3Im2;
+    @BindView(R.id.ll2_r7_l3_im3)
+    ImageView ll2R7L3Im3;
+    @BindView(R.id.ll2_r7_l3)
+    LinearLayout ll2R7L3;
+    @BindView(R.id.ll2_r7)
+    RelativeLayout ll2R7;
+    @BindView(R.id.ll2_r8_l1_im1)
+    ImageView ll2R8L1Im1;
+    @BindView(R.id.ll2_r8_l1_im2)
+    ImageView ll2R8L1Im2;
+    @BindView(R.id.ll2_r8_l1_im3)
+    ImageView ll2R8L1Im3;
+    @BindView(R.id.ll2_r8_l1)
+    LinearLayout ll2R8L1;
+    @BindView(R.id.ll2_r8_l2_im1)
+    ImageView ll2R8L2Im1;
+    @BindView(R.id.ll2_r8_l2_im2)
+    ImageView ll2R8L2Im2;
+    @BindView(R.id.ll2_r8_l2_im3)
+    ImageView ll2R8L2Im3;
+    @BindView(R.id.ll2_r8_l2)
+    LinearLayout ll2R8L2;
+    @BindView(R.id.ll2_r8_l3_im1)
+    ImageView ll2R8L3Im1;
+    @BindView(R.id.ll2_r8_l3_im2)
+    ImageView ll2R8L3Im2;
+    @BindView(R.id.ll2_r8_l3_im3)
+    ImageView ll2R8L3Im3;
+    @BindView(R.id.ll2_r8_l3)
+    LinearLayout ll2R8L3;
+    @BindView(R.id.ll2_r8)
+    RelativeLayout ll2R8;
+    @BindView(R.id.ll2_r9_l1_im1)
+    ImageView ll2R9L1Im1;
+    @BindView(R.id.ll2_r9_l1_im2)
+    ImageView ll2R9L1Im2;
+    @BindView(R.id.ll2_r9_l1_im3)
+    ImageView ll2R9L1Im3;
+    @BindView(R.id.ll2_r9_l1)
+    LinearLayout ll2R9L1;
+    @BindView(R.id.ll2_r9_l2_im1)
+    ImageView ll2R9L2Im1;
+    @BindView(R.id.ll2_r9_l2_im2)
+    ImageView ll2R9L2Im2;
+    @BindView(R.id.ll2_r9_l2_im3)
+    ImageView ll2R9L2Im3;
+    @BindView(R.id.ll2_r9_l2)
+    LinearLayout ll2R9L2;
+    @BindView(R.id.ll2_r9_l3_im1)
+    ImageView ll2R9L3Im1;
+    @BindView(R.id.ll2_r9_l3_im2)
+    ImageView ll2R9L3Im2;
+    @BindView(R.id.ll2_r9_l3_im3)
+    ImageView ll2R9L3Im3;
+    @BindView(R.id.ll2_r9_l3)
+    LinearLayout ll2R9L3;
+    @BindView(R.id.ll2_r9)
+    RelativeLayout ll2R9;
+    @BindView(R.id.ll3_r1_l1_im1)
+    ImageView ll3R1L1Im1;
+    @BindView(R.id.ll3_r1_l1_im2)
+    ImageView ll3R1L1Im2;
+    @BindView(R.id.ll3_r1_l1_im3)
+    ImageView ll3R1L1Im3;
+    @BindView(R.id.ll3_r1_l1)
+    LinearLayout ll3R1L1;
+    @BindView(R.id.ll3_r1_l2_im1)
+    ImageView ll3R1L2Im1;
+    @BindView(R.id.ll3_r1_l2_im2)
+    ImageView ll3R1L2Im2;
+    @BindView(R.id.ll3_r1_l2_im3)
+    ImageView ll3R1L2Im3;
+    @BindView(R.id.ll3_r1_l2)
+    LinearLayout ll3R1L2;
+    @BindView(R.id.ll3_r1_l3_im1)
+    ImageView ll3R1L3Im1;
+    @BindView(R.id.ll3_r1_l3_im2)
+    ImageView ll3R1L3Im2;
+    @BindView(R.id.ll3_r1_l3_im3)
+    ImageView ll3R1L3Im3;
+    @BindView(R.id.ll3_r1_l3)
+    LinearLayout ll3R1L3;
+    @BindView(R.id.ll3_r1)
+    RelativeLayout ll3R1;
+    @BindView(R.id.ll3_r2_l1_im1)
+    ImageView ll3R2L1Im1;
+    @BindView(R.id.ll3_r2_l1_im2)
+    ImageView ll3R2L1Im2;
+    @BindView(R.id.ll3_r2_l1_im3)
+    ImageView ll3R2L1Im3;
+    @BindView(R.id.ll3_r2_l1)
+    LinearLayout ll3R2L1;
+    @BindView(R.id.ll3_r2_l2_im1)
+    ImageView ll3R2L2Im1;
+    @BindView(R.id.ll3_r2_l2_im2)
+    ImageView ll3R2L2Im2;
+    @BindView(R.id.ll3_r2_l2_im3)
+    ImageView ll3R2L2Im3;
+    @BindView(R.id.ll3_r2_l2)
+    LinearLayout ll3R2L2;
+    @BindView(R.id.ll3_r2_l3_im1)
+    ImageView ll3R2L3Im1;
+    @BindView(R.id.ll3_r2_l3_im2)
+    ImageView ll3R2L3Im2;
+    @BindView(R.id.ll3_r2_l3_im3)
+    ImageView ll3R2L3Im3;
+    @BindView(R.id.ll3_r2_l3)
+    LinearLayout ll3R2L3;
+    @BindView(R.id.ll3_r2)
+    RelativeLayout ll3R2;
+    @BindView(R.id.ll3_r3_l1_im1)
+    ImageView ll3R3L1Im1;
+    @BindView(R.id.ll3_r3_l1_im2)
+    ImageView ll3R3L1Im2;
+    @BindView(R.id.ll3_r3_l1_im3)
+    ImageView ll3R3L1Im3;
+    @BindView(R.id.ll3_r3_l1)
+    LinearLayout ll3R3L1;
+    @BindView(R.id.ll3_r3_l2_im1)
+    ImageView ll3R3L2Im1;
+    @BindView(R.id.ll3_r3_l2_im2)
+    ImageView ll3R3L2Im2;
+    @BindView(R.id.ll3_r3_l2_im3)
+    ImageView ll3R3L2Im3;
+    @BindView(R.id.ll3_r3_l2)
+    LinearLayout ll3R3L2;
+    @BindView(R.id.ll3_r3_l3_im1)
+    ImageView ll3R3L3Im1;
+    @BindView(R.id.ll3_r3_l3_im2)
+    ImageView ll3R3L3Im2;
+    @BindView(R.id.ll3_r3_l3_im3)
+    ImageView ll3R3L3Im3;
+    @BindView(R.id.ll3_r3_l3)
+    LinearLayout ll3R3L3;
+    @BindView(R.id.ll3_r3)
+    RelativeLayout ll3R3;
+    @BindView(R.id.ll3_r4_l1_im1)
+    ImageView ll3R4L1Im1;
+    @BindView(R.id.ll3_r4_l1_im2)
+    ImageView ll3R4L1Im2;
+    @BindView(R.id.ll3_r4_l1_im3)
+    ImageView ll3R4L1Im3;
+    @BindView(R.id.ll3_r4_l1)
+    LinearLayout ll3R4L1;
+    @BindView(R.id.ll3_r4_l2_im1)
+    ImageView ll3R4L2Im1;
+    @BindView(R.id.ll3_r4_l2_im2)
+    ImageView ll3R4L2Im2;
+    @BindView(R.id.ll3_r4_l2_im3)
+    ImageView ll3R4L2Im3;
+    @BindView(R.id.ll3_r4_l2)
+    LinearLayout ll3R4L2;
+    @BindView(R.id.ll3_r4_l3_im1)
+    ImageView ll3R4L3Im1;
+    @BindView(R.id.ll3_r4_l3_im2)
+    ImageView ll3R4L3Im2;
+    @BindView(R.id.ll3_r4_l3_im3)
+    ImageView ll3R4L3Im3;
+    @BindView(R.id.ll3_r4_l3)
+    LinearLayout ll3R4L3;
+    @BindView(R.id.ll3_r4)
+    RelativeLayout ll3R4;
+    @BindView(R.id.ll3_r5_l1_im1)
+    ImageView ll3R5L1Im1;
+    @BindView(R.id.ll3_r5_l1_im2)
+    ImageView ll3R5L1Im2;
+    @BindView(R.id.ll3_r5_l1_im3)
+    ImageView ll3R5L1Im3;
+    @BindView(R.id.ll3_r5_l1)
+    LinearLayout ll3R5L1;
+    @BindView(R.id.ll3_r5_l2_im1)
+    ImageView ll3R5L2Im1;
+    @BindView(R.id.ll3_r5_l2_im2)
+    ImageView ll3R5L2Im2;
+    @BindView(R.id.ll3_r5_l2_im3)
+    ImageView ll3R5L2Im3;
+    @BindView(R.id.ll3_r5_l2)
+    LinearLayout ll3R5L2;
+    @BindView(R.id.ll3_r5_l3_im1)
+    ImageView ll3R5L3Im1;
+    @BindView(R.id.ll3_r5_l3_im2)
+    ImageView ll3R5L3Im2;
+    @BindView(R.id.ll3_r5_l3_im3)
+    ImageView ll3R5L3Im3;
+    @BindView(R.id.ll3_r5_l3)
+    LinearLayout ll3R5L3;
+    @BindView(R.id.ll3_r5)
+    RelativeLayout ll3R5;
+    @BindView(R.id.ll3_r6_l1_im1)
+    ImageView ll3R6L1Im1;
+    @BindView(R.id.ll3_r6_l1_im2)
+    ImageView ll3R6L1Im2;
+    @BindView(R.id.ll3_r6_l1_im3)
+    ImageView ll3R6L1Im3;
+    @BindView(R.id.ll3_r6_l1)
+    LinearLayout ll3R6L1;
+    @BindView(R.id.ll3_r6_l2_im1)
+    ImageView ll3R6L2Im1;
+    @BindView(R.id.ll3_r6_l2_im2)
+    ImageView ll3R6L2Im2;
+    @BindView(R.id.ll3_r6_l2_im3)
+    ImageView ll3R6L2Im3;
+    @BindView(R.id.ll3_r6_l2)
+    LinearLayout ll3R6L2;
+    @BindView(R.id.ll3_r6_l3_im1)
+    ImageView ll3R6L3Im1;
+    @BindView(R.id.ll3_r6_l3_im2)
+    ImageView ll3R6L3Im2;
+    @BindView(R.id.ll3_r6_l3_im3)
+    ImageView ll3R6L3Im3;
+    @BindView(R.id.ll3_r6_l3)
+    LinearLayout ll3R6L3;
+    @BindView(R.id.ll3_r6)
+    RelativeLayout ll3R6;
+    @BindView(R.id.ll3_r7_l1_im1)
+    ImageView ll3R7L1Im1;
+    @BindView(R.id.ll3_r7_l1_im2)
+    ImageView ll3R7L1Im2;
+    @BindView(R.id.ll3_r7_l1_im3)
+    ImageView ll3R7L1Im3;
+    @BindView(R.id.ll3_r7_l1)
+    LinearLayout ll3R7L1;
+    @BindView(R.id.ll3_r7_l2_im1)
+    ImageView ll3R7L2Im1;
+    @BindView(R.id.ll3_r7_l2_im2)
+    ImageView ll3R7L2Im2;
+    @BindView(R.id.ll3_r7_l2_im3)
+    ImageView ll3R7L2Im3;
+    @BindView(R.id.ll3_r7_l2)
+    LinearLayout ll3R7L2;
+    @BindView(R.id.ll3_r7_l3_im1)
+    ImageView ll3R7L3Im1;
+    @BindView(R.id.ll3_r7_l3_im2)
+    ImageView ll3R7L3Im2;
+    @BindView(R.id.ll3_r7_l3_im3)
+    ImageView ll3R7L3Im3;
+    @BindView(R.id.ll3_r7_l3)
+    LinearLayout ll3R7L3;
+    @BindView(R.id.ll3_r7)
+    RelativeLayout ll3R7;
+    @BindView(R.id.ll3_r8_l1_im1)
+    ImageView ll3R8L1Im1;
+    @BindView(R.id.ll3_r8_l1_im2)
+    ImageView ll3R8L1Im2;
+    @BindView(R.id.ll3_r8_l1_im3)
+    ImageView ll3R8L1Im3;
+    @BindView(R.id.ll3_r8_l1)
+    LinearLayout ll3R8L1;
+    @BindView(R.id.ll3_r8_l2_im1)
+    ImageView ll3R8L2Im1;
+    @BindView(R.id.ll3_r8_l2_im2)
+    ImageView ll3R8L2Im2;
+    @BindView(R.id.ll3_r8_l2_im3)
+    ImageView ll3R8L2Im3;
+    @BindView(R.id.ll3_r8_l2)
+    LinearLayout ll3R8L2;
+    @BindView(R.id.ll3_r8_l3_im1)
+    ImageView ll3R8L3Im1;
+    @BindView(R.id.ll3_r8_l3_im2)
+    ImageView ll3R8L3Im2;
+    @BindView(R.id.ll3_r8_l3_im3)
+    ImageView ll3R8L3Im3;
+    @BindView(R.id.ll3_r8_l3)
+    LinearLayout ll3R8L3;
+    @BindView(R.id.ll3_r8)
+    RelativeLayout ll3R8;
+    @BindView(R.id.ll3_r9_l1_im1)
+    ImageView ll3R9L1Im1;
+    @BindView(R.id.ll3_r9_l1_im2)
+    ImageView ll3R9L1Im2;
+    @BindView(R.id.ll3_r9_l1_im3)
+    ImageView ll3R9L1Im3;
+    @BindView(R.id.ll3_r9_l1)
+    LinearLayout ll3R9L1;
+    @BindView(R.id.ll3_r9_l2_im1)
+    ImageView ll3R9L2Im1;
+    @BindView(R.id.ll3_r9_l2_im2)
+    ImageView ll3R9L2Im2;
+    @BindView(R.id.ll3_r9_l2_im3)
+    ImageView ll3R9L2Im3;
+    @BindView(R.id.ll3_r9_l2)
+    LinearLayout ll3R9L2;
+    @BindView(R.id.ll3_r9_l3_im1)
+    ImageView ll3R9L3Im1;
+    @BindView(R.id.ll3_r9_l3_im2)
+    ImageView ll3R9L3Im2;
+    @BindView(R.id.ll3_r9_l3_im3)
+    ImageView ll3R9L3Im3;
+    @BindView(R.id.ll3_r9_l3)
+    LinearLayout ll3R9L3;
+    @BindView(R.id.ll3_r9)
+    RelativeLayout ll3R9;
+    @BindView(R.id.ll4_r1_l1_im1)
+    ImageView ll4R1L1Im1;
+    @BindView(R.id.ll4_r1_l1_im2)
+    ImageView ll4R1L1Im2;
+    @BindView(R.id.ll4_r1_l1_im3)
+    ImageView ll4R1L1Im3;
+    @BindView(R.id.ll4_r1_l1)
+    LinearLayout ll4R1L1;
+    @BindView(R.id.ll4_r1_l2_im1)
+    ImageView ll4R1L2Im1;
+    @BindView(R.id.ll4_r1_l2_im2)
+    ImageView ll4R1L2Im2;
+    @BindView(R.id.ll4_r1_l2_im3)
+    ImageView ll4R1L2Im3;
+    @BindView(R.id.ll4_r1_l2)
+    LinearLayout ll4R1L2;
+    @BindView(R.id.ll4_r1_l3_im1)
+    ImageView ll4R1L3Im1;
+    @BindView(R.id.ll4_r1_l3_im2)
+    ImageView ll4R1L3Im2;
+    @BindView(R.id.ll4_r1_l3_im3)
+    ImageView ll4R1L3Im3;
+    @BindView(R.id.ll4_r1_l3)
+    LinearLayout ll4R1L3;
+    @BindView(R.id.ll4_r1)
+    RelativeLayout ll4R1;
+    @BindView(R.id.ll4_r2_l1_im1)
+    ImageView ll4R2L1Im1;
+    @BindView(R.id.ll4_r2_l1_im2)
+    ImageView ll4R2L1Im2;
+    @BindView(R.id.ll4_r2_l1_im3)
+    ImageView ll4R2L1Im3;
+    @BindView(R.id.ll4_r2_l1)
+    LinearLayout ll4R2L1;
+    @BindView(R.id.ll4_r2_l2_im1)
+    ImageView ll4R2L2Im1;
+    @BindView(R.id.ll4_r2_l2_im2)
+    ImageView ll4R2L2Im2;
+    @BindView(R.id.ll4_r2_l2_im3)
+    ImageView ll4R2L2Im3;
+    @BindView(R.id.ll4_r2_l2)
+    LinearLayout ll4R2L2;
+    @BindView(R.id.ll4_r2_l3_im1)
+    ImageView ll4R2L3Im1;
+    @BindView(R.id.ll4_r2_l3_im2)
+    ImageView ll4R2L3Im2;
+    @BindView(R.id.ll4_r2_l3_im3)
+    ImageView ll4R2L3Im3;
+    @BindView(R.id.ll4_r2_l3)
+    LinearLayout ll4R2L3;
+    @BindView(R.id.ll4_r2)
+    RelativeLayout ll4R2;
+    @BindView(R.id.ll4_r3_l1_im1)
+    ImageView ll4R3L1Im1;
+    @BindView(R.id.ll4_r3_l1_im2)
+    ImageView ll4R3L1Im2;
+    @BindView(R.id.ll4_r3_l1_im3)
+    ImageView ll4R3L1Im3;
+    @BindView(R.id.ll4_r3_l1)
+    LinearLayout ll4R3L1;
+    @BindView(R.id.ll4_r3_l2_im1)
+    ImageView ll4R3L2Im1;
+    @BindView(R.id.ll4_r3_l2_im2)
+    ImageView ll4R3L2Im2;
+    @BindView(R.id.ll4_r3_l2_im3)
+    ImageView ll4R3L2Im3;
+    @BindView(R.id.ll4_r3_l2)
+    LinearLayout ll4R3L2;
+    @BindView(R.id.ll4_r3_l3_im1)
+    ImageView ll4R3L3Im1;
+    @BindView(R.id.ll4_r3_l3_im2)
+    ImageView ll4R3L3Im2;
+    @BindView(R.id.ll4_r3_l3_im3)
+    ImageView ll4R3L3Im3;
+    @BindView(R.id.ll4_r3_l3)
+    LinearLayout ll4R3L3;
+    @BindView(R.id.ll4_r3)
+    RelativeLayout ll4R3;
+    @BindView(R.id.ll4_r4_l1_im1)
+    ImageView ll4R4L1Im1;
+    @BindView(R.id.ll4_r4_l1_im2)
+    ImageView ll4R4L1Im2;
+    @BindView(R.id.ll4_r4_l1_im3)
+    ImageView ll4R4L1Im3;
+    @BindView(R.id.ll4_r4_l1)
+    LinearLayout ll4R4L1;
+    @BindView(R.id.ll4_r4_l2_im1)
+    ImageView ll4R4L2Im1;
+    @BindView(R.id.ll4_r4_l2_im2)
+    ImageView ll4R4L2Im2;
+    @BindView(R.id.ll4_r4_l2_im3)
+    ImageView ll4R4L2Im3;
+    @BindView(R.id.ll4_r4_l2)
+    LinearLayout ll4R4L2;
+    @BindView(R.id.ll4_r4_l3_im1)
+    ImageView ll4R4L3Im1;
+    @BindView(R.id.ll4_r4_l3_im2)
+    ImageView ll4R4L3Im2;
+    @BindView(R.id.ll4_r4_l3_im3)
+    ImageView ll4R4L3Im3;
+    @BindView(R.id.ll4_r4_l3)
+    LinearLayout ll4R4L3;
+    @BindView(R.id.ll4_r4)
+    RelativeLayout ll4R4;
+    @BindView(R.id.ll4_r5_l1_im1)
+    ImageView ll4R5L1Im1;
+    @BindView(R.id.ll4_r5_l1_im2)
+    ImageView ll4R5L1Im2;
+    @BindView(R.id.ll4_r5_l1_im3)
+    ImageView ll4R5L1Im3;
+    @BindView(R.id.ll4_r5_l1)
+    LinearLayout ll4R5L1;
+    @BindView(R.id.ll4_r5_l2_im1)
+    ImageView ll4R5L2Im1;
+    @BindView(R.id.ll4_r5_l2_im2)
+    ImageView ll4R5L2Im2;
+    @BindView(R.id.ll4_r5_l2_im3)
+    ImageView ll4R5L2Im3;
+    @BindView(R.id.ll4_r5_l2)
+    LinearLayout ll4R5L2;
+    @BindView(R.id.ll4_r5_l3_im1)
+    ImageView ll4R5L3Im1;
+    @BindView(R.id.ll4_r5_l3_im2)
+    ImageView ll4R5L3Im2;
+    @BindView(R.id.ll4_r5_l3_im3)
+    ImageView ll4R5L3Im3;
+    @BindView(R.id.ll4_r5_l3)
+    LinearLayout ll4R5L3;
+    @BindView(R.id.ll4_r5)
+    RelativeLayout ll4R5;
+    @BindView(R.id.ll4_r6_l1_im1)
+    ImageView ll4R6L1Im1;
+    @BindView(R.id.ll4_r6_l1_im2)
+    ImageView ll4R6L1Im2;
+    @BindView(R.id.ll4_r6_l1_im3)
+    ImageView ll4R6L1Im3;
+    @BindView(R.id.ll4_r6_l1)
+    LinearLayout ll4R6L1;
+    @BindView(R.id.ll4_r6_l2_im1)
+    ImageView ll4R6L2Im1;
+    @BindView(R.id.ll4_r6_l2_im2)
+    ImageView ll4R6L2Im2;
+    @BindView(R.id.ll4_r6_l2_im3)
+    ImageView ll4R6L2Im3;
+    @BindView(R.id.ll4_r6_l2)
+    LinearLayout ll4R6L2;
+    @BindView(R.id.ll4_r6_l3_im1)
+    ImageView ll4R6L3Im1;
+    @BindView(R.id.ll4_r6_l3_im2)
+    ImageView ll4R6L3Im2;
+    @BindView(R.id.ll4_r6_l3_im3)
+    ImageView ll4R6L3Im3;
+    @BindView(R.id.ll4_r6_l3)
+    LinearLayout ll4R6L3;
+    @BindView(R.id.ll4_r6)
+    RelativeLayout ll4R6;
+    @BindView(R.id.ll4_r7_l1_im1)
+    ImageView ll4R7L1Im1;
+    @BindView(R.id.ll4_r7_l1_im2)
+    ImageView ll4R7L1Im2;
+    @BindView(R.id.ll4_r7_l1_im3)
+    ImageView ll4R7L1Im3;
+    @BindView(R.id.ll4_r7_l1)
+    LinearLayout ll4R7L1;
+    @BindView(R.id.ll4_r7_l2_im1)
+    ImageView ll4R7L2Im1;
+    @BindView(R.id.ll4_r7_l2_im2)
+    ImageView ll4R7L2Im2;
+    @BindView(R.id.ll4_r7_l2_im3)
+    ImageView ll4R7L2Im3;
+    @BindView(R.id.ll4_r7_l2)
+    LinearLayout ll4R7L2;
+    @BindView(R.id.ll4_r7_l3_im1)
+    ImageView ll4R7L3Im1;
+    @BindView(R.id.ll4_r7_l3_im2)
+    ImageView ll4R7L3Im2;
+    @BindView(R.id.ll4_r7_l3_im3)
+    ImageView ll4R7L3Im3;
+    @BindView(R.id.ll4_r7_l3)
+    LinearLayout ll4R7L3;
+    @BindView(R.id.ll4_r7)
+    RelativeLayout ll4R7;
+    @BindView(R.id.ll4_r8_l1_im1)
+    ImageView ll4R8L1Im1;
+    @BindView(R.id.ll4_r8_l1_im2)
+    ImageView ll4R8L1Im2;
+    @BindView(R.id.ll4_r8_l1_im3)
+    ImageView ll4R8L1Im3;
+    @BindView(R.id.ll4_r8_l1)
+    LinearLayout ll4R8L1;
+    @BindView(R.id.ll4_r8_l2_im1)
+    ImageView ll4R8L2Im1;
+    @BindView(R.id.ll4_r8_l2_im2)
+    ImageView ll4R8L2Im2;
+    @BindView(R.id.ll4_r8_l2_im3)
+    ImageView ll4R8L2Im3;
+    @BindView(R.id.ll4_r8_l2)
+    LinearLayout ll4R8L2;
+    @BindView(R.id.ll4_r8_l3_im1)
+    ImageView ll4R8L3Im1;
+    @BindView(R.id.ll4_r8_l3_im2)
+    ImageView ll4R8L3Im2;
+    @BindView(R.id.ll4_r8_l3_im3)
+    ImageView ll4R8L3Im3;
+    @BindView(R.id.ll4_r8_l3)
+    LinearLayout ll4R8L3;
+    @BindView(R.id.ll4_r8)
+    RelativeLayout ll4R8;
+    @BindView(R.id.ll4_r9_l1_im1)
+    ImageView ll4R9L1Im1;
+    @BindView(R.id.ll4_r9_l1_im2)
+    ImageView ll4R9L1Im2;
+    @BindView(R.id.ll4_r9_l1_im3)
+    ImageView ll4R9L1Im3;
+    @BindView(R.id.ll4_r9_l1)
+    LinearLayout ll4R9L1;
+    @BindView(R.id.ll4_r9_l2_im1)
+    ImageView ll4R9L2Im1;
+    @BindView(R.id.ll4_r9_l2_im2)
+    ImageView ll4R9L2Im2;
+    @BindView(R.id.ll4_r9_l2_im3)
+    ImageView ll4R9L2Im3;
+    @BindView(R.id.ll4_r9_l2)
+    LinearLayout ll4R9L2;
+    @BindView(R.id.ll4_r9_l3_im1)
+    ImageView ll4R9L3Im1;
+    @BindView(R.id.ll4_r9_l3_im2)
+    ImageView ll4R9L3Im2;
+    @BindView(R.id.ll4_r9_l3_im3)
+    ImageView ll4R9L3Im3;
+    @BindView(R.id.ll4_r9_l3)
+    LinearLayout ll4R9L3;
+    @BindView(R.id.ll4_r9)
+    RelativeLayout ll4R9;
+    @BindView(R.id.ll5_r1_l1_im1)
+    ImageView ll5R1L1Im1;
+    @BindView(R.id.ll5_r1_l1_im2)
+    ImageView ll5R1L1Im2;
+    @BindView(R.id.ll5_r1_l1_im3)
+    ImageView ll5R1L1Im3;
+    @BindView(R.id.ll5_r1_l1)
+    LinearLayout ll5R1L1;
+    @BindView(R.id.ll5_r1_l2_im1)
+    ImageView ll5R1L2Im1;
+    @BindView(R.id.ll5_r1_l2_im2)
+    ImageView ll5R1L2Im2;
+    @BindView(R.id.ll5_r1_l2_im3)
+    ImageView ll5R1L2Im3;
+    @BindView(R.id.ll5_r1_l2)
+    LinearLayout ll5R1L2;
+    @BindView(R.id.ll5_r1_l3_im1)
+    ImageView ll5R1L3Im1;
+    @BindView(R.id.ll5_r1_l3_im2)
+    ImageView ll5R1L3Im2;
+    @BindView(R.id.ll5_r1_l3_im3)
+    ImageView ll5R1L3Im3;
+    @BindView(R.id.ll5_r1_l3)
+    LinearLayout ll5R1L3;
+    @BindView(R.id.ll5_r1)
+    RelativeLayout ll5R1;
+    @BindView(R.id.ll5_r2_l1_im1)
+    ImageView ll5R2L1Im1;
+    @BindView(R.id.ll5_r2_l1_im2)
+    ImageView ll5R2L1Im2;
+    @BindView(R.id.ll5_r2_l1_im3)
+    ImageView ll5R2L1Im3;
+    @BindView(R.id.ll5_r2_l1)
+    LinearLayout ll5R2L1;
+    @BindView(R.id.ll5_r2_l2_im1)
+    ImageView ll5R2L2Im1;
+    @BindView(R.id.ll5_r2_l2_im2)
+    ImageView ll5R2L2Im2;
+    @BindView(R.id.ll5_r2_l2_im3)
+    ImageView ll5R2L2Im3;
+    @BindView(R.id.ll5_r2_l2)
+    LinearLayout ll5R2L2;
+    @BindView(R.id.ll5_r2_l3_im1)
+    ImageView ll5R2L3Im1;
+    @BindView(R.id.ll5_r2_l3_im2)
+    ImageView ll5R2L3Im2;
+    @BindView(R.id.ll5_r2_l3_im3)
+    ImageView ll5R2L3Im3;
+    @BindView(R.id.ll5_r2_l3)
+    LinearLayout ll5R2L3;
+    @BindView(R.id.ll5_r2)
+    RelativeLayout ll5R2;
+    @BindView(R.id.ll5_r3_l1_im1)
+    ImageView ll5R3L1Im1;
+    @BindView(R.id.ll5_r3_l1_im2)
+    ImageView ll5R3L1Im2;
+    @BindView(R.id.ll5_r3_l1_im3)
+    ImageView ll5R3L1Im3;
+    @BindView(R.id.ll5_r3_l1)
+    LinearLayout ll5R3L1;
+    @BindView(R.id.ll5_r3_l2_im1)
+    ImageView ll5R3L2Im1;
+    @BindView(R.id.ll5_r3_l2_im2)
+    ImageView ll5R3L2Im2;
+    @BindView(R.id.ll5_r3_l2_im3)
+    ImageView ll5R3L2Im3;
+    @BindView(R.id.ll5_r3_l2)
+    LinearLayout ll5R3L2;
+    @BindView(R.id.ll5_r3_l3_im1)
+    ImageView ll5R3L3Im1;
+    @BindView(R.id.ll5_r3_l3_im2)
+    ImageView ll5R3L3Im2;
+    @BindView(R.id.ll5_r3_l3_im3)
+    ImageView ll5R3L3Im3;
+    @BindView(R.id.ll5_r3_l3)
+    LinearLayout ll5R3L3;
+    @BindView(R.id.ll5_r3)
+    RelativeLayout ll5R3;
+    @BindView(R.id.ll5_r4_l1_im1)
+    ImageView ll5R4L1Im1;
+    @BindView(R.id.ll5_r4_l1_im2)
+    ImageView ll5R4L1Im2;
+    @BindView(R.id.ll5_r4_l1_im3)
+    ImageView ll5R4L1Im3;
+    @BindView(R.id.ll5_r4_l1)
+    LinearLayout ll5R4L1;
+    @BindView(R.id.ll5_r4_l2_im1)
+    ImageView ll5R4L2Im1;
+    @BindView(R.id.ll5_r4_l2_im2)
+    ImageView ll5R4L2Im2;
+    @BindView(R.id.ll5_r4_l2_im3)
+    ImageView ll5R4L2Im3;
+    @BindView(R.id.ll5_r4_l2)
+    LinearLayout ll5R4L2;
+    @BindView(R.id.ll5_r4_l3_im1)
+    ImageView ll5R4L3Im1;
+    @BindView(R.id.ll5_r4_l3_im2)
+    ImageView ll5R4L3Im2;
+    @BindView(R.id.ll5_r4_l3_im3)
+    ImageView ll5R4L3Im3;
+    @BindView(R.id.ll5_r4_l3)
+    LinearLayout ll5R4L3;
+    @BindView(R.id.ll5_r4)
+    RelativeLayout ll5R4;
+    @BindView(R.id.ll5_r5_l1_im1)
+    ImageView ll5R5L1Im1;
+    @BindView(R.id.ll5_r5_l1_im2)
+    ImageView ll5R5L1Im2;
+    @BindView(R.id.ll5_r5_l1_im3)
+    ImageView ll5R5L1Im3;
+    @BindView(R.id.ll5_r5_l1)
+    LinearLayout ll5R5L1;
+    @BindView(R.id.ll5_r5_l2_im1)
+    ImageView ll5R5L2Im1;
+    @BindView(R.id.ll5_r5_l2_im2)
+    ImageView ll5R5L2Im2;
+    @BindView(R.id.ll5_r5_l2_im3)
+    ImageView ll5R5L2Im3;
+    @BindView(R.id.ll5_r5_l2)
+    LinearLayout ll5R5L2;
+    @BindView(R.id.ll5_r5_l3_im1)
+    ImageView ll5R5L3Im1;
+    @BindView(R.id.ll5_r5_l3_im2)
+    ImageView ll5R5L3Im2;
+    @BindView(R.id.ll5_r5_l3_im3)
+    ImageView ll5R5L3Im3;
+    @BindView(R.id.ll5_r5_l3)
+    LinearLayout ll5R5L3;
+    @BindView(R.id.ll5_r5)
+    RelativeLayout ll5R5;
+    @BindView(R.id.ll5_r6_l1_im1)
+    ImageView ll5R6L1Im1;
+    @BindView(R.id.ll5_r6_l1_im2)
+    ImageView ll5R6L1Im2;
+    @BindView(R.id.ll5_r6_l1_im3)
+    ImageView ll5R6L1Im3;
+    @BindView(R.id.ll5_r6_l1)
+    LinearLayout ll5R6L1;
+    @BindView(R.id.ll5_r6_l2_im1)
+    ImageView ll5R6L2Im1;
+    @BindView(R.id.ll5_r6_l2_im2)
+    ImageView ll5R6L2Im2;
+    @BindView(R.id.ll5_r6_l2_im3)
+    ImageView ll5R6L2Im3;
+    @BindView(R.id.ll5_r6_l2)
+    LinearLayout ll5R6L2;
+    @BindView(R.id.ll5_r6_l3_im1)
+    ImageView ll5R6L3Im1;
+    @BindView(R.id.ll5_r6_l3_im2)
+    ImageView ll5R6L3Im2;
+    @BindView(R.id.ll5_r6_l3_im3)
+    ImageView ll5R6L3Im3;
+    @BindView(R.id.ll5_r6_l3)
+    LinearLayout ll5R6L3;
+    @BindView(R.id.ll5_r6)
+    RelativeLayout ll5R6;
+    @BindView(R.id.ll5_r7_l1_im1)
+    ImageView ll5R7L1Im1;
+    @BindView(R.id.ll5_r7_l1_im2)
+    ImageView ll5R7L1Im2;
+    @BindView(R.id.ll5_r7_l1_im3)
+    ImageView ll5R7L1Im3;
+    @BindView(R.id.ll5_r7_l1)
+    LinearLayout ll5R7L1;
+    @BindView(R.id.ll5_r7_l2_im1)
+    ImageView ll5R7L2Im1;
+    @BindView(R.id.ll5_r7_l2_im2)
+    ImageView ll5R7L2Im2;
+    @BindView(R.id.ll5_r7_l2_im3)
+    ImageView ll5R7L2Im3;
+    @BindView(R.id.ll5_r7_l2)
+    LinearLayout ll5R7L2;
+    @BindView(R.id.ll5_r7_l3_im1)
+    ImageView ll5R7L3Im1;
+    @BindView(R.id.ll5_r7_l3_im2)
+    ImageView ll5R7L3Im2;
+    @BindView(R.id.ll5_r7_l3_im3)
+    ImageView ll5R7L3Im3;
+    @BindView(R.id.ll5_r7_l3)
+    LinearLayout ll5R7L3;
+    @BindView(R.id.ll5_r7)
+    RelativeLayout ll5R7;
+    @BindView(R.id.ll5_r8_l1_im1)
+    ImageView ll5R8L1Im1;
+    @BindView(R.id.ll5_r8_l1_im2)
+    ImageView ll5R8L1Im2;
+    @BindView(R.id.ll5_r8_l1_im3)
+    ImageView ll5R8L1Im3;
+    @BindView(R.id.ll5_r8_l1)
+    LinearLayout ll5R8L1;
+    @BindView(R.id.ll5_r8_l2_im1)
+    ImageView ll5R8L2Im1;
+    @BindView(R.id.ll5_r8_l2_im2)
+    ImageView ll5R8L2Im2;
+    @BindView(R.id.ll5_r8_l2_im3)
+    ImageView ll5R8L2Im3;
+    @BindView(R.id.ll5_r8_l2)
+    LinearLayout ll5R8L2;
+    @BindView(R.id.ll5_r8_l3_im1)
+    ImageView ll5R8L3Im1;
+    @BindView(R.id.ll5_r8_l3_im2)
+    ImageView ll5R8L3Im2;
+    @BindView(R.id.ll5_r8_l3_im3)
+    ImageView ll5R8L3Im3;
+    @BindView(R.id.ll5_r8_l3)
+    LinearLayout ll5R8L3;
+    @BindView(R.id.ll5_r8)
+    RelativeLayout ll5R8;
+    @BindView(R.id.ll5_r9_l1_im1)
+    ImageView ll5R9L1Im1;
+    @BindView(R.id.ll5_r9_l1_im2)
+    ImageView ll5R9L1Im2;
+    @BindView(R.id.ll5_r9_l1_im3)
+    ImageView ll5R9L1Im3;
+    @BindView(R.id.ll5_r9_l1)
+    LinearLayout ll5R9L1;
+    @BindView(R.id.ll5_r9_l2_im1)
+    ImageView ll5R9L2Im1;
+    @BindView(R.id.ll5_r9_l2_im2)
+    ImageView ll5R9L2Im2;
+    @BindView(R.id.ll5_r9_l2_im3)
+    ImageView ll5R9L2Im3;
+    @BindView(R.id.ll5_r9_l2)
+    LinearLayout ll5R9L2;
+    @BindView(R.id.ll5_r9_l3_im1)
+    ImageView ll5R9L3Im1;
+    @BindView(R.id.ll5_r9_l3_im2)
+    ImageView ll5R9L3Im2;
+    @BindView(R.id.ll5_r9_l3_im3)
+    ImageView ll5R9L3Im3;
+    @BindView(R.id.ll5_r9_l3)
+    LinearLayout ll5R9L3;
+    @BindView(R.id.ll5_r9)
+    RelativeLayout ll5R9;
     @BindView(R.id.text_tv)
     TextView textTv;
-    @BindView(R.id.im_1_9)
-    ImageView im19;
-    @BindView(R.id.ll_1_9)
-    LinearLayout ll19;
-    @BindView(R.id.im_2_9)
-    ImageView im29;
-    @BindView(R.id.ll_2_9)
-    LinearLayout ll29;
-    @BindView(R.id.im_3_9)
-    ImageView im39;
-    @BindView(R.id.ll_3_9)
-    LinearLayout ll39;
-    @BindView(R.id.im_4_9)
-    ImageView im49;
-    @BindView(R.id.ll_4_9)
-    LinearLayout ll49;
-    @BindView(R.id.im_5_9)
-    ImageView im59;
-    @BindView(R.id.ll_5_9)
-    LinearLayout ll59;
+
     private SensorManager sensorManager;
     private Sensor accelerometerSensor;
     DecimalFormat df = new DecimalFormat();
@@ -364,546 +1352,1563 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         realX = sensorEvent.values[0];
         realY = sensorEvent.values[1];
         realZ = sensorEvent.values[2];
-        xCoordinateTextView.setText((int) sensorEvent.values[0] + ""); ////"" + String.format("%.01f", sensorEvent.values[0]));
-        yCoordinateTextView.setText((int) sensorEvent.values[1] + "");////"" + String.format("%.01f", sensorEvent.values[1]));
-        zCoordinateTextView.setText((int) sensorEvent.values[2] + "");////"" + String.format("%.01f", sensorEvent.values[2]));
+        // xCoordinateTextView.setText((int) sensorEvent.values[0] + ""); ////"" + String.format("%.01f", sensorEvent.values[0]));
+        //yCoordinateTextView.setText((int) sensorEvent.values[1] + "");////"" + String.format("%.01f", sensorEvent.values[1]));
+        //zCoordinateTextView.setText((int) sensorEvent.values[2] + "");////"" + String.format("%.01f", sensorEvent.values[2]));
         row(sensorEvent);
 
 
     }
 
+    public void decidePointerofColumns(float y, float spacing, RelativeLayout[] relativeLayouts, ImageView[] imageViews, LinearLayout[] linearLayouts) {
+        if (y < calibratedYLeft) {
+            makeBackgroundWhite(linearLayouts);
+            //ll11.setBackgroundColor(getResources().getColor(R.color.pairblue));
+            makeColumnsUnVisible(imageViews);
+            imageViews[0].setVisibility(View.VISIBLE);
+            linearLayouts[0].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[0].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            //im11.setVisibility(View.VISIBLE);
+            listenBackgrounds();
+
+        } else if (y > calibratedYLeft && y < (calibratedYLeft + spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[1].setVisibility(View.VISIBLE);
+            linearLayouts[0].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[0].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + spacing) && y < (calibratedYLeft + 2 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[2].setVisibility(View.VISIBLE);
+            linearLayouts[0].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[0].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 2 * spacing) && y < (calibratedYLeft + 3 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[3].setVisibility(View.VISIBLE);
+            linearLayouts[1].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[1].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 3 * spacing) && y < (calibratedYLeft + 4 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[4].setVisibility(View.VISIBLE);
+            linearLayouts[1].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[1].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 4 * spacing) && y < (calibratedYLeft + 5 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[5].setVisibility(View.VISIBLE);
+            linearLayouts[1].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[1].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 5 * spacing) && y < (calibratedYLeft + 6 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[6].setVisibility(View.VISIBLE);
+            linearLayouts[2].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[2].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 6 * spacing) && y < (calibratedYLeft + 7 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[7].setVisibility(View.VISIBLE);
+            linearLayouts[2].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[2].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 7 * spacing) && y < (calibratedYLeft + 8 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[8].setVisibility(View.VISIBLE);
+            linearLayouts[2].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[2].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 8 * spacing) && y < (calibratedYLeft + 9 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[9].setVisibility(View.VISIBLE);
+            linearLayouts[3].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[3].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 9 * spacing) && y < (calibratedYLeft + 10 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[10].setVisibility(View.VISIBLE);
+            linearLayouts[3].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[3].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 10 * spacing) && y < (calibratedYLeft + 11 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[11].setVisibility(View.VISIBLE);
+            linearLayouts[3].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[3].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 11 * spacing) && y < (calibratedYLeft + 12 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[12].setVisibility(View.VISIBLE);
+            linearLayouts[4].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[4].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 12 * spacing) && y < (calibratedYLeft + 13 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[13].setVisibility(View.VISIBLE);
+            linearLayouts[4].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[4].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 13 * spacing) && y < (calibratedYLeft + 14 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[14].setVisibility(View.VISIBLE);
+            linearLayouts[4].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[4].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 14 * spacing) && y < (calibratedYLeft + 15 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[15].setVisibility(View.VISIBLE);
+            linearLayouts[5].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[5].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 15 * spacing) && y < (calibratedYLeft + 16 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[16].setVisibility(View.VISIBLE);
+            linearLayouts[5].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[5].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 16 * spacing) && y < (calibratedYLeft + 17 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[17].setVisibility(View.VISIBLE);
+            linearLayouts[5].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[5].setBackgroundColor(getResources().getColor(R.color.pairblue));
+        } else if (y > (calibratedYLeft + 17 * spacing) && y < (calibratedYLeft + 18 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[18].setVisibility(View.VISIBLE);
+            linearLayouts[6].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[6].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 18 * spacing) && y < (calibratedYLeft + 19 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[19].setVisibility(View.VISIBLE);
+            linearLayouts[6].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[6].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 19 * spacing) && y < (calibratedYLeft + 20 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[20].setVisibility(View.VISIBLE);
+            linearLayouts[6].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[6].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 20 * spacing) && y < (calibratedYLeft + 21 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[21].setVisibility(View.VISIBLE);
+            linearLayouts[7].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[7].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 21 * spacing) && y < (calibratedYLeft + 22 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[22].setVisibility(View.VISIBLE);
+            linearLayouts[7].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[7].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 22 * spacing) && y < (calibratedYLeft + 23 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[23].setVisibility(View.VISIBLE);
+            linearLayouts[7].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[7].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 23 * spacing) && y < (calibratedYLeft + 24 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[24].setVisibility(View.VISIBLE);
+            linearLayouts[8].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[8].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 24 * spacing) && y < (calibratedYLeft + 25 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[25].setVisibility(View.VISIBLE);
+            linearLayouts[8].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[8].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        } else if (y > (calibratedYLeft + 25 * spacing) && y < (calibratedYLeft + 26 * spacing)) {
+            makeBackgroundWhite(linearLayouts);
+            makeColumnsUnVisible(imageViews);
+            imageViews[26].setVisibility(View.VISIBLE);
+            linearLayouts[8].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            relativeLayouts[8].setBackgroundColor(getResources().getColor(R.color.pairblue));
+            listenBackgrounds();
+        }
+    }
+
     void column(SensorEvent sensorEvent, int id) {
+        RelativeLayout[] relativeLayouts = new RelativeLayout[9];
+        ImageView[] imageViews = new ImageView[27];
+        LinearLayout[] linearLayouts = new LinearLayout[9];
         float y = sensorEvent.values[1];
-        float spacing = (Math.abs(calibratedYLeft) + Math.abs(calibratedYRight)) / 9;
-        if (id == R.id.ll_1) {
-            if (y < calibratedYLeft) {
-                makeBackgroundWhite();
-                ll11.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im11.setVisibility(View.VISIBLE);
-                listenBackgrounds();
+        float spacing = (Math.abs(calibratedYLeft) + Math.abs(calibratedYRight)) / 27;
+        if (id == R.id.ll1_r1_l1) {
+            //linears
+            linearLayouts[0] = ll1R1L1;
+            linearLayouts[1] = ll1R2L1;
+            linearLayouts[2] = ll1R3L1;
+            linearLayouts[3] = ll1R4L1;
+            linearLayouts[4] = ll1R5L1;
+            linearLayouts[5] = ll1R6L1;
+            linearLayouts[6] = ll1R7L1;
+            linearLayouts[7] = ll1R8L1;
+            linearLayouts[8] = ll1R9L1;
+            //relatives
+            relativeLayouts[0] = ll1R1;
+            relativeLayouts[1] = ll1R2;
+            relativeLayouts[2] = ll1R3;
+            relativeLayouts[3] = ll1R4;
+            relativeLayouts[4] = ll1R5;
+            relativeLayouts[5] = ll1R6;
+            relativeLayouts[6] = ll1R7;
+            relativeLayouts[7] = ll1R8;
+            relativeLayouts[8] = ll1R9;
+            //images
+            imageViews[0] = ll1R1L1Im1;
+            imageViews[1] = ll1R1L1Im2;
+            imageViews[2] = ll1R1L1Im3;
 
-            }
-            if (y > calibratedYLeft && y < (calibratedYLeft + spacing)) {
-                makeBackgroundWhite();
-                ll12.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im12.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + spacing) && y < (calibratedYLeft + 2 * spacing)) {
-                makeBackgroundWhite();
-                ll13.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im13.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 2 * spacing) && y < (calibratedYLeft + 3 * spacing)) {
-                makeBackgroundWhite();
-                ll14.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im14.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 3 * spacing) && y < (calibratedYLeft + 4 * spacing)) {
-                makeBackgroundWhite();
-                ll15.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im15.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 4 * spacing) && y < (calibratedYLeft + 5 * spacing)) {
-                makeBackgroundWhite();
-                ll16.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im16.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 5 * spacing) && y < (calibratedYLeft + 6 * spacing)) {
-                makeBackgroundWhite();
-                ll17.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im17.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 6 * spacing) && y < (calibratedYLeft + 7 * spacing)) {
-                makeBackgroundWhite();
-                ll18.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im18.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 7 * spacing) && y < (calibratedYLeft + 8 * spacing)) {
-                makeBackgroundWhite();
-                ll19.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im19.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-        } else if (id == R.id.ll_2) {
-            if (y < calibratedYLeft) {
-                makeBackgroundWhite();
-                ll21.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im21.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > calibratedYLeft && y < (calibratedYLeft + spacing)) {
-                makeBackgroundWhite();
-                ll22.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im22.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + spacing) && y < (calibratedYLeft + 2 * spacing)) {
-                makeBackgroundWhite();
-                ll23.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im23.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 2 * spacing) && y < (calibratedYLeft + 3 * spacing)) {
-                makeBackgroundWhite();
-                ll24.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im24.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 3 * spacing) && y < (calibratedYLeft + 4 * spacing)) {
-                makeBackgroundWhite();
-                ll25.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im25.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 4 * spacing) && y < (calibratedYLeft + 5 * spacing)) {
-                makeBackgroundWhite();
-                ll26.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im26.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 5 * spacing) && y < (calibratedYLeft + 6 * spacing)) {
-                makeBackgroundWhite();
-                ll27.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im27.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 6 * spacing) && y < (calibratedYLeft + 7 * spacing)) {
-                makeBackgroundWhite();
-                ll28.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im28.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 7 * spacing) && y < (calibratedYLeft + 8 * spacing)) {
-                makeBackgroundWhite();
-                ll29.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im29.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-        } else if (id == R.id.ll_3) {
-            if (y < calibratedYLeft) {
-                makeBackgroundWhite();
-                ll31.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im31.setVisibility(View.VISIBLE);
-                listenBackgrounds();
+            imageViews[3] = ll1R2L1Im1;
+            imageViews[4] = ll1R2L1Im2;
+            imageViews[5] = ll1R2L1Im3;
 
-            }
-            if (y > calibratedYLeft && y < (calibratedYLeft + spacing)) {
-                makeBackgroundWhite();
-                ll32.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im32.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + spacing) && y < (calibratedYLeft + 2 * spacing)) {
-                makeBackgroundWhite();
-                ll33.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im33.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 2 * spacing) && y < (calibratedYLeft + 3 * spacing)) {
-                makeBackgroundWhite();
-                ll34.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im34.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 3 * spacing) && y < (calibratedYLeft + 4 * spacing)) {
-                makeBackgroundWhite();
-                ll35.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im35.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 4 * spacing) && y < (calibratedYLeft + 5 * spacing)) {
-                makeBackgroundWhite();
-                ll36.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im36.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 5 * spacing) && y < (calibratedYLeft + 6 * spacing)) {
-                makeBackgroundWhite();
-                ll37.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im37.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 6 * spacing) && y < (calibratedYLeft + 7 * spacing)) {
-                makeBackgroundWhite();
-                ll38.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im38.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 7 * spacing) && y < (calibratedYLeft + 8 * spacing)) {
-                makeBackgroundWhite();
-                ll39.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im39.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-        } else if (id == R.id.ll_4) {
-            if (y < calibratedYLeft) {
-                makeBackgroundWhite();
-                ll41.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im41.setVisibility(View.VISIBLE);
-                listenBackgrounds();
+            imageViews[6] = ll1R3L1Im1;
+            imageViews[7] = ll1R3L1Im2;
+            imageViews[8] = ll1R3L1Im3;
 
-            }
-            if (y > calibratedYLeft && y < (calibratedYLeft + spacing)) {
-                makeBackgroundWhite();
-                ll42.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im42.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + spacing) && y < (calibratedYLeft + 2 * spacing)) {
-                makeBackgroundWhite();
-                ll43.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im43.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 2 * spacing) && y < (calibratedYLeft + 3 * spacing)) {
-                makeBackgroundWhite();
-                ll44.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im44.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 3 * spacing) && y < (calibratedYLeft + 4 * spacing)) {
-                makeBackgroundWhite();
-                ll45.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im45.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 4 * spacing) && y < (calibratedYLeft + 5 * spacing)) {
-                makeBackgroundWhite();
-                ll46.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im46.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 5 * spacing) && y < (calibratedYLeft + 6 * spacing)) {
-                makeBackgroundWhite();
-                ll47.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im47.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 6 * spacing) && y < (calibratedYLeft + 7 * spacing)) {
-                makeBackgroundWhite();
-                ll48.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im48.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 7 * spacing) && y < (calibratedYLeft + 8 * spacing)) {
-                makeBackgroundWhite();
-                ll49.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im49.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-        } else if (id == R.id.ll_5) {
-            if (y < calibratedYLeft) {
-                makeBackgroundWhite();
-                ll51.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im51.setVisibility(View.VISIBLE);
-                listenBackgrounds();
+            imageViews[9] = ll1R4L1Im1;
+            imageViews[10] = ll1R4L1Im2;
+            imageViews[11] = ll1R4L1Im3;
 
-            }
-            if (y > calibratedYLeft && y < (calibratedYLeft + spacing)) {
-                makeBackgroundWhite();
-                ll52.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im52.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + spacing) && y < (calibratedYLeft + 2 * spacing)) {
-                makeBackgroundWhite();
-                ll53.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im53.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 2 * spacing) && y < (calibratedYLeft + 3 * spacing)) {
-                makeBackgroundWhite();
-                ll54.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im54.setVisibility(View.VISIBLE);
-            }
-            if (y > (calibratedYLeft + 3 * spacing) && y < (calibratedYLeft + 4 * spacing)) {
-                makeBackgroundWhite();
-                ll55.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im55.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 4 * spacing) && y < (calibratedYLeft + 5 * spacing)) {
-                makeBackgroundWhite();
-                ll56.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im56.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 5 * spacing) && y < (calibratedYLeft + 6 * spacing)) {
-                makeBackgroundWhite();
-                ll57.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im57.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 6 * spacing) && y < (calibratedYLeft + 7 * spacing)) {
-                makeBackgroundWhite();
-                ll58.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im58.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
-            if (y > (calibratedYLeft + 7 * spacing) && y < (calibratedYLeft + 8 * spacing)) {
-                makeBackgroundWhite();
-                ll59.setBackgroundColor(getResources().getColor(R.color.pairblue));
-                makeColumnsUnVisible();
-                im59.setVisibility(View.VISIBLE);
-                listenBackgrounds();
-            }
+            imageViews[12] = ll1R5L1Im1;
+            imageViews[13] = ll1R5L1Im2;
+            imageViews[14] = ll1R5L1Im3;
+
+            imageViews[15] = ll1R6L1Im1;
+            imageViews[16] = ll1R6L1Im2;
+            imageViews[17] = ll1R6L1Im3;
+
+            imageViews[18] = ll1R7L1Im1;
+            imageViews[19] = ll1R7L1Im2;
+            imageViews[20] = ll1R7L1Im3;
+
+            imageViews[21] = ll1R8L1Im1;
+            imageViews[22] = ll1R8L1Im2;
+            imageViews[23] = ll1R8L1Im3;
+
+            imageViews[24] = ll1R9L1Im1;
+            imageViews[25] = ll1R9L1Im2;
+            imageViews[26] = ll1R9L1Im3;
+            decidePointerofColumns(y, spacing, relativeLayouts, imageViews, linearLayouts);
+
+        } else if (id == R.id.ll1_r1_l2) {
+            //linears
+            linearLayouts[0] = ll1R1L2;
+            linearLayouts[1] = ll1R2L2;
+            linearLayouts[2] = ll1R3L2;
+            linearLayouts[3] = ll1R4L2;
+            linearLayouts[4] = ll1R5L2;
+            linearLayouts[5] = ll1R6L2;
+            linearLayouts[6] = ll1R7L2;
+            linearLayouts[7] = ll1R8L2;
+            linearLayouts[8] = ll1R9L2;
+            //relatives
+            relativeLayouts[0] = ll1R1;
+            relativeLayouts[1] = ll1R2;
+            relativeLayouts[2] = ll1R3;
+            relativeLayouts[3] = ll1R4;
+            relativeLayouts[4] = ll1R5;
+            relativeLayouts[5] = ll1R6;
+            relativeLayouts[6] = ll1R7;
+            relativeLayouts[7] = ll1R8;
+            relativeLayouts[8] = ll1R9;
+            //images
+            imageViews[0] = ll1R1L2Im1;
+            imageViews[1] = ll1R1L2Im2;
+            imageViews[2] = ll1R1L2Im3;
+
+            imageViews[3] = ll1R2L2Im1;
+            imageViews[4] = ll1R2L2Im2;
+            imageViews[5] = ll1R2L2Im3;
+
+            imageViews[6] = ll1R3L2Im1;
+            imageViews[7] = ll1R3L2Im2;
+            imageViews[8] = ll1R3L2Im3;
+
+            imageViews[9] = ll1R4L2Im1;
+            imageViews[10] = ll1R4L2Im2;
+            imageViews[11] = ll1R4L2Im3;
+
+            imageViews[12] = ll1R5L2Im1;
+            imageViews[13] = ll1R5L2Im2;
+            imageViews[14] = ll1R5L2Im3;
+
+            imageViews[15] = ll1R6L2Im1;
+            imageViews[16] = ll1R6L2Im2;
+            imageViews[17] = ll1R6L2Im3;
+
+            imageViews[18] = ll1R7L2Im1;
+            imageViews[19] = ll1R7L2Im2;
+            imageViews[20] = ll1R7L2Im3;
+
+            imageViews[21] = ll1R8L2Im1;
+            imageViews[22] = ll1R8L2Im2;
+            imageViews[23] = ll1R8L2Im3;
+
+            imageViews[24] = ll1R9L2Im1;
+            imageViews[25] = ll1R9L2Im2;
+            imageViews[26] = ll1R9L2Im3;
+            decidePointerofColumns(y, spacing, relativeLayouts, imageViews, linearLayouts);
+        } else if (id == R.id.ll1_r1_l3) {
+            //linears
+            linearLayouts[0] = ll1R1L3;
+            linearLayouts[1] = ll1R2L3;
+            linearLayouts[2] = ll1R3L3;
+            linearLayouts[3] = ll1R4L3;
+            linearLayouts[4] = ll1R5L3;
+            linearLayouts[5] = ll1R6L3;
+            linearLayouts[6] = ll1R7L3;
+            linearLayouts[7] = ll1R8L3;
+            linearLayouts[8] = ll1R9L3;
+            //relatives
+            relativeLayouts[0] = ll1R1;
+            relativeLayouts[1] = ll1R2;
+            relativeLayouts[2] = ll1R3;
+            relativeLayouts[3] = ll1R4;
+            relativeLayouts[4] = ll1R5;
+            relativeLayouts[5] = ll1R6;
+            relativeLayouts[6] = ll1R7;
+            relativeLayouts[7] = ll1R8;
+            relativeLayouts[8] = ll1R9;
+            //images
+            imageViews[0] = ll1R1L3Im1;
+            imageViews[1] = ll1R1L3Im2;
+            imageViews[2] = ll1R1L3Im3;
+
+            imageViews[3] = ll1R2L3Im1;
+            imageViews[4] = ll1R2L3Im2;
+            imageViews[5] = ll1R2L3Im3;
+
+            imageViews[6] = ll1R3L3Im1;
+            imageViews[7] = ll1R3L3Im2;
+            imageViews[8] = ll1R3L3Im3;
+
+            imageViews[9] = ll1R4L3Im1;
+            imageViews[10] = ll1R4L3Im2;
+            imageViews[11] = ll1R4L3Im3;
+
+            imageViews[12] = ll1R5L3Im1;
+            imageViews[13] = ll1R5L3Im2;
+            imageViews[14] = ll1R5L3Im3;
+
+            imageViews[15] = ll1R6L3Im1;
+            imageViews[16] = ll1R6L3Im2;
+            imageViews[17] = ll1R6L3Im3;
+
+            imageViews[18] = ll1R7L3Im1;
+            imageViews[19] = ll1R7L3Im2;
+            imageViews[20] = ll1R7L3Im3;
+
+            imageViews[21] = ll1R8L3Im1;
+            imageViews[22] = ll1R8L3Im2;
+            imageViews[23] = ll1R8L3Im3;
+
+            imageViews[24] = ll1R9L3Im1;
+            imageViews[25] = ll1R9L3Im2;
+            imageViews[26] = ll1R9L3Im3;
+            decidePointerofColumns(y, spacing, relativeLayouts, imageViews, linearLayouts);
+        } else if (id == R.id.ll2_r1_l1) {
+            //linears
+            linearLayouts[0] = ll2R1L1;
+            linearLayouts[1] = ll2R2L1;
+            linearLayouts[2] = ll2R3L1;
+            linearLayouts[3] = ll2R4L1;
+            linearLayouts[4] = ll2R5L1;
+            linearLayouts[5] = ll2R6L1;
+            linearLayouts[6] = ll2R7L1;
+            linearLayouts[7] = ll2R8L1;
+            linearLayouts[8] = ll2R9L1;
+            //relatives
+            relativeLayouts[0] = ll2R1;
+            relativeLayouts[1] = ll2R2;
+            relativeLayouts[2] = ll2R3;
+            relativeLayouts[3] = ll2R4;
+            relativeLayouts[4] = ll2R5;
+            relativeLayouts[5] = ll2R6;
+            relativeLayouts[6] = ll2R7;
+            relativeLayouts[7] = ll2R8;
+            relativeLayouts[8] = ll2R9;
+            //images
+            imageViews[0] = ll2R1L1Im1;
+            imageViews[1] = ll2R1L1Im2;
+            imageViews[2] = ll2R1L1Im3;
+
+            imageViews[3] = ll2R2L1Im1;
+            imageViews[4] = ll2R2L1Im2;
+            imageViews[5] = ll2R2L1Im3;
+
+            imageViews[6] = ll2R3L1Im1;
+            imageViews[7] = ll2R3L1Im2;
+            imageViews[8] = ll2R3L1Im3;
+
+            imageViews[9] = ll2R4L1Im1;
+            imageViews[10] = ll2R4L1Im2;
+            imageViews[11] = ll2R4L1Im3;
+
+            imageViews[12] = ll2R5L1Im1;
+            imageViews[13] = ll2R5L1Im2;
+            imageViews[14] = ll2R5L1Im3;
+
+            imageViews[15] = ll2R6L1Im1;
+            imageViews[16] = ll2R6L1Im2;
+            imageViews[17] = ll2R6L1Im3;
+
+            imageViews[18] = ll2R7L1Im1;
+            imageViews[19] = ll2R7L1Im2;
+            imageViews[20] = ll2R7L1Im3;
+
+            imageViews[21] = ll2R8L1Im1;
+            imageViews[22] = ll2R8L1Im2;
+            imageViews[23] = ll2R8L1Im3;
+
+            imageViews[24] = ll2R9L1Im1;
+            imageViews[25] = ll2R9L1Im2;
+            imageViews[26] = ll2R9L1Im3;
+            decidePointerofColumns(y, spacing, relativeLayouts, imageViews, linearLayouts);
+        } else if (id == R.id.ll2_r1_l2) {
+            //linears
+            linearLayouts[0] = ll2R1L2;
+            linearLayouts[1] = ll2R2L2;
+            linearLayouts[2] = ll2R3L2;
+            linearLayouts[3] = ll2R4L2;
+            linearLayouts[4] = ll2R5L2;
+            linearLayouts[5] = ll2R6L2;
+            linearLayouts[6] = ll2R7L2;
+            linearLayouts[7] = ll2R8L2;
+            linearLayouts[8] = ll2R9L2;
+            //relatives
+            relativeLayouts[0] = ll2R1;
+            relativeLayouts[1] = ll2R2;
+            relativeLayouts[2] = ll2R3;
+            relativeLayouts[3] = ll2R4;
+            relativeLayouts[4] = ll2R5;
+            relativeLayouts[5] = ll2R6;
+            relativeLayouts[6] = ll2R7;
+            relativeLayouts[7] = ll2R8;
+            relativeLayouts[8] = ll2R9;
+            //images
+            imageViews[0] = ll2R1L2Im1;
+            imageViews[1] = ll2R1L2Im2;
+            imageViews[2] = ll2R1L2Im3;
+
+            imageViews[3] = ll2R2L2Im1;
+            imageViews[4] = ll2R2L2Im2;
+            imageViews[5] = ll2R2L2Im3;
+
+            imageViews[6] = ll2R3L2Im1;
+            imageViews[7] = ll2R3L2Im2;
+            imageViews[8] = ll2R3L2Im3;
+
+            imageViews[9] = ll2R4L2Im1;
+            imageViews[10] = ll2R4L2Im2;
+            imageViews[11] = ll2R4L2Im3;
+
+            imageViews[12] = ll2R5L2Im1;
+            imageViews[13] = ll2R5L2Im2;
+            imageViews[14] = ll2R5L2Im3;
+
+            imageViews[15] = ll2R6L2Im1;
+            imageViews[16] = ll2R6L2Im2;
+            imageViews[17] = ll2R6L2Im3;
+
+            imageViews[18] = ll2R7L2Im1;
+            imageViews[19] = ll2R7L2Im2;
+            imageViews[20] = ll2R7L2Im3;
+
+            imageViews[21] = ll2R8L2Im1;
+            imageViews[22] = ll2R8L2Im2;
+            imageViews[23] = ll2R8L2Im3;
+
+            imageViews[24] = ll2R9L2Im1;
+            imageViews[25] = ll2R9L2Im2;
+            imageViews[26] = ll2R9L2Im3;
+            decidePointerofColumns(y, spacing, relativeLayouts, imageViews, linearLayouts);
+        } else if (id == R.id.ll2_r1_l3) {
+            //linears
+            linearLayouts[0] = ll2R1L3;
+            linearLayouts[1] = ll2R2L3;
+            linearLayouts[2] = ll2R3L3;
+            linearLayouts[3] = ll2R4L3;
+            linearLayouts[4] = ll2R5L3;
+            linearLayouts[5] = ll2R6L3;
+            linearLayouts[6] = ll2R7L3;
+            linearLayouts[7] = ll2R8L3;
+            linearLayouts[8] = ll2R9L3;
+            //relatives
+            relativeLayouts[0] = ll2R1;
+            relativeLayouts[1] = ll2R2;
+            relativeLayouts[2] = ll2R3;
+            relativeLayouts[3] = ll2R4;
+            relativeLayouts[4] = ll2R5;
+            relativeLayouts[5] = ll2R6;
+            relativeLayouts[6] = ll2R7;
+            relativeLayouts[7] = ll2R8;
+            relativeLayouts[8] = ll2R9;
+            //images
+            imageViews[0] = ll2R1L3Im1;
+            imageViews[1] = ll2R1L3Im2;
+            imageViews[2] = ll2R1L3Im3;
+
+            imageViews[3] = ll2R2L3Im1;
+            imageViews[4] = ll2R2L3Im2;
+            imageViews[5] = ll2R2L3Im3;
+
+            imageViews[6] = ll2R3L3Im1;
+            imageViews[7] = ll2R3L3Im2;
+            imageViews[8] = ll2R3L3Im3;
+
+            imageViews[9] = ll2R4L3Im1;
+            imageViews[10] = ll2R4L3Im2;
+            imageViews[11] = ll2R4L3Im3;
+
+            imageViews[12] = ll2R5L3Im1;
+            imageViews[13] = ll2R5L3Im2;
+            imageViews[14] = ll2R5L3Im3;
+
+            imageViews[15] = ll2R6L3Im1;
+            imageViews[16] = ll2R6L3Im2;
+            imageViews[17] = ll2R6L3Im3;
+
+            imageViews[18] = ll2R7L3Im1;
+            imageViews[19] = ll2R7L3Im2;
+            imageViews[20] = ll2R7L3Im3;
+
+            imageViews[21] = ll2R8L3Im1;
+            imageViews[22] = ll2R8L3Im2;
+            imageViews[23] = ll2R8L3Im3;
+
+            imageViews[24] = ll2R9L3Im1;
+            imageViews[25] = ll2R9L3Im2;
+            imageViews[26] = ll2R9L3Im3;
+            decidePointerofColumns(y, spacing, relativeLayouts, imageViews, linearLayouts);
+        } else if (id == R.id.ll3_r1_l1) {
+            //linears
+            linearLayouts[0] = ll3R1L1;
+            linearLayouts[1] = ll3R2L1;
+            linearLayouts[2] = ll3R3L1;
+            linearLayouts[3] = ll3R4L1;
+            linearLayouts[4] = ll3R5L1;
+            linearLayouts[5] = ll3R6L1;
+            linearLayouts[6] = ll3R7L1;
+            linearLayouts[7] = ll3R8L1;
+            linearLayouts[8] = ll3R9L1;
+            //relatives
+            relativeLayouts[0] = ll3R1;
+            relativeLayouts[1] = ll3R2;
+            relativeLayouts[2] = ll3R3;
+            relativeLayouts[3] = ll3R4;
+            relativeLayouts[4] = ll3R5;
+            relativeLayouts[5] = ll3R6;
+            relativeLayouts[6] = ll3R7;
+            relativeLayouts[7] = ll3R8;
+            relativeLayouts[8] = ll3R9;
+            //images
+            imageViews[0] = ll3R1L1Im1;
+            imageViews[1] = ll3R1L1Im2;
+            imageViews[2] = ll3R1L1Im3;
+
+            imageViews[3] = ll3R2L1Im1;
+            imageViews[4] = ll3R2L1Im2;
+            imageViews[5] = ll3R2L1Im3;
+
+            imageViews[6] = ll3R3L1Im1;
+            imageViews[7] = ll3R3L1Im2;
+            imageViews[8] = ll3R3L1Im3;
+
+            imageViews[9] = ll3R4L1Im1;
+            imageViews[10] = ll3R4L1Im2;
+            imageViews[11] = ll3R4L1Im3;
+
+            imageViews[12] = ll3R5L1Im1;
+            imageViews[13] = ll3R5L1Im2;
+            imageViews[14] = ll3R5L1Im3;
+
+            imageViews[15] = ll3R6L1Im1;
+            imageViews[16] = ll3R6L1Im2;
+            imageViews[17] = ll3R6L1Im3;
+
+            imageViews[18] = ll3R7L1Im1;
+            imageViews[19] = ll3R7L1Im2;
+            imageViews[20] = ll3R7L1Im3;
+
+            imageViews[21] = ll3R8L1Im1;
+            imageViews[22] = ll3R8L1Im2;
+            imageViews[23] = ll3R8L1Im3;
+
+            imageViews[24] = ll3R9L1Im1;
+            imageViews[25] = ll3R9L1Im2;
+            imageViews[26] = ll3R9L1Im3;
+            decidePointerofColumns(y, spacing, relativeLayouts, imageViews, linearLayouts);
+        } else if (id == R.id.ll3_r1_l2) {
+            //linears
+            linearLayouts[0] = ll3R1L2;
+            linearLayouts[1] = ll3R2L2;
+            linearLayouts[2] = ll3R3L2;
+            linearLayouts[3] = ll3R4L2;
+            linearLayouts[4] = ll3R5L2;
+            linearLayouts[5] = ll3R6L2;
+            linearLayouts[6] = ll3R7L2;
+            linearLayouts[7] = ll3R8L2;
+            linearLayouts[8] = ll3R9L2;
+            //relatives
+            relativeLayouts[0] = ll3R1;
+            relativeLayouts[1] = ll3R2;
+            relativeLayouts[2] = ll3R3;
+            relativeLayouts[3] = ll3R4;
+            relativeLayouts[4] = ll3R5;
+            relativeLayouts[5] = ll3R6;
+            relativeLayouts[6] = ll3R7;
+            relativeLayouts[7] = ll3R8;
+            relativeLayouts[8] = ll3R9;
+            //images
+            imageViews[0] = ll3R1L2Im1;
+            imageViews[1] = ll3R1L2Im2;
+            imageViews[2] = ll3R1L2Im3;
+
+            imageViews[3] = ll3R2L2Im1;
+            imageViews[4] = ll3R2L2Im2;
+            imageViews[5] = ll3R2L2Im3;
+
+            imageViews[6] = ll3R3L2Im1;
+            imageViews[7] = ll3R3L2Im2;
+            imageViews[8] = ll3R3L2Im3;
+
+            imageViews[9] = ll3R4L2Im1;
+            imageViews[10] = ll3R4L2Im2;
+            imageViews[11] = ll3R4L2Im3;
+
+            imageViews[12] = ll3R5L2Im1;
+            imageViews[13] = ll3R5L2Im2;
+            imageViews[14] = ll3R5L2Im3;
+
+            imageViews[15] = ll3R6L2Im1;
+            imageViews[16] = ll3R6L2Im2;
+            imageViews[17] = ll3R6L2Im3;
+
+            imageViews[18] = ll3R7L2Im1;
+            imageViews[19] = ll3R7L2Im2;
+            imageViews[20] = ll3R7L2Im3;
+
+            imageViews[21] = ll3R8L2Im1;
+            imageViews[22] = ll3R8L2Im2;
+            imageViews[23] = ll3R8L2Im3;
+
+            imageViews[24] = ll3R9L2Im1;
+            imageViews[25] = ll3R9L2Im2;
+            imageViews[26] = ll3R9L2Im3;
+            decidePointerofColumns(y, spacing, relativeLayouts, imageViews, linearLayouts);
+        } else if (id == R.id.ll3_r1_l3) {
+            //linears
+            linearLayouts[0] = ll3R1L3;
+            linearLayouts[1] = ll3R2L3;
+            linearLayouts[2] = ll3R3L3;
+            linearLayouts[3] = ll3R4L3;
+            linearLayouts[4] = ll3R5L3;
+            linearLayouts[5] = ll3R6L3;
+            linearLayouts[6] = ll3R7L3;
+            linearLayouts[7] = ll3R8L3;
+            linearLayouts[8] = ll3R9L3;
+            //relatives
+            relativeLayouts[0] = ll3R1;
+            relativeLayouts[1] = ll3R2;
+            relativeLayouts[2] = ll3R3;
+            relativeLayouts[3] = ll3R4;
+            relativeLayouts[4] = ll3R5;
+            relativeLayouts[5] = ll3R6;
+            relativeLayouts[6] = ll3R7;
+            relativeLayouts[7] = ll3R8;
+            relativeLayouts[8] = ll3R9;
+            //images
+            imageViews[0] = ll3R1L3Im1;
+            imageViews[1] = ll3R1L3Im2;
+            imageViews[2] = ll3R1L3Im3;
+
+            imageViews[3] = ll3R2L3Im1;
+            imageViews[4] = ll3R2L3Im2;
+            imageViews[5] = ll3R2L3Im3;
+
+            imageViews[6] = ll3R3L3Im1;
+            imageViews[7] = ll3R3L3Im2;
+            imageViews[8] = ll3R3L3Im3;
+
+            imageViews[9] = ll3R4L3Im1;
+            imageViews[10] = ll3R4L3Im2;
+            imageViews[11] = ll3R4L3Im3;
+
+            imageViews[12] = ll3R5L3Im1;
+            imageViews[13] = ll3R5L3Im2;
+            imageViews[14] = ll3R5L3Im3;
+
+            imageViews[15] = ll3R6L3Im1;
+            imageViews[16] = ll3R6L3Im2;
+            imageViews[17] = ll3R6L3Im3;
+
+            imageViews[18] = ll3R7L3Im1;
+            imageViews[19] = ll3R7L3Im2;
+            imageViews[20] = ll3R7L3Im3;
+
+            imageViews[21] = ll3R8L3Im1;
+            imageViews[22] = ll3R8L3Im2;
+            imageViews[23] = ll3R8L3Im3;
+
+            imageViews[24] = ll3R9L3Im1;
+            imageViews[25] = ll3R9L3Im2;
+            imageViews[26] = ll3R9L3Im3;
+            decidePointerofColumns(y, spacing, relativeLayouts, imageViews, linearLayouts);
+        } else if (id == R.id.ll4_r1_l1) {
+            //linears
+            linearLayouts[0] = ll4R1L1;
+            linearLayouts[1] = ll4R2L1;
+            linearLayouts[2] = ll4R3L1;
+            linearLayouts[3] = ll4R4L1;
+            linearLayouts[4] = ll4R5L1;
+            linearLayouts[5] = ll4R6L1;
+            linearLayouts[6] = ll4R7L1;
+            linearLayouts[7] = ll4R8L1;
+            linearLayouts[8] = ll4R9L1;
+            //relatives
+            relativeLayouts[0] = ll4R1;
+            relativeLayouts[1] = ll4R2;
+            relativeLayouts[2] = ll4R3;
+            relativeLayouts[3] = ll4R4;
+            relativeLayouts[4] = ll4R5;
+            relativeLayouts[5] = ll4R6;
+            relativeLayouts[6] = ll4R7;
+            relativeLayouts[7] = ll4R8;
+            relativeLayouts[8] = ll4R9;
+            //images
+            imageViews[0] = ll4R1L1Im1;
+            imageViews[1] = ll4R1L1Im2;
+            imageViews[2] = ll4R1L1Im3;
+
+            imageViews[3] = ll4R2L1Im1;
+            imageViews[4] = ll4R2L1Im2;
+            imageViews[5] = ll4R2L1Im3;
+
+            imageViews[6] = ll4R3L1Im1;
+            imageViews[7] = ll4R3L1Im2;
+            imageViews[8] = ll4R3L1Im3;
+
+            imageViews[9] = ll4R4L1Im1;
+            imageViews[10] = ll4R4L1Im2;
+            imageViews[11] = ll4R4L1Im3;
+
+            imageViews[12] = ll4R5L1Im1;
+            imageViews[13] = ll4R5L1Im2;
+            imageViews[14] = ll4R5L1Im3;
+
+            imageViews[15] = ll4R6L1Im1;
+            imageViews[16] = ll4R6L1Im2;
+            imageViews[17] = ll4R6L1Im3;
+
+            imageViews[18] = ll4R7L1Im1;
+            imageViews[19] = ll4R7L1Im2;
+            imageViews[20] = ll4R7L1Im3;
+
+            imageViews[21] = ll4R8L1Im1;
+            imageViews[22] = ll4R8L1Im2;
+            imageViews[23] = ll4R8L1Im3;
+
+            imageViews[24] = ll4R9L1Im1;
+            imageViews[25] = ll4R9L1Im2;
+            imageViews[26] = ll4R9L1Im3;
+            decidePointerofColumns(y, spacing, relativeLayouts, imageViews, linearLayouts);
+        } else if (id == R.id.ll4_r1_l2) {
+            //linears
+            linearLayouts[0] = ll4R1L2;
+            linearLayouts[1] = ll4R2L2;
+            linearLayouts[2] = ll4R3L2;
+            linearLayouts[3] = ll4R4L2;
+            linearLayouts[4] = ll4R5L2;
+            linearLayouts[5] = ll4R6L2;
+            linearLayouts[6] = ll4R7L2;
+            linearLayouts[7] = ll4R8L2;
+            linearLayouts[8] = ll4R9L2;
+            //relatives
+            relativeLayouts[0] = ll4R1;
+            relativeLayouts[1] = ll4R2;
+            relativeLayouts[2] = ll4R3;
+            relativeLayouts[3] = ll4R4;
+            relativeLayouts[4] = ll4R5;
+            relativeLayouts[5] = ll4R6;
+            relativeLayouts[6] = ll4R7;
+            relativeLayouts[7] = ll4R8;
+            relativeLayouts[8] = ll4R9;
+
+            //images
+            imageViews[0] = ll4R1L2Im1;
+            imageViews[1] = ll4R1L2Im2;
+            imageViews[2] = ll4R1L2Im3;
+
+            imageViews[3] = ll4R2L2Im1;
+            imageViews[4] = ll4R2L2Im2;
+            imageViews[5] = ll4R2L2Im3;
+
+            imageViews[6] = ll4R3L2Im1;
+            imageViews[7] = ll4R3L2Im2;
+            imageViews[8] = ll4R3L2Im3;
+
+            imageViews[9] = ll4R4L2Im1;
+            imageViews[10] = ll4R4L2Im2;
+            imageViews[11] = ll4R4L2Im3;
+
+            imageViews[12] = ll4R5L2Im1;
+            imageViews[13] = ll4R5L2Im2;
+            imageViews[14] = ll4R5L2Im3;
+
+            imageViews[15] = ll4R6L2Im1;
+            imageViews[16] = ll4R6L2Im2;
+            imageViews[17] = ll4R6L2Im3;
+
+            imageViews[18] = ll4R7L2Im1;
+            imageViews[19] = ll4R7L2Im2;
+            imageViews[20] = ll4R7L2Im3;
+
+            imageViews[21] = ll4R8L2Im1;
+            imageViews[22] = ll4R8L2Im2;
+            imageViews[23] = ll4R8L2Im3;
+
+            imageViews[24] = ll4R9L2Im1;
+            imageViews[25] = ll4R9L2Im2;
+            imageViews[26] = ll4R9L2Im3;
+            decidePointerofColumns(y, spacing, relativeLayouts, imageViews, linearLayouts);
+        } else if (id == R.id.ll4_r1_l3) {
+            //linears
+            linearLayouts[0] = ll4R1L3;
+            linearLayouts[1] = ll4R2L3;
+            linearLayouts[2] = ll4R3L3;
+            linearLayouts[3] = ll4R4L3;
+            linearLayouts[4] = ll4R5L3;
+            linearLayouts[5] = ll4R6L3;
+            linearLayouts[6] = ll4R7L3;
+            linearLayouts[7] = ll4R8L3;
+            linearLayouts[8] = ll4R9L3;
+            //relatives
+            relativeLayouts[0] = ll4R1;
+            relativeLayouts[1] = ll4R2;
+            relativeLayouts[2] = ll4R3;
+            relativeLayouts[3] = ll4R4;
+            relativeLayouts[4] = ll4R5;
+            relativeLayouts[5] = ll4R6;
+            relativeLayouts[6] = ll4R7;
+            relativeLayouts[7] = ll4R8;
+            relativeLayouts[8] = ll4R9;
+
+            //images
+            imageViews[0] = ll4R1L3Im1;
+            imageViews[1] = ll4R1L3Im2;
+            imageViews[2] = ll4R1L3Im3;
+
+            imageViews[3] = ll4R2L3Im1;
+            imageViews[4] = ll4R2L3Im2;
+            imageViews[5] = ll4R2L3Im3;
+
+            imageViews[6] = ll4R3L3Im1;
+            imageViews[7] = ll4R3L3Im2;
+            imageViews[8] = ll4R3L3Im3;
+
+            imageViews[9] = ll4R4L3Im1;
+            imageViews[10] = ll4R4L3Im2;
+            imageViews[11] = ll4R4L3Im3;
+
+            imageViews[12] = ll4R5L3Im1;
+            imageViews[13] = ll4R5L3Im2;
+            imageViews[14] = ll4R5L3Im3;
+
+            imageViews[15] = ll4R6L3Im1;
+            imageViews[16] = ll4R6L3Im2;
+            imageViews[17] = ll4R6L3Im3;
+
+            imageViews[18] = ll4R7L3Im1;
+            imageViews[19] = ll4R7L3Im2;
+            imageViews[20] = ll4R7L3Im3;
+
+            imageViews[21] = ll4R8L3Im1;
+            imageViews[22] = ll4R8L3Im2;
+            imageViews[23] = ll4R8L3Im3;
+
+            imageViews[24] = ll4R9L3Im1;
+            imageViews[25] = ll4R9L3Im2;
+            imageViews[26] = ll4R9L3Im3;
+            decidePointerofColumns(y, spacing, relativeLayouts, imageViews, linearLayouts);
+        } else if (id == R.id.ll5_r1_l1) {
+            //linears
+            linearLayouts[0] = ll5R1L1;
+            linearLayouts[1] = ll5R2L1;
+            linearLayouts[2] = ll5R3L1;
+            linearLayouts[3] = ll5R4L1;
+            linearLayouts[4] = ll5R5L1;
+            linearLayouts[5] = ll5R6L1;
+            linearLayouts[6] = ll5R7L1;
+            linearLayouts[7] = ll5R8L1;
+            linearLayouts[8] = ll5R9L1;
+            //relatives
+            relativeLayouts[0] = ll5R1;
+            relativeLayouts[1] = ll5R2;
+            relativeLayouts[2] = ll5R3;
+            relativeLayouts[3] = ll5R4;
+            relativeLayouts[4] = ll5R5;
+            relativeLayouts[5] = ll5R6;
+            relativeLayouts[6] = ll5R7;
+            relativeLayouts[7] = ll5R8;
+            relativeLayouts[8] = ll5R9;
+
+            //images
+            imageViews[0] = ll5R1L1Im1;
+            imageViews[1] = ll5R1L1Im2;
+            imageViews[2] = ll5R1L1Im3;
+
+            imageViews[3] = ll5R2L1Im1;
+            imageViews[4] = ll5R2L1Im2;
+            imageViews[5] = ll5R2L1Im3;
+
+            imageViews[6] = ll5R3L1Im1;
+            imageViews[7] = ll5R3L1Im2;
+            imageViews[8] = ll5R3L1Im3;
+
+            imageViews[9] = ll5R4L1Im1;
+            imageViews[10] = ll5R4L1Im2;
+            imageViews[11] = ll5R4L1Im3;
+
+            imageViews[12] = ll5R5L1Im1;
+            imageViews[13] = ll5R5L1Im2;
+            imageViews[14] = ll5R5L1Im3;
+
+            imageViews[15] = ll5R6L1Im1;
+            imageViews[16] = ll5R6L1Im2;
+            imageViews[17] = ll5R6L1Im3;
+
+            imageViews[18] = ll5R7L1Im1;
+            imageViews[19] = ll5R7L1Im2;
+            imageViews[20] = ll5R7L1Im3;
+
+            imageViews[21] = ll5R8L1Im1;
+            imageViews[22] = ll5R8L1Im2;
+            imageViews[23] = ll5R8L1Im3;
+
+            imageViews[24] = ll5R9L1Im1;
+            imageViews[25] = ll5R9L1Im2;
+            imageViews[26] = ll5R9L1Im3;
+            decidePointerofColumns(y, spacing, relativeLayouts, imageViews, linearLayouts);
+        } else if (id == R.id.ll5_r1_l2) {
+            //linears
+            linearLayouts[0] = ll5R1L2;
+            linearLayouts[1] = ll5R2L2;
+            linearLayouts[2] = ll5R3L2;
+            linearLayouts[3] = ll5R4L2;
+            linearLayouts[4] = ll5R5L2;
+            linearLayouts[5] = ll5R6L2;
+            linearLayouts[6] = ll5R7L2;
+            linearLayouts[7] = ll5R8L2;
+            linearLayouts[8] = ll5R9L2;
+            //relatives
+            relativeLayouts[0] = ll5R1;
+            relativeLayouts[1] = ll5R2;
+            relativeLayouts[2] = ll5R3;
+            relativeLayouts[3] = ll5R4;
+            relativeLayouts[4] = ll5R5;
+            relativeLayouts[5] = ll5R6;
+            relativeLayouts[6] = ll5R7;
+            relativeLayouts[7] = ll5R8;
+            relativeLayouts[8] = ll5R9;
+
+            //images
+            imageViews[0] = ll5R1L2Im1;
+            imageViews[1] = ll5R1L2Im2;
+            imageViews[2] = ll5R1L2Im3;
+
+            imageViews[3] = ll5R2L2Im1;
+            imageViews[4] = ll5R2L2Im2;
+            imageViews[5] = ll5R2L2Im3;
+
+            imageViews[6] = ll5R3L2Im1;
+            imageViews[7] = ll5R3L2Im2;
+            imageViews[8] = ll5R3L2Im3;
+
+            imageViews[9] = ll5R4L2Im1;
+            imageViews[10] = ll5R4L2Im2;
+            imageViews[11] = ll5R4L2Im3;
+
+            imageViews[12] = ll5R5L2Im1;
+            imageViews[13] = ll5R5L2Im2;
+            imageViews[14] = ll5R5L2Im3;
+
+            imageViews[15] = ll5R6L2Im1;
+            imageViews[16] = ll5R6L2Im2;
+            imageViews[17] = ll5R6L2Im3;
+
+            imageViews[18] = ll5R7L2Im1;
+            imageViews[19] = ll5R7L2Im2;
+            imageViews[20] = ll5R7L2Im3;
+
+            imageViews[21] = ll5R8L2Im1;
+            imageViews[22] = ll5R8L2Im2;
+            imageViews[23] = ll5R8L2Im3;
+
+            imageViews[24] = ll5R9L2Im1;
+            imageViews[25] = ll5R9L2Im2;
+            imageViews[26] = ll5R9L2Im3;
+            decidePointerofColumns(y, spacing, relativeLayouts, imageViews, linearLayouts);
+        } else if (id == R.id.ll5_r1_l3) {
+            //linears
+            linearLayouts[0] = ll5R1L3;
+            linearLayouts[1] = ll5R2L3;
+            linearLayouts[2] = ll5R3L3;
+            linearLayouts[3] = ll5R4L3;
+            linearLayouts[4] = ll5R5L3;
+            linearLayouts[5] = ll5R6L3;
+            linearLayouts[6] = ll5R7L3;
+            linearLayouts[7] = ll5R8L3;
+            linearLayouts[8] = ll5R9L3;
+            //relatives
+            relativeLayouts[0] = ll5R1;
+            relativeLayouts[1] = ll5R2;
+            relativeLayouts[2] = ll5R3;
+            relativeLayouts[3] = ll5R4;
+            relativeLayouts[4] = ll5R5;
+            relativeLayouts[5] = ll5R6;
+            relativeLayouts[6] = ll5R7;
+            relativeLayouts[7] = ll5R8;
+            relativeLayouts[8] = ll5R9;
+
+            //images
+            imageViews[0] = ll5R1L3Im1;
+            imageViews[1] = ll5R1L3Im2;
+            imageViews[2] = ll5R1L3Im3;
+
+            imageViews[3] = ll5R2L3Im1;
+            imageViews[4] = ll5R2L3Im2;
+            imageViews[5] = ll5R2L3Im3;
+
+            imageViews[6] = ll5R3L3Im1;
+            imageViews[7] = ll5R3L3Im2;
+            imageViews[8] = ll5R3L3Im3;
+
+            imageViews[9] = ll5R4L3Im1;
+            imageViews[10] = ll5R4L3Im2;
+            imageViews[11] = ll5R4L3Im3;
+
+            imageViews[12] = ll5R5L3Im1;
+            imageViews[13] = ll5R5L3Im2;
+            imageViews[14] = ll5R5L3Im3;
+
+            imageViews[15] = ll5R6L3Im1;
+            imageViews[16] = ll5R6L3Im2;
+            imageViews[17] = ll5R6L3Im3;
+
+            imageViews[18] = ll5R7L3Im1;
+            imageViews[19] = ll5R7L3Im2;
+            imageViews[20] = ll5R7L3Im3;
+
+            imageViews[21] = ll5R8L3Im1;
+            imageViews[22] = ll5R8L3Im2;
+            imageViews[23] = ll5R8L3Im3;
+
+            imageViews[24] = ll5R9L3Im1;
+            imageViews[25] = ll5R9L3Im2;
+            imageViews[26] = ll5R9L3Im3;
+            decidePointerofColumns(y, spacing, relativeLayouts, imageViews, linearLayouts);
         }
 
     }
 
-    void makeBackgroundWhite() {
-        ll11.setBackgroundColor(getResources().getColor(R.color.white));
-        ll12.setBackgroundColor(getResources().getColor(R.color.white));
-        ll13.setBackgroundColor(getResources().getColor(R.color.white));
-        ll14.setBackgroundColor(getResources().getColor(R.color.white));
-        ll15.setBackgroundColor(getResources().getColor(R.color.white));
-        ll16.setBackgroundColor(getResources().getColor(R.color.white));
-        ll17.setBackgroundColor(getResources().getColor(R.color.white));
-        ll18.setBackgroundColor(getResources().getColor(R.color.white));
-        ll19.setBackgroundColor(getResources().getColor(R.color.white));
+    void makeFirstRowVisible() {
+        ll1R1L1.setVisibility(View.VISIBLE);
+        ll1R2L1.setVisibility(View.VISIBLE);
+        ll1R3L1.setVisibility(View.VISIBLE);
+        ll1R4L1.setVisibility(View.VISIBLE);
+        ll1R5L1.setVisibility(View.VISIBLE);
+        ll1R6L1.setVisibility(View.VISIBLE);
+        ll1R7L1.setVisibility(View.VISIBLE);
+        ll1R8L1.setVisibility(View.VISIBLE);
+        ll1R9L1.setVisibility(View.VISIBLE);
+    }
 
-        ll21.setBackgroundColor(getResources().getColor(R.color.white));
-        ll22.setBackgroundColor(getResources().getColor(R.color.white));
-        ll23.setBackgroundColor(getResources().getColor(R.color.white));
-        ll24.setBackgroundColor(getResources().getColor(R.color.white));
-        ll25.setBackgroundColor(getResources().getColor(R.color.white));
-        ll26.setBackgroundColor(getResources().getColor(R.color.white));
-        ll27.setBackgroundColor(getResources().getColor(R.color.white));
-        ll28.setBackgroundColor(getResources().getColor(R.color.white));
-        ll29.setBackgroundColor(getResources().getColor(R.color.white));
+    void makeSecondRowVisible() {
+        ll1R1L2.setVisibility(View.VISIBLE);
+        ll1R2L2.setVisibility(View.VISIBLE);
+        ll1R3L2.setVisibility(View.VISIBLE);
+        ll1R4L2.setVisibility(View.VISIBLE);
+        ll1R5L2.setVisibility(View.VISIBLE);
+        ll1R6L2.setVisibility(View.VISIBLE);
+        ll1R7L2.setVisibility(View.VISIBLE);
+        ll1R8L2.setVisibility(View.VISIBLE);
+        ll1R9L2.setVisibility(View.VISIBLE);
+    }
 
-        ll31.setBackgroundColor(getResources().getColor(R.color.white));
-        ll32.setBackgroundColor(getResources().getColor(R.color.white));
-        ll33.setBackgroundColor(getResources().getColor(R.color.white));
-        ll34.setBackgroundColor(getResources().getColor(R.color.white));
-        ll35.setBackgroundColor(getResources().getColor(R.color.white));
-        ll36.setBackgroundColor(getResources().getColor(R.color.white));
-        ll37.setBackgroundColor(getResources().getColor(R.color.white));
-        ll38.setBackgroundColor(getResources().getColor(R.color.white));
-        ll39.setBackgroundColor(getResources().getColor(R.color.white));
+    void makeThirdRowVisible() {
+        ll1R1L3.setVisibility(View.VISIBLE);
+        ll1R2L3.setVisibility(View.VISIBLE);
+        ll1R3L3.setVisibility(View.VISIBLE);
+        ll1R4L3.setVisibility(View.VISIBLE);
+        ll1R5L3.setVisibility(View.VISIBLE);
+        ll1R6L3.setVisibility(View.VISIBLE);
+        ll1R7L3.setVisibility(View.VISIBLE);
+        ll1R8L3.setVisibility(View.VISIBLE);
+        ll1R9L3.setVisibility(View.VISIBLE);
+    }
 
-        ll41.setBackgroundColor(getResources().getColor(R.color.white));
-        ll42.setBackgroundColor(getResources().getColor(R.color.white));
-        ll43.setBackgroundColor(getResources().getColor(R.color.white));
-        ll44.setBackgroundColor(getResources().getColor(R.color.white));
-        ll45.setBackgroundColor(getResources().getColor(R.color.white));
-        ll46.setBackgroundColor(getResources().getColor(R.color.white));
-        ll47.setBackgroundColor(getResources().getColor(R.color.white));
-        ll48.setBackgroundColor(getResources().getColor(R.color.white));
-        ll49.setBackgroundColor(getResources().getColor(R.color.white));
+    void makeFourthRowVisible() {
+        ll2R1L1.setVisibility(View.VISIBLE);
+        ll2R2L1.setVisibility(View.VISIBLE);
+        ll2R3L1.setVisibility(View.VISIBLE);
+        ll2R4L1.setVisibility(View.VISIBLE);
+        ll2R5L1.setVisibility(View.VISIBLE);
+        ll2R6L1.setVisibility(View.VISIBLE);
+        ll2R7L1.setVisibility(View.VISIBLE);
+        ll2R8L1.setVisibility(View.VISIBLE);
+        ll2R9L1.setVisibility(View.VISIBLE);
+    }
 
-        ll51.setBackgroundColor(getResources().getColor(R.color.white));
-        ll52.setBackgroundColor(getResources().getColor(R.color.white));
-        ll53.setBackgroundColor(getResources().getColor(R.color.white));
-        ll54.setBackgroundColor(getResources().getColor(R.color.white));
-        ll55.setBackgroundColor(getResources().getColor(R.color.white));
-        ll56.setBackgroundColor(getResources().getColor(R.color.white));
-        ll57.setBackgroundColor(getResources().getColor(R.color.white));
-        ll58.setBackgroundColor(getResources().getColor(R.color.white));
-        ll59.setBackgroundColor(getResources().getColor(R.color.white));
+    void makeFifthRowVisible() {
+        ll2R1L2.setVisibility(View.VISIBLE);
+        ll2R2L2.setVisibility(View.VISIBLE);
+        ll2R3L2.setVisibility(View.VISIBLE);
+        ll2R4L2.setVisibility(View.VISIBLE);
+        ll2R5L2.setVisibility(View.VISIBLE);
+        ll2R6L2.setVisibility(View.VISIBLE);
+        ll2R7L2.setVisibility(View.VISIBLE);
+        ll2R8L2.setVisibility(View.VISIBLE);
+        ll2R9L2.setVisibility(View.VISIBLE);
+    }
+
+    void makeSixthRowVisible() {
+        ll2R1L3.setVisibility(View.VISIBLE);
+        ll2R2L3.setVisibility(View.VISIBLE);
+        ll2R3L3.setVisibility(View.VISIBLE);
+        ll2R4L3.setVisibility(View.VISIBLE);
+        ll2R5L3.setVisibility(View.VISIBLE);
+        ll2R6L3.setVisibility(View.VISIBLE);
+        ll2R7L3.setVisibility(View.VISIBLE);
+        ll2R8L3.setVisibility(View.VISIBLE);
+        ll2R9L3.setVisibility(View.VISIBLE);
+    }
+
+    void makeSeventhRowVisible() {
+        ll3R1L1.setVisibility(View.VISIBLE);
+        ll3R2L1.setVisibility(View.VISIBLE);
+        ll3R3L1.setVisibility(View.VISIBLE);
+        ll3R4L1.setVisibility(View.VISIBLE);
+        ll3R5L1.setVisibility(View.VISIBLE);
+        ll3R6L1.setVisibility(View.VISIBLE);
+        ll3R7L1.setVisibility(View.VISIBLE);
+        ll3R8L1.setVisibility(View.VISIBLE);
+        ll3R9L1.setVisibility(View.VISIBLE);
+    }
+
+    void makeEighthRowVisible() {
+        ll3R1L2.setVisibility(View.VISIBLE);
+        ll3R2L2.setVisibility(View.VISIBLE);
+        ll3R3L2.setVisibility(View.VISIBLE);
+        ll3R4L2.setVisibility(View.VISIBLE);
+        ll3R5L2.setVisibility(View.VISIBLE);
+        ll3R6L2.setVisibility(View.VISIBLE);
+        ll3R7L2.setVisibility(View.VISIBLE);
+        ll3R8L2.setVisibility(View.VISIBLE);
+        ll3R9L2.setVisibility(View.VISIBLE);
+    }
+
+    void makeNinethRowVisible() {
+        ll3R1L3.setVisibility(View.VISIBLE);
+        ll3R2L3.setVisibility(View.VISIBLE);
+        ll3R3L3.setVisibility(View.VISIBLE);
+        ll3R4L3.setVisibility(View.VISIBLE);
+        ll3R5L3.setVisibility(View.VISIBLE);
+        ll3R6L3.setVisibility(View.VISIBLE);
+        ll3R7L3.setVisibility(View.VISIBLE);
+        ll3R8L3.setVisibility(View.VISIBLE);
+        ll3R9L3.setVisibility(View.VISIBLE);
+    }
+
+    void makeTenthRowVisible() {
+        ll4R1L1.setVisibility(View.VISIBLE);
+        ll4R2L1.setVisibility(View.VISIBLE);
+        ll4R3L1.setVisibility(View.VISIBLE);
+        ll4R4L1.setVisibility(View.VISIBLE);
+        ll4R5L1.setVisibility(View.VISIBLE);
+        ll4R6L1.setVisibility(View.VISIBLE);
+        ll4R7L1.setVisibility(View.VISIBLE);
+        ll4R8L1.setVisibility(View.VISIBLE);
+        ll4R9L1.setVisibility(View.VISIBLE);
+    }
+
+    void makeEleventhRowVisible() {
+        ll4R1L2.setVisibility(View.VISIBLE);
+        ll4R2L2.setVisibility(View.VISIBLE);
+        ll4R3L2.setVisibility(View.VISIBLE);
+        ll4R4L2.setVisibility(View.VISIBLE);
+        ll4R5L2.setVisibility(View.VISIBLE);
+        ll4R6L2.setVisibility(View.VISIBLE);
+        ll4R7L2.setVisibility(View.VISIBLE);
+        ll4R8L2.setVisibility(View.VISIBLE);
+        ll4R9L2.setVisibility(View.VISIBLE);
+    }
+
+    void makeTwelfthRowVisible() {
+        ll4R1L3.setVisibility(View.VISIBLE);
+        ll4R2L3.setVisibility(View.VISIBLE);
+        ll4R3L3.setVisibility(View.VISIBLE);
+        ll4R4L3.setVisibility(View.VISIBLE);
+        ll4R5L3.setVisibility(View.VISIBLE);
+        ll4R6L3.setVisibility(View.VISIBLE);
+        ll4R7L3.setVisibility(View.VISIBLE);
+        ll4R8L3.setVisibility(View.VISIBLE);
+        ll4R9L3.setVisibility(View.VISIBLE);
+    }
+
+    void makeThirteenthRowVisible() {
+        ll5R1L1.setVisibility(View.VISIBLE);
+        ll5R2L1.setVisibility(View.VISIBLE);
+        ll5R3L1.setVisibility(View.VISIBLE);
+        ll5R4L1.setVisibility(View.VISIBLE);
+        ll5R5L1.setVisibility(View.VISIBLE);
+        ll5R6L1.setVisibility(View.VISIBLE);
+        ll5R7L1.setVisibility(View.VISIBLE);
+        ll5R8L1.setVisibility(View.VISIBLE);
+        ll5R9L1.setVisibility(View.VISIBLE);
+    }
+
+    void makeFourteenthRowVisible() {
+        ll5R1L2.setVisibility(View.VISIBLE);
+        ll5R2L2.setVisibility(View.VISIBLE);
+        ll5R3L2.setVisibility(View.VISIBLE);
+        ll5R4L2.setVisibility(View.VISIBLE);
+        ll5R5L2.setVisibility(View.VISIBLE);
+        ll5R6L2.setVisibility(View.VISIBLE);
+        ll5R7L2.setVisibility(View.VISIBLE);
+        ll5R8L2.setVisibility(View.VISIBLE);
+        ll5R9L2.setVisibility(View.VISIBLE);
+    }
+
+    void makeFifteenthRowVisible() {
+        ll5R1L3.setVisibility(View.VISIBLE);
+        ll5R2L3.setVisibility(View.VISIBLE);
+        ll5R3L3.setVisibility(View.VISIBLE);
+        ll5R4L3.setVisibility(View.VISIBLE);
+        ll5R5L3.setVisibility(View.VISIBLE);
+        ll5R6L3.setVisibility(View.VISIBLE);
+        ll5R7L3.setVisibility(View.VISIBLE);
+        ll5R8L3.setVisibility(View.VISIBLE);
+        ll5R9L3.setVisibility(View.VISIBLE);
+    }
+
+    void makeBackgroundWhite(LinearLayout[] linearLayouts) {
+        for (LinearLayout i : linearLayouts) {
+            i.setBackgroundColor(getResources().getColor(R.color.white));
+        }
+        ll1R1.setBackgroundColor(getResources().getColor(R.color.white));
+        ll1R2.setBackgroundColor(getResources().getColor(R.color.white));
+        ll1R3.setBackgroundColor(getResources().getColor(R.color.white));
+        ll1R4.setBackgroundColor(getResources().getColor(R.color.white));
+        ll1R5.setBackgroundColor(getResources().getColor(R.color.white));
+        ll1R6.setBackgroundColor(getResources().getColor(R.color.white));
+        ll1R7.setBackgroundColor(getResources().getColor(R.color.white));
+        ll1R8.setBackgroundColor(getResources().getColor(R.color.white));
+        ll1R9.setBackgroundColor(getResources().getColor(R.color.white));
+
+        ll2R1.setBackgroundColor(getResources().getColor(R.color.white));
+        ll2R2.setBackgroundColor(getResources().getColor(R.color.white));
+        ll2R3.setBackgroundColor(getResources().getColor(R.color.white));
+        ll2R4.setBackgroundColor(getResources().getColor(R.color.white));
+        ll2R5.setBackgroundColor(getResources().getColor(R.color.white));
+        ll2R6.setBackgroundColor(getResources().getColor(R.color.white));
+        ll2R7.setBackgroundColor(getResources().getColor(R.color.white));
+        ll2R8.setBackgroundColor(getResources().getColor(R.color.white));
+        ll2R9.setBackgroundColor(getResources().getColor(R.color.white));
+
+        ll3R1.setBackgroundColor(getResources().getColor(R.color.white));
+        ll3R2.setBackgroundColor(getResources().getColor(R.color.white));
+        ll3R3.setBackgroundColor(getResources().getColor(R.color.white));
+        ll3R4.setBackgroundColor(getResources().getColor(R.color.white));
+        ll3R5.setBackgroundColor(getResources().getColor(R.color.white));
+        ll3R6.setBackgroundColor(getResources().getColor(R.color.white));
+        ll3R7.setBackgroundColor(getResources().getColor(R.color.white));
+        ll3R8.setBackgroundColor(getResources().getColor(R.color.white));
+        ll3R9.setBackgroundColor(getResources().getColor(R.color.white));
+
+        ll4R1.setBackgroundColor(getResources().getColor(R.color.white));
+        ll4R2.setBackgroundColor(getResources().getColor(R.color.white));
+        ll4R3.setBackgroundColor(getResources().getColor(R.color.white));
+        ll4R4.setBackgroundColor(getResources().getColor(R.color.white));
+        ll4R5.setBackgroundColor(getResources().getColor(R.color.white));
+        ll4R6.setBackgroundColor(getResources().getColor(R.color.white));
+        ll4R7.setBackgroundColor(getResources().getColor(R.color.white));
+        ll4R8.setBackgroundColor(getResources().getColor(R.color.white));
+        ll4R9.setBackgroundColor(getResources().getColor(R.color.white));
+
+        ll5R1.setBackgroundColor(getResources().getColor(R.color.white));
+        ll5R2.setBackgroundColor(getResources().getColor(R.color.white));
+        ll5R3.setBackgroundColor(getResources().getColor(R.color.white));
+        ll5R4.setBackgroundColor(getResources().getColor(R.color.white));
+        ll5R5.setBackgroundColor(getResources().getColor(R.color.white));
+        ll5R6.setBackgroundColor(getResources().getColor(R.color.white));
+        ll5R7.setBackgroundColor(getResources().getColor(R.color.white));
+        ll5R8.setBackgroundColor(getResources().getColor(R.color.white));
+        ll5R9.setBackgroundColor(getResources().getColor(R.color.white));
+
     }
 
     void row(SensorEvent sensorEvent) {
         float x = sensorEvent.values[0];
 
-        float space = (Math.abs(calibratedXTop - calibratedXDown)) / 5;
+        float space = (Math.abs(calibratedXTop - calibratedXDown)) / 15;
         Log.i("sabir", "top " + calibratedXTop + " down " + calibratedXDown + " space  " + space);
 
         if (x < calibratedXTop) {
             makeRowsUnVisible();
-            ll1.setVisibility(View.VISIBLE);
-            column(sensorEvent, ll1.getId());
-        }
-        if (x > calibratedXTop && x < (calibratedXTop + space)) {
+            makeFirstRowVisible();
+            column(sensorEvent, ll1R1L1.getId());
+        } else if (x > calibratedXTop && x < (calibratedXTop + space)) {
             makeRowsUnVisible();
-            ll2.setVisibility(View.VISIBLE);
-            column(sensorEvent, ll2.getId());
-        }
-        if (x > (calibratedXTop + space) && x < (calibratedXTop + 2 * space)) {
+            makeSecondRowVisible();
+            column(sensorEvent, ll1R1L2.getId());
+        } else if (x > (calibratedXTop + space) && x < (calibratedXTop + 2 * space)) {
             makeRowsUnVisible();
-            ll3.setVisibility(View.VISIBLE);
-            column(sensorEvent, ll3.getId());
+            makeThirdRowVisible();
+            column(sensorEvent, ll1R1L3.getId());
 
-        }
-        if (x > (calibratedXTop + 2 * space) && x < (calibratedXTop + 3 * space)) {
+        } else if (x > (calibratedXTop + 2 * space) && x < (calibratedXTop + 3 * space)) {
             makeRowsUnVisible();
-            ll4.setVisibility(View.VISIBLE);
-            column(sensorEvent, ll4.getId());
+            makeFourthRowVisible();
+            column(sensorEvent, ll2R1L1.getId());
 
-        }
-        if (x > (calibratedXTop + 3 * space) && x < (calibratedXTop + 4 * space)) {
+        } else if (x > (calibratedXTop + 3 * space) && x < (calibratedXTop + 4 * space)) {
             makeRowsUnVisible();
-            ll5.setVisibility(View.VISIBLE);
-            column(sensorEvent, ll5.getId());
+            makeFifthRowVisible();
+            column(sensorEvent, ll2R1L2.getId());
+        } else if (x > (calibratedXTop + 4 * space) && x < (calibratedXTop + 5 * space)) {
+            makeRowsUnVisible();
+            makeSixthRowVisible();
+            column(sensorEvent, ll2R1L3.getId());
+        } else if (x > (calibratedXTop + 5 * space) && x < (calibratedXTop + 6 * space)) {
+            makeRowsUnVisible();
+            makeSeventhRowVisible();
+            column(sensorEvent, ll3R1L1.getId());
+        } else if (x > (calibratedXTop + 6 * space) && x < (calibratedXTop + 7 * space)) {
+            makeRowsUnVisible();
+            makeEighthRowVisible();
+            column(sensorEvent, ll3R1L2.getId());
+        } else if (x > (calibratedXTop + 7 * space) && x < (calibratedXTop + 8 * space)) {
+            makeRowsUnVisible();
+            makeNinethRowVisible();
+            column(sensorEvent, ll3R1L3.getId());
+        } else if (x > (calibratedXTop + 8 * space) && x < (calibratedXTop + 9 * space)) {
+            makeRowsUnVisible();
+            makeTenthRowVisible();
+            column(sensorEvent, ll4R1L1.getId());
+        } else if (x > (calibratedXTop + 9 * space) && x < (calibratedXTop + 10 * space)) {
+            makeRowsUnVisible();
+            makeEleventhRowVisible();
+            column(sensorEvent, ll4R1L2.getId());
+        } else if (x > (calibratedXTop + 10 * space) && x < (calibratedXTop + 11 * space)) {
+            makeRowsUnVisible();
+            makeTwelfthRowVisible();
+            column(sensorEvent, ll4R1L3.getId());
+        } else if (x > (calibratedXTop + 11 * space) && x < (calibratedXTop + 12 * space)) {
+            makeRowsUnVisible();
+            makeThirteenthRowVisible();
+            column(sensorEvent, ll5R1L1.getId());
+        } else if (x > (calibratedXTop + 12 * space) && x < (calibratedXTop + 13 * space)) {
+            makeRowsUnVisible();
+            makeFourteenthRowVisible();
+            column(sensorEvent, ll5R1L2.getId());
+        } else if (x > (calibratedXTop + 13 * space) && x < (calibratedXTop + 14 * space)) {
+            makeRowsUnVisible();
+            makeFifteenthRowVisible();
+            column(sensorEvent, ll5R1L3.getId());
         }
     }
 
     void makeRowsUnVisible() {
-        im11.setVisibility(View.INVISIBLE);
-        im12.setVisibility(View.INVISIBLE);
-        im13.setVisibility(View.INVISIBLE);
-        im14.setVisibility(View.INVISIBLE);
-        im15.setVisibility(View.INVISIBLE);
-        im16.setVisibility(View.INVISIBLE);
-        im17.setVisibility(View.INVISIBLE);
-        im18.setVisibility(View.INVISIBLE);
-        im19.setVisibility(View.INVISIBLE);
-        im21.setVisibility(View.INVISIBLE);
-        im22.setVisibility(View.INVISIBLE);
-        im23.setVisibility(View.INVISIBLE);
-        im24.setVisibility(View.INVISIBLE);
-        im25.setVisibility(View.INVISIBLE);
-        im26.setVisibility(View.INVISIBLE);
-        im27.setVisibility(View.INVISIBLE);
-        im28.setVisibility(View.INVISIBLE);
-        im29.setVisibility(View.INVISIBLE);
-        im31.setVisibility(View.INVISIBLE);
-        im32.setVisibility(View.INVISIBLE);
-        im33.setVisibility(View.INVISIBLE);
-        im34.setVisibility(View.INVISIBLE);
-        im35.setVisibility(View.INVISIBLE);
-        im36.setVisibility(View.INVISIBLE);
-        im37.setVisibility(View.INVISIBLE);
-        im38.setVisibility(View.INVISIBLE);
-        im39.setVisibility(View.INVISIBLE);
-        im41.setVisibility(View.INVISIBLE);
-        im42.setVisibility(View.INVISIBLE);
-        im43.setVisibility(View.INVISIBLE);
-        im44.setVisibility(View.INVISIBLE);
-        im45.setVisibility(View.INVISIBLE);
-        im46.setVisibility(View.INVISIBLE);
-        im47.setVisibility(View.INVISIBLE);
-        im48.setVisibility(View.INVISIBLE);
-        im49.setVisibility(View.INVISIBLE);
-        im51.setVisibility(View.INVISIBLE);
-        im52.setVisibility(View.INVISIBLE);
-        im53.setVisibility(View.INVISIBLE);
-        im54.setVisibility(View.INVISIBLE);
-        im55.setVisibility(View.INVISIBLE);
-        im56.setVisibility(View.INVISIBLE);
-        im57.setVisibility(View.INVISIBLE);
-        im58.setVisibility(View.INVISIBLE);
-        im59.setVisibility(View.INVISIBLE);
 
+        ll1R1L1.setVisibility(View.INVISIBLE);
+        ll1R2L1.setVisibility(View.INVISIBLE);
+        ll1R3L1.setVisibility(View.INVISIBLE);
+        ll1R4L1.setVisibility(View.INVISIBLE);
+        ll1R5L1.setVisibility(View.INVISIBLE);
+        ll1R6L1.setVisibility(View.INVISIBLE);
+        ll1R7L1.setVisibility(View.INVISIBLE);
+        ll1R8L1.setVisibility(View.INVISIBLE);
+        ll1R9L1.setVisibility(View.INVISIBLE);
 
-        /*ll1.setVisibility(View.INVISIBLE);
-        ll2.setVisibility(View.INVISIBLE);
-        ll3.setVisibility(View.INVISIBLE);
-        ll4.setVisibility(View.INVISIBLE);
-        ll5.setVisibility(View.INVISIBLE);*/
+        ll1R1L2.setVisibility(View.INVISIBLE);
+        ll1R2L2.setVisibility(View.INVISIBLE);
+        ll1R3L2.setVisibility(View.INVISIBLE);
+        ll1R4L2.setVisibility(View.INVISIBLE);
+        ll1R5L2.setVisibility(View.INVISIBLE);
+        ll1R6L2.setVisibility(View.INVISIBLE);
+        ll1R7L2.setVisibility(View.INVISIBLE);
+        ll1R8L2.setVisibility(View.INVISIBLE);
+        ll1R9L2.setVisibility(View.INVISIBLE);
+
+        ll1R1L3.setVisibility(View.INVISIBLE);
+        ll1R2L3.setVisibility(View.INVISIBLE);
+        ll1R3L3.setVisibility(View.INVISIBLE);
+        ll1R4L3.setVisibility(View.INVISIBLE);
+        ll1R5L3.setVisibility(View.INVISIBLE);
+        ll1R6L3.setVisibility(View.INVISIBLE);
+        ll1R7L3.setVisibility(View.INVISIBLE);
+        ll1R8L3.setVisibility(View.INVISIBLE);
+        ll1R9L3.setVisibility(View.INVISIBLE);
+
+        ll2R1L1.setVisibility(View.INVISIBLE);
+        ll2R2L1.setVisibility(View.INVISIBLE);
+        ll2R3L1.setVisibility(View.INVISIBLE);
+        ll2R4L1.setVisibility(View.INVISIBLE);
+        ll2R5L1.setVisibility(View.INVISIBLE);
+        ll2R6L1.setVisibility(View.INVISIBLE);
+        ll2R7L1.setVisibility(View.INVISIBLE);
+        ll2R8L1.setVisibility(View.INVISIBLE);
+        ll2R9L1.setVisibility(View.INVISIBLE);
+
+        ll2R1L2.setVisibility(View.INVISIBLE);
+        ll2R2L2.setVisibility(View.INVISIBLE);
+        ll2R3L2.setVisibility(View.INVISIBLE);
+        ll2R4L2.setVisibility(View.INVISIBLE);
+        ll2R5L2.setVisibility(View.INVISIBLE);
+        ll2R6L2.setVisibility(View.INVISIBLE);
+        ll2R7L2.setVisibility(View.INVISIBLE);
+        ll2R8L2.setVisibility(View.INVISIBLE);
+        ll2R9L2.setVisibility(View.INVISIBLE);
+
+        ll2R1L3.setVisibility(View.INVISIBLE);
+        ll2R2L3.setVisibility(View.INVISIBLE);
+        ll2R3L3.setVisibility(View.INVISIBLE);
+        ll2R4L3.setVisibility(View.INVISIBLE);
+        ll2R5L3.setVisibility(View.INVISIBLE);
+        ll2R6L3.setVisibility(View.INVISIBLE);
+        ll2R7L3.setVisibility(View.INVISIBLE);
+        ll2R8L3.setVisibility(View.INVISIBLE);
+        ll2R9L3.setVisibility(View.INVISIBLE);
+
+        ll3R1L1.setVisibility(View.INVISIBLE);
+        ll3R2L1.setVisibility(View.INVISIBLE);
+        ll3R3L1.setVisibility(View.INVISIBLE);
+        ll3R4L1.setVisibility(View.INVISIBLE);
+        ll3R5L1.setVisibility(View.INVISIBLE);
+        ll3R6L1.setVisibility(View.INVISIBLE);
+        ll3R7L1.setVisibility(View.INVISIBLE);
+        ll3R8L1.setVisibility(View.INVISIBLE);
+        ll3R9L1.setVisibility(View.INVISIBLE);
+
+        ll3R1L2.setVisibility(View.INVISIBLE);
+        ll3R2L2.setVisibility(View.INVISIBLE);
+        ll3R3L2.setVisibility(View.INVISIBLE);
+        ll3R4L2.setVisibility(View.INVISIBLE);
+        ll3R5L2.setVisibility(View.INVISIBLE);
+        ll3R6L2.setVisibility(View.INVISIBLE);
+        ll3R7L2.setVisibility(View.INVISIBLE);
+        ll3R8L2.setVisibility(View.INVISIBLE);
+        ll3R9L2.setVisibility(View.INVISIBLE);
+
+        ll3R1L3.setVisibility(View.INVISIBLE);
+        ll3R2L3.setVisibility(View.INVISIBLE);
+        ll3R3L3.setVisibility(View.INVISIBLE);
+        ll3R4L3.setVisibility(View.INVISIBLE);
+        ll3R5L3.setVisibility(View.INVISIBLE);
+        ll3R6L3.setVisibility(View.INVISIBLE);
+        ll3R7L3.setVisibility(View.INVISIBLE);
+        ll3R8L3.setVisibility(View.INVISIBLE);
+        ll3R9L3.setVisibility(View.INVISIBLE);
+
+        ll4R1L1.setVisibility(View.INVISIBLE);
+        ll4R2L1.setVisibility(View.INVISIBLE);
+        ll4R3L1.setVisibility(View.INVISIBLE);
+        ll4R4L1.setVisibility(View.INVISIBLE);
+        ll4R5L1.setVisibility(View.INVISIBLE);
+        ll4R6L1.setVisibility(View.INVISIBLE);
+        ll4R7L1.setVisibility(View.INVISIBLE);
+        ll4R8L1.setVisibility(View.INVISIBLE);
+        ll4R9L1.setVisibility(View.INVISIBLE);
+
+        ll4R1L2.setVisibility(View.INVISIBLE);
+        ll4R2L2.setVisibility(View.INVISIBLE);
+        ll4R3L2.setVisibility(View.INVISIBLE);
+        ll4R4L2.setVisibility(View.INVISIBLE);
+        ll4R5L2.setVisibility(View.INVISIBLE);
+        ll4R6L2.setVisibility(View.INVISIBLE);
+        ll4R7L2.setVisibility(View.INVISIBLE);
+        ll4R8L2.setVisibility(View.INVISIBLE);
+        ll4R9L2.setVisibility(View.INVISIBLE);
+
+        ll4R1L3.setVisibility(View.INVISIBLE);
+        ll4R2L3.setVisibility(View.INVISIBLE);
+        ll4R3L3.setVisibility(View.INVISIBLE);
+        ll4R4L3.setVisibility(View.INVISIBLE);
+        ll4R5L3.setVisibility(View.INVISIBLE);
+        ll4R6L3.setVisibility(View.INVISIBLE);
+        ll4R7L3.setVisibility(View.INVISIBLE);
+        ll4R8L3.setVisibility(View.INVISIBLE);
+        ll4R9L3.setVisibility(View.INVISIBLE);
+
+        ll5R1L1.setVisibility(View.INVISIBLE);
+        ll5R2L1.setVisibility(View.INVISIBLE);
+        ll5R3L1.setVisibility(View.INVISIBLE);
+        ll5R4L1.setVisibility(View.INVISIBLE);
+        ll5R5L1.setVisibility(View.INVISIBLE);
+        ll5R6L1.setVisibility(View.INVISIBLE);
+        ll5R7L1.setVisibility(View.INVISIBLE);
+        ll5R8L1.setVisibility(View.INVISIBLE);
+        ll5R9L1.setVisibility(View.INVISIBLE);
+
+        ll5R1L2.setVisibility(View.INVISIBLE);
+        ll5R2L2.setVisibility(View.INVISIBLE);
+        ll5R3L2.setVisibility(View.INVISIBLE);
+        ll5R4L2.setVisibility(View.INVISIBLE);
+        ll5R5L2.setVisibility(View.INVISIBLE);
+        ll5R6L2.setVisibility(View.INVISIBLE);
+        ll5R7L2.setVisibility(View.INVISIBLE);
+        ll5R8L2.setVisibility(View.INVISIBLE);
+        ll5R9L2.setVisibility(View.INVISIBLE);
+
+        ll5R1L3.setVisibility(View.INVISIBLE);
+        ll5R2L3.setVisibility(View.INVISIBLE);
+        ll5R3L3.setVisibility(View.INVISIBLE);
+        ll5R4L3.setVisibility(View.INVISIBLE);
+        ll5R5L3.setVisibility(View.INVISIBLE);
+        ll5R6L3.setVisibility(View.INVISIBLE);
+        ll5R7L3.setVisibility(View.INVISIBLE);
+        ll5R8L3.setVisibility(View.INVISIBLE);
+        ll5R9L3.setVisibility(View.INVISIBLE);
     }
 
-    void makeColumnsUnVisible() {
-        if (ll1.getVisibility() == View.VISIBLE) {
-            im11.setVisibility(View.INVISIBLE);
-            im12.setVisibility(View.INVISIBLE);
-            im13.setVisibility(View.INVISIBLE);
-            im14.setVisibility(View.INVISIBLE);
-            im15.setVisibility(View.INVISIBLE);
-            im16.setVisibility(View.INVISIBLE);
-            im17.setVisibility(View.INVISIBLE);
-            im18.setVisibility(View.INVISIBLE);
-            im19.setVisibility(View.INVISIBLE);
+    void makeColumnsUnVisible(ImageView[] imageViews) {
 
-        } else if (ll2.getVisibility() == View.VISIBLE) {
-            im21.setVisibility(View.INVISIBLE);
-            im22.setVisibility(View.INVISIBLE);
-            im23.setVisibility(View.INVISIBLE);
-            im24.setVisibility(View.INVISIBLE);
-            im25.setVisibility(View.INVISIBLE);
-            im26.setVisibility(View.INVISIBLE);
-            im27.setVisibility(View.INVISIBLE);
-            im28.setVisibility(View.INVISIBLE);
-            im29.setVisibility(View.INVISIBLE);
-
-        } else if (ll3.getVisibility() == View.VISIBLE) {
-            im31.setVisibility(View.INVISIBLE);
-            im32.setVisibility(View.INVISIBLE);
-            im33.setVisibility(View.INVISIBLE);
-            im34.setVisibility(View.INVISIBLE);
-            im35.setVisibility(View.INVISIBLE);
-            im36.setVisibility(View.INVISIBLE);
-            im37.setVisibility(View.INVISIBLE);
-            im38.setVisibility(View.INVISIBLE);
-            im39.setVisibility(View.INVISIBLE);
-
-        } else if (ll4.getVisibility() == View.VISIBLE) {
-            im41.setVisibility(View.INVISIBLE);
-            im42.setVisibility(View.INVISIBLE);
-            im43.setVisibility(View.INVISIBLE);
-            im44.setVisibility(View.INVISIBLE);
-            im45.setVisibility(View.INVISIBLE);
-            im46.setVisibility(View.INVISIBLE);
-            im47.setVisibility(View.INVISIBLE);
-            im48.setVisibility(View.INVISIBLE);
-            im49.setVisibility(View.INVISIBLE);
-
-        } else if (ll5.getVisibility() == View.VISIBLE) {
-            im51.setVisibility(View.INVISIBLE);
-            im52.setVisibility(View.INVISIBLE);
-            im53.setVisibility(View.INVISIBLE);
-            im54.setVisibility(View.INVISIBLE);
-            im55.setVisibility(View.INVISIBLE);
-            im56.setVisibility(View.INVISIBLE);
-            im57.setVisibility(View.INVISIBLE);
-            im58.setVisibility(View.INVISIBLE);
-            im59.setVisibility(View.INVISIBLE);
-
+        for (ImageView i : imageViews) {
+            i.setVisibility(View.INVISIBLE);
         }
     }
 
-    void countIsWordWrite(final int resorces, int cancelOrStart) {
+    void countShouldWordWrite(final int resorces, int cancelOrStart) {
         if (resorces == res) {
             return;
         } else if (resorces != res) {
@@ -913,7 +2918,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
             res = resorces;
 
-            textCounter = new CountDownTimer(2000, 1000) {
+            textCounter = new CountDownTimer(1200, 1000) {
 
                 @Override
                 public void onTick(long l) {
@@ -933,185 +2938,183 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if (res2 == resorces) {
             return;
         }
-        if (resorces == ll11.getId()) {
+        if (resorces == ll1R1.getId()) {
             res2 = resorces;
             arraylistText.add("0");
             writeText();
-        } else if (resorces == ll12.getId()) {
+        } else if (resorces == ll1R2.getId()) {
             res2 = resorces;
             arraylistText.add("1");
             writeText();
 
-        } else if (resorces == ll13.getId()) {
+        } else if (resorces == ll1R3.getId()) {
             res2 = resorces;
             arraylistText.add("2");
             writeText();
-        } else if (resorces == ll14.getId()) {
+        } else if (resorces == ll1R4.getId()) {
             res2 = resorces;
             arraylistText.add("3");
             writeText();
-        } else if (resorces == ll15.getId()) {
+        } else if (resorces == ll1R5.getId()) {
             res2 = resorces;
             arraylistText.add("4");
             writeText();
-        } else if (resorces == ll16.getId()) {
+        } else if (resorces == ll1R6.getId()) {
             res2 = resorces;
             arraylistText.add("5");
             writeText();
-        } else if (resorces == ll17.getId()) {
+        } else if (resorces == ll1R7.getId()) {
             res2 = resorces;
             arraylistText.add("6");
             writeText();
-        } else if (resorces == ll18.getId()) {
+        } else if (resorces == ll1R8.getId()) {
             res2 = resorces;
             arraylistText.add("7");
             writeText();
-        } else if (resorces == ll19.getId()) {
+        } else if (resorces == ll1R9.getId()) {
             res2 = resorces;
             arraylistText.add("8");
             writeText();
-        } else if (resorces == ll21.getId()) {
+        } else if (resorces == ll2R1.getId()) {
             res2 = resorces;
             arraylistText.add("9");
             writeText();
-        } else if (resorces == ll22.getId()) {
+        } else if (resorces == ll2R2.getId()) {
             res2 = resorces;
             arraylistText.add("a");
             writeText();
-        } else if (resorces == ll23.getId()) {
+        } else if (resorces == ll2R3.getId()) {
             res2 = resorces;
             arraylistText.add("b");
             writeText();
-        } else if (resorces == ll24.getId()) {
+        } else if (resorces == ll2R4.getId()) {
             res2 = resorces;
             arraylistText.add("c");
             writeText();
-        } else if (resorces == ll25.getId()) {
+        } else if (resorces == ll2R5.getId()) {
             res2 = resorces;
             arraylistText.add("ç");
             writeText();
-        } else if (resorces == ll26.getId()) {
+        } else if (resorces == ll2R6.getId()) {
             res2 = resorces;
             arraylistText.add("d");
             writeText();
-        } else if (resorces == ll27.getId()) {
+        } else if (resorces == ll2R7.getId()) {
             res2 = resorces;
             arraylistText.add("e");
             writeText();
-        } else if (resorces == ll28.getId()) {
+        } else if (resorces == ll2R8.getId()) {
             res2 = resorces;
             arraylistText.add("f");
             writeText();
-        } else if (resorces == ll29.getId()) {
+        } else if (resorces == ll2R9.getId()) {
             res2 = resorces;
             arraylistText.add("g");
             writeText();
-        } else if (resorces == ll31.getId()) {
+        } else if (resorces == ll3R1.getId()) {
             res2 = resorces;
             arraylistText.add("ğ");
             writeText();
-        } else if (resorces == ll32.getId()) {
+        } else if (resorces == ll3R2.getId()) {
             res2 = resorces;
             arraylistText.add("h");
             writeText();
-        } else if (resorces == ll33.getId()) {
+        } else if (resorces == ll3R3.getId()) {
             res2 = resorces;
             arraylistText.add("ı");
             writeText();
-        } else if (resorces == ll34.getId()) {
+        } else if (resorces == ll3R4.getId()) {
             res2 = resorces;
             arraylistText.add("i");
             writeText();
-        } else if (resorces == ll35.getId()) {
+        } else if (resorces == ll3R5.getId()) {
             res2 = resorces;
             arraylistText.add("j");
             writeText();
-        } else if (resorces == ll36.getId()) {
+        } else if (resorces == ll3R6.getId()) {
             res2 = resorces;
             arraylistText.add("k");
             writeText();
-        } else if (resorces == ll37.getId()) {
+        } else if (resorces == ll3R7.getId()) {
             res2 = resorces;
             arraylistText.add("l");
             writeText();
-        } else if (resorces == ll38.getId()) {
+        } else if (resorces == ll3R8.getId()) {
             res2 = resorces;
-            addNewLine = true;
+            arraylistText.add("");
             writeText();
-        } else if (resorces == ll39.getId()) {
+        } else if (resorces == ll3R9.getId()) {
             res2 = resorces;
             finish();
-            /*arraylistText.add("za");
-            writeText();*/
-        } else if (resorces == ll41.getId()) {
+        } else if (resorces == ll4R1.getId()) {
             res2 = resorces;
             arraylistText.add("m");
             writeText();
-        } else if (resorces == ll42.getId()) {
+        } else if (resorces == ll4R2.getId()) {
             res2 = resorces;
             arraylistText.add("n");
             writeText();
-        } else if (resorces == ll43.getId()) {
+        } else if (resorces == ll4R3.getId()) {
             res2 = resorces;
             arraylistText.add("o");
             writeText();
-        } else if (resorces == ll44.getId()) {
+        } else if (resorces == ll4R4.getId()) {
             res2 = resorces;
             arraylistText.add("ö");
             writeText();
-        } else if (resorces == ll45.getId()) {
+        } else if (resorces == ll4R5.getId()) {
             res2 = resorces;
             arraylistText.add("p");
             writeText();
-        } else if (resorces == ll46.getId()) {
+        } else if (resorces == ll4R6.getId()) {
             res2 = resorces;
             arraylistText.add("r");
             writeText();
-        } else if (resorces == ll47.getId()) {
+        } else if (resorces == ll4R7.getId()) {
             res2 = resorces;
             arraylistText.add("s");
             writeText();
-        } else if (resorces == ll48.getId()) {
+        } else if (resorces == ll4R8.getId()) {
             res2 = resorces;
             arraylistText.add("  ");
             writeText();
-        } else if (resorces == ll49.getId()) {
+        } else if (resorces == ll4R9.getId()) {
             res2 = resorces;
             arraylistText.remove(arraylistText.size() - 1);
             writeText();
-        } else if (resorces == ll51.getId()) {
+        } else if (resorces == ll5R1.getId()) {
             res2 = resorces;
             arraylistText.add("ş");
             writeText();
-        } else if (resorces == ll52.getId()) {
+        } else if (resorces == ll5R2.getId()) {
             res2 = resorces;
             arraylistText.add("t");
             writeText();
-        } else if (resorces == ll53.getId()) {
+        } else if (resorces == ll5R3.getId()) {
             res2 = resorces;
             arraylistText.add("u");
             writeText();
-        } else if (resorces == ll54.getId()) {
+        } else if (resorces == ll5R4.getId()) {
             res2 = resorces;
             arraylistText.add("ü");
             writeText();
-        } else if (resorces == ll55.getId()) {
+        } else if (resorces == ll5R5.getId()) {
             res2 = resorces;
             arraylistText.add("v");
             writeText();
-        } else if (resorces == ll56.getId()) {
+        } else if (resorces == ll5R6.getId()) {
             res2 = resorces;
             arraylistText.add("y");
             writeText();
-        } else if (resorces == ll57.getId()) {
+        } else if (resorces == ll5R7.getId()) {
             res2 = resorces;
             arraylistText.add("z");
             writeText();
-        } else if (resorces == ll58.getId()) {
+        } else if (resorces == ll5R8.getId()) {
             res2 = resorces;
             arraylistText.add(".");
             writeText();
-        } else if (resorces == ll59.getId()) {
+        } else if (resorces == ll5R9.getId()) {
             res2 = resorces;
             isSpeak = true;
             writeText();
@@ -1119,21 +3122,19 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     void writeText() {
+        ArrayList<String> split = new ArrayList<>();
         if (arraylistText.size() != 0) {
             String string = "";
             for (int i = 0; i < arraylistText.size(); i++) {
                 string += arraylistText.get(i);
             }
-            /*if (addNewLine) {
-                addNewLine = false;
-                string += '\n';
-            }*/
+
+            textTv.setText(" >> : " + string);
+
             if (isSpeak) {
-                textTv.setText(" >> : " + string);
                 speak(string);
                 isSpeak = false;
             }
-            textTv.setText(" >> : " + string);
 
         } else {
             textTv.setText(">> : birşeyler yazın...");
@@ -1142,108 +3143,108 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     void listenBackgrounds() {
-        if (((ColorDrawable) ll11.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll11.getId(), 1);
-        } else if (((ColorDrawable) ll12.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll12.getId(), 1);
-        } else if (((ColorDrawable) ll13.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll13.getId(), 1);
-        } else if (((ColorDrawable) ll14.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll14.getId(), 1);
-        } else if (((ColorDrawable) ll15.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll15.getId(), 1);
-        } else if (((ColorDrawable) ll16.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll16.getId(), 1);
-        } else if (((ColorDrawable) ll17.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll17.getId(), 1);
-        } else if (((ColorDrawable) ll18.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll18.getId(), 1);
-        } else if (((ColorDrawable) ll19.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll19.getId(), 1);
+        if (((ColorDrawable) ll1R1.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll1R1.getId(), 1);
+        } else if (((ColorDrawable) ll1R2.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll1R2.getId(), 1);
+        } else if (((ColorDrawable) ll1R3.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll1R3.getId(), 1);
+        } else if (((ColorDrawable) ll1R4.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll1R4.getId(), 1);
+        } else if (((ColorDrawable) ll1R5.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll1R5.getId(), 1);
+        } else if (((ColorDrawable) ll1R6.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll1R6.getId(), 1);
+        } else if (((ColorDrawable) ll1R7.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll1R7.getId(), 1);
+        } else if (((ColorDrawable) ll1R8.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll1R8.getId(), 1);
+        } else if (((ColorDrawable) ll1R9.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll1R9.getId(), 1);
         }
 
 
-        if (((ColorDrawable) ll21.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll21.getId(), 1);
-        } else if (((ColorDrawable) ll22.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll22.getId(), 1);
-        } else if (((ColorDrawable) ll23.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll23.getId(), 1);
-        } else if (((ColorDrawable) ll24.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll24.getId(), 1);
-        } else if (((ColorDrawable) ll25.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll25.getId(), 1);
-        } else if (((ColorDrawable) ll26.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll26.getId(), 1);
-        } else if (((ColorDrawable) ll27.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll27.getId(), 1);
-        } else if (((ColorDrawable) ll28.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll28.getId(), 1);
-        } else if (((ColorDrawable) ll29.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll29.getId(), 1);
+        if (((ColorDrawable) ll2R1.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll2R1.getId(), 1);
+        } else if (((ColorDrawable) ll2R2.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll2R2.getId(), 1);
+        } else if (((ColorDrawable) ll2R3.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll2R3.getId(), 1);
+        } else if (((ColorDrawable) ll2R4.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll2R4.getId(), 1);
+        } else if (((ColorDrawable) ll2R5.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll2R5.getId(), 1);
+        } else if (((ColorDrawable) ll2R6.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll2R6.getId(), 1);
+        } else if (((ColorDrawable) ll2R7.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll2R7.getId(), 1);
+        } else if (((ColorDrawable) ll2R8.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll2R8.getId(), 1);
+        } else if (((ColorDrawable) ll2R9.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll2R9.getId(), 1);
         }
 
 
-        if (((ColorDrawable) ll31.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll31.getId(), 1);
-        } else if (((ColorDrawable) ll32.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll32.getId(), 1);
-        } else if (((ColorDrawable) ll33.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll33.getId(), 1);
-        } else if (((ColorDrawable) ll34.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll34.getId(), 1);
-        } else if (((ColorDrawable) ll35.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll35.getId(), 1);
-        } else if (((ColorDrawable) ll36.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll36.getId(), 1);
-        } else if (((ColorDrawable) ll37.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll37.getId(), 1);
-        } else if (((ColorDrawable) ll38.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll38.getId(), 1);
-        } else if (((ColorDrawable) ll39.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll39.getId(), 1);
+        if (((ColorDrawable) ll3R1.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll3R1.getId(), 1);
+        } else if (((ColorDrawable) ll3R2.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll3R2.getId(), 1);
+        } else if (((ColorDrawable) ll3R3.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll3R3.getId(), 1);
+        } else if (((ColorDrawable) ll3R4.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll3R4.getId(), 1);
+        } else if (((ColorDrawable) ll3R5.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll3R5.getId(), 1);
+        } else if (((ColorDrawable) ll3R6.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll3R6.getId(), 1);
+        } else if (((ColorDrawable) ll3R7.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll3R7.getId(), 1);
+        } else if (((ColorDrawable) ll3R8.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll3R8.getId(), 1);
+        } else if (((ColorDrawable) ll3R9.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll3R9.getId(), 1);
         }
 
 
-        if (((ColorDrawable) ll41.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll41.getId(), 1);
-        } else if (((ColorDrawable) ll42.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll42.getId(), 1);
-        } else if (((ColorDrawable) ll43.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll43.getId(), 1);
-        } else if (((ColorDrawable) ll44.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll44.getId(), 1);
-        } else if (((ColorDrawable) ll45.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll45.getId(), 1);
-        } else if (((ColorDrawable) ll46.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll46.getId(), 1);
-        } else if (((ColorDrawable) ll47.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll47.getId(), 1);
-        } else if (((ColorDrawable) ll48.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll48.getId(), 1);
-        } else if (((ColorDrawable) ll49.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll49.getId(), 1);
+        if (((ColorDrawable) ll4R1.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll4R1.getId(), 1);
+        } else if (((ColorDrawable) ll4R2.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll4R2.getId(), 1);
+        } else if (((ColorDrawable) ll4R3.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll4R3.getId(), 1);
+        } else if (((ColorDrawable) ll4R4.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll4R4.getId(), 1);
+        } else if (((ColorDrawable) ll4R5.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll4R5.getId(), 1);
+        } else if (((ColorDrawable) ll4R6.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll4R6.getId(), 1);
+        } else if (((ColorDrawable) ll4R7.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll4R7.getId(), 1);
+        } else if (((ColorDrawable) ll4R8.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll4R8.getId(), 1);
+        } else if (((ColorDrawable) ll4R9.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll4R9.getId(), 1);
         }
 
 
-        if (((ColorDrawable) ll51.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll51.getId(), 1);
-        } else if (((ColorDrawable) ll52.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll52.getId(), 1);
-        } else if (((ColorDrawable) ll53.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll53.getId(), 1);
-        } else if (((ColorDrawable) ll54.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll54.getId(), 1);
-        } else if (((ColorDrawable) ll55.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll55.getId(), 1);
-        } else if (((ColorDrawable) ll56.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll56.getId(), 1);
-        } else if (((ColorDrawable) ll57.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll57.getId(), 1);
-        } else if (((ColorDrawable) ll58.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll58.getId(), 1);
-        } else if (((ColorDrawable) ll59.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
-            countIsWordWrite(ll59.getId(), 1);
+        if (((ColorDrawable) ll5R1.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll5R1.getId(), 1);
+        } else if (((ColorDrawable) ll5R2.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll5R2.getId(), 1);
+        } else if (((ColorDrawable) ll5R3.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll5R3.getId(), 1);
+        } else if (((ColorDrawable) ll5R4.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll5R4.getId(), 1);
+        } else if (((ColorDrawable) ll5R5.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll5R5.getId(), 1);
+        } else if (((ColorDrawable) ll5R6.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll5R6.getId(), 1);
+        } else if (((ColorDrawable) ll5R7.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll5R7.getId(), 1);
+        } else if (((ColorDrawable) ll5R8.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll5R8.getId(), 1);
+        } else if (((ColorDrawable) ll5R9.getBackground()).getColor() == getResources().getColor(R.color.pairblue)) {
+            countShouldWordWrite(ll5R9.getId(), 1);
         }
 
 
@@ -1262,9 +3263,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        textToSpeech.stop();
+        textToSpeech.shutdown();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         textToSpeech.stop();
         textToSpeech.shutdown();
     }
+
 }
