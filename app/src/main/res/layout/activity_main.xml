@@ -3642,7 +3642,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="ÇIK"
+                    android:text="SİL"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -4841,7 +4841,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="SİL"
+                    android:text="SES"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -6040,7 +6040,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="SES"
+                    android:text="ÇIK"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 

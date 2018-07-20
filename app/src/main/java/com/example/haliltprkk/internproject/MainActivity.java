@@ -3045,7 +3045,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             writeText();
         } else if (resorces == ll3R9.getId()) {
             res2 = resorces;
-            finish();
+            arraylistText.remove(arraylistText.size() - 1);
+            writeText();
         } else if (resorces == ll4R1.getId()) {
             res2 = resorces;
             arraylistText.add("m");
@@ -3080,7 +3081,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             writeText();
         } else if (resorces == ll4R9.getId()) {
             res2 = resorces;
-            arraylistText.remove(arraylistText.size() - 1);
+            isSpeak = true;
             writeText();
         } else if (resorces == ll5R1.getId()) {
             res2 = resorces;
@@ -3116,8 +3117,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             writeText();
         } else if (resorces == ll5R9.getId()) {
             res2 = resorces;
-            isSpeak = true;
-            writeText();
+            finish();
         }
     }
 
