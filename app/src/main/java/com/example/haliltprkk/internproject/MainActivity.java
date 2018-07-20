@@ -7,6 +7,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -1212,6 +1213,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     RelativeLayout ll5R9;
     @BindView(R.id.text_tv)
     TextView textTv;
+    @BindView(R.id.a1_tv)
+    TextView a1Tv;
+    @BindView(R.id.a2_tv)
+    TextView a2Tv;
+    @BindView(R.id.a3_tv)
+    TextView a3Tv;
 
     private SensorManager sensorManager;
     private Sensor accelerometerSensor;
@@ -1222,7 +1229,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     float calibratedXLeft = 0, calibratedYLeft = 0, calibratedZLeft = 0;
     float realX = 0, realY = 0, realZ = 0;
     ArrayList<String> arraylistText = new ArrayList<>();
-    CountDownTimer textCounter;
+    CountDownTimer textCounter, textCounter2;
     int res = 0, res2 = 0;
     boolean addNewLine = false, isSpeak = false;
     int step = 0;
@@ -1232,6 +1239,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     ProgressBar progressBar;
     TextToSpeech textToSpeech;
     int result;
+    float centerX = 0, centerY = 0, centerZ = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -1269,14 +1277,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         detailsTv = (TextView) view.findViewById(R.id.dialog_details_tv);
         progressBar = (ProgressBar) view.findViewById(R.id.dialog_pb);
 
-        countDownTimer = new CountDownTimer(7000, 1000) {
+        countDownTimer = new CountDownTimer(6000, 1000) {
             public void onTick(long millisUntilFinished) {
 
                 counterTv.setText(millisUntilFinished / 1000 + "");
             }
 
             public void onFinish() {
-                step = ++step;
+                // step = ++step;
                 control(step);
             }
         };
@@ -1285,6 +1293,27 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     public void control(int step) {
+        centerX = realX;
+        centerY = realY;
+        centerZ = realZ;
+
+        calibratedXTop = centerX - (float) 1.5;
+        calibratedYTop = centerY + 1;
+        calibratedZTop = centerZ + 1;
+
+        calibratedXDown = centerX + (float) 1.5;
+        calibratedYDown = centerY - 1;
+        calibratedZDown = centerZ - 1;
+
+        calibratedXRight = centerX + 1;
+        calibratedYRight = centerY + (float) 3;
+        calibratedZRight = centerZ + 1;
+
+        calibratedXLeft = centerX - 1;
+        calibratedYLeft = centerY - (float) 3;
+        calibratedZLeft = centerZ - 1;
+        dialog.dismiss();
+/*
         if (step == 1) {
             calibratedXTop = realX;
             calibratedYTop = realY;
@@ -1316,7 +1345,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             detailsTv.setText("TAMAMLANDI");
             waitt(2000);
         }
-
+*/
     }
 
     public void waitt(int time) {
@@ -1352,6 +1381,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         realX = sensorEvent.values[0];
         realY = sensorEvent.values[1];
         realZ = sensorEvent.values[2];
+        a1Tv.setText("x : " + (int) realX);
+        a2Tv.setText("y : " + (int) realY);
+        a3Tv.setText("z : " + (int) realZ);
+
         // xCoordinateTextView.setText((int) sensorEvent.values[0] + ""); ////"" + String.format("%.01f", sensorEvent.values[0]));
         //yCoordinateTextView.setText((int) sensorEvent.values[1] + "");////"" + String.format("%.01f", sensorEvent.values[1]));
         //zCoordinateTextView.setText((int) sensorEvent.values[2] + "");////"" + String.format("%.01f", sensorEvent.values[2]));
@@ -2909,6 +2942,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     void countShouldWordWrite(final int resorces, int cancelOrStart) {
+
         if (resorces == res) {
             return;
         } else if (resorces != res) {

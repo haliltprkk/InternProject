@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:text="Kendinizi rahatsız etmiyecek şekilde yukarı bakın"
+        android:text="Ortaya noktaya bakın"
         android:textSize="16sp" />
 
     <ProgressBar

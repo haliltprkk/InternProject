@@ -48,6 +48,35 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/y_coordinate_text_view" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/a1_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="x:" />
+
+            <TextView
+                android:id="@+id/a2_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="y:" />
+
+            <TextView
+                android:id="@+id/a3_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="z:" />
+        </LinearLayout>
+
     </RelativeLayout>
 
     <LinearLayout
