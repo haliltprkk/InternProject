@@ -1223,15 +1223,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private SensorManager sensorManager;
     private Sensor accelerometerSensor;
     DecimalFormat df = new DecimalFormat();
-    float calibratedXTop = 0, calibratedYTop = 0, calibratedZTop = 0;
-    float calibratedXDown = 0, calibratedYDown = 0, calibratedZDown = 0;
-    float calibratedXRight = 0, calibratedYRight = 0, calibratedZRight = 0;
-    float calibratedXLeft = 0, calibratedYLeft = 0, calibratedZLeft = 0;
+    float calibratedXTop = 0, calibratedYTop = 0;
+    float calibratedXDown = 0, calibratedYDown = 0;
+    float calibratedXRight = 0, calibratedYRight = 0;
+    float calibratedXLeft = 0, calibratedYLeft = 0;
     float realX = 0, realY = 0, realZ = 0;
     ArrayList<String> arraylistText = new ArrayList<>();
-    CountDownTimer textCounter, textCounter2;
+    CountDownTimer textCounter;
     int res = 0, res2 = 0;
-    boolean addNewLine = false, isSpeak = false;
+    boolean isSpeak = false;
     int step = 0;
     TextView detailsTv;
     CountDownTimer countDownTimer;
@@ -1239,7 +1239,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     ProgressBar progressBar;
     TextToSpeech textToSpeech;
     int result;
-    float centerX = 0, centerY = 0, centerZ = 0;
+    float centerX = 0, centerY = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -1284,7 +1284,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
 
             public void onFinish() {
-                // step = ++step;
                 control(step);
             }
         };
@@ -1295,57 +1294,21 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void control(int step) {
         centerX = realX;
         centerY = realY;
-        centerZ = realZ;
 
         calibratedXTop = centerX - (float) 1.5;
         calibratedYTop = centerY + 1;
-        calibratedZTop = centerZ + 1;
 
         calibratedXDown = centerX + (float) 1.5;
         calibratedYDown = centerY - 1;
-        calibratedZDown = centerZ - 1;
 
         calibratedXRight = centerX + 1;
         calibratedYRight = centerY + (float) 3;
-        calibratedZRight = centerZ + 1;
 
         calibratedXLeft = centerX - 1;
         calibratedYLeft = centerY - (float) 3;
-        calibratedZLeft = centerZ - 1;
+        arraylistText.clear();
+        writeText();
         dialog.dismiss();
-/*
-        if (step == 1) {
-            calibratedXTop = realX;
-            calibratedYTop = realY;
-            calibratedZTop = realZ;
-            detailsTv.setText("şimdi aşağıya bakın");
-            waitt(2000);
-            countDownTimer.start();
-
-        } else if (step == 2) {
-            calibratedXDown = realX;
-            calibratedYDown = realY;
-            calibratedZDown = realZ;
-            detailsTv.setText("şimdi sağa bakın");
-            waitt(2000);
-            countDownTimer.start();
-
-        } else if (step == 3) {
-            calibratedXRight = realX;
-            calibratedYRight = realY;
-            calibratedZRight = realZ;
-            detailsTv.setText("şimdi sola bakın");
-            waitt(2000);
-            countDownTimer.start();
-
-        } else if (step == 4) {
-            calibratedXLeft = realX;
-            calibratedYLeft = realY;
-            calibratedZLeft = realZ;
-            detailsTv.setText("TAMAMLANDI");
-            waitt(2000);
-        }
-*/
     }
 
     public void waitt(int time) {
@@ -1384,10 +1347,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         a1Tv.setText("x : " + (int) realX);
         a2Tv.setText("y : " + (int) realY);
         a3Tv.setText("z : " + (int) realZ);
-
-        // xCoordinateTextView.setText((int) sensorEvent.values[0] + ""); ////"" + String.format("%.01f", sensorEvent.values[0]));
-        //yCoordinateTextView.setText((int) sensorEvent.values[1] + "");////"" + String.format("%.01f", sensorEvent.values[1]));
-        //zCoordinateTextView.setText((int) sensorEvent.values[2] + "");////"" + String.format("%.01f", sensorEvent.values[2]));
         row(sensorEvent);
 
 
@@ -1396,12 +1355,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void decidePointerofColumns(float y, float spacing, RelativeLayout[] relativeLayouts, ImageView[] imageViews, LinearLayout[] linearLayouts) {
         if (y < calibratedYLeft) {
             makeBackgroundWhite(linearLayouts);
-            //ll11.setBackgroundColor(getResources().getColor(R.color.pairblue));
             makeColumnsUnVisible(imageViews);
             imageViews[0].setVisibility(View.VISIBLE);
             linearLayouts[0].setBackgroundColor(getResources().getColor(R.color.pairblue));
             relativeLayouts[0].setBackgroundColor(getResources().getColor(R.color.pairblue));
-            //im11.setVisibility(View.VISIBLE);
             listenBackgrounds();
 
         } else if (y > calibratedYLeft && y < (calibratedYLeft + spacing)) {
@@ -2946,21 +2903,65 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if (resorces == res) {
             return;
         } else if (resorces != res) {
+            final String[] text = {decideText(resorces)};
             if (textCounter != null) {
                 textCounter.cancel();
             }
 
             res = resorces;
-
-            textCounter = new CountDownTimer(1200, 1000) {
+            textCounter = new CountDownTimer(4000, 1000) {
 
                 @Override
                 public void onTick(long l) {
+                    if (l / 1000 == 2) {
+                        if (!text[0].equals("")) {
+                            if (text[0].equals("delete") && arraylistText.size() != 0) {
+                                arraylistText.remove(arraylistText.size() - 1);
+                                writeText();
+                                return;
+                            } else if (text[0].equals("speak") && arraylistText.size() != 0) {
+                                isSpeak = true;
+                                writeText();
+                                return;
+                            } else if (text[0].equals("clear")) {
+                                arraylistText.clear();
+                                writeText();
+                                return;
+                            } else if (text[0].equals("finish")) {
+                                finish();
+                            }
+                            if (!text[0].equals("speak") && !text[0].equals("delete") && !text[0].equals("clear") && !text[0].equals("finish")) {
+                                arraylistText.add(text[0]);
+                                writeText();
+                            }
+
+                        }
+                    }
                 }
 
                 @Override
                 public void onFinish() {
-                    decideText(resorces);
+                    if (!text[0].equals("")) {
+                        if (text[0].equals("delete") && arraylistText.size() != 0) {
+                            arraylistText.remove(arraylistText.size() - 1);
+                            writeText();
+                            return;
+                        } else if (text[0].equals("speak") && arraylistText.size() != 0) {
+                            isSpeak = true;
+                            writeText();
+                            return;
+                        } else if (text[0].equals("clear")) {
+                            writeText();
+                            return;
+                        } else if (text[0].equals("finish")) {
+                            finish();
+                        }
+                        if (!text[0].equals("speak") && !text[0].equals("delete") && !text[0].equals("clear") && !text[0].equals("finish")) {
+                            arraylistText.add(arraylistText.get(arraylistText.size() - 1));
+                            writeText();
+                        }
+                    }
+
                 }
             };
             textCounter.start();
@@ -2968,191 +2969,149 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
-    void decideText(int resorces) {
+    String decideText(int resorces) {
         if (res2 == resorces) {
-            return;
+            return "";
         }
         if (resorces == ll1R1.getId()) {
             res2 = resorces;
-            arraylistText.add("0");
-            writeText();
+            return "0";
         } else if (resorces == ll1R2.getId()) {
             res2 = resorces;
-            arraylistText.add("1");
-            writeText();
+            return "1";
 
         } else if (resorces == ll1R3.getId()) {
             res2 = resorces;
-            arraylistText.add("2");
-            writeText();
+            return "2";
         } else if (resorces == ll1R4.getId()) {
             res2 = resorces;
-            arraylistText.add("3");
-            writeText();
+            return "3";
         } else if (resorces == ll1R5.getId()) {
             res2 = resorces;
-            arraylistText.add("4");
-            writeText();
+            return "4";
         } else if (resorces == ll1R6.getId()) {
             res2 = resorces;
-            arraylistText.add("5");
-            writeText();
+            return "5";
         } else if (resorces == ll1R7.getId()) {
             res2 = resorces;
-            arraylistText.add("6");
-            writeText();
+            return "6";
         } else if (resorces == ll1R8.getId()) {
             res2 = resorces;
-            arraylistText.add("7");
-            writeText();
+            return "7";
         } else if (resorces == ll1R9.getId()) {
             res2 = resorces;
-            arraylistText.add("8");
-            writeText();
+            return "8";
         } else if (resorces == ll2R1.getId()) {
             res2 = resorces;
-            arraylistText.add("9");
-            writeText();
+            return "9";
         } else if (resorces == ll2R2.getId()) {
             res2 = resorces;
-            arraylistText.add("a");
-            writeText();
+            return "a";
         } else if (resorces == ll2R3.getId()) {
             res2 = resorces;
-            arraylistText.add("b");
-            writeText();
+            return "b";
         } else if (resorces == ll2R4.getId()) {
             res2 = resorces;
-            arraylistText.add("c");
-            writeText();
+            return "c";
         } else if (resorces == ll2R5.getId()) {
             res2 = resorces;
-            arraylistText.add("ç");
-            writeText();
+            return "ç";
         } else if (resorces == ll2R6.getId()) {
             res2 = resorces;
-            arraylistText.add("d");
-            writeText();
+            return "d";
         } else if (resorces == ll2R7.getId()) {
             res2 = resorces;
-            arraylistText.add("e");
-            writeText();
+            return "e";
         } else if (resorces == ll2R8.getId()) {
             res2 = resorces;
-            arraylistText.add("f");
-            writeText();
+            return "f";
         } else if (resorces == ll2R9.getId()) {
             res2 = resorces;
-            arraylistText.add("g");
-            writeText();
+            return "g";
         } else if (resorces == ll3R1.getId()) {
             res2 = resorces;
-            arraylistText.add("ğ");
-            writeText();
+            return "ğ";
         } else if (resorces == ll3R2.getId()) {
             res2 = resorces;
-            arraylistText.add("h");
-            writeText();
+            return "h";
         } else if (resorces == ll3R3.getId()) {
             res2 = resorces;
-            arraylistText.add("ı");
-            writeText();
+            return "ı";
         } else if (resorces == ll3R4.getId()) {
             res2 = resorces;
-            arraylistText.add("i");
-            writeText();
+            return "i";
         } else if (resorces == ll3R5.getId()) {
             res2 = resorces;
-            arraylistText.add("j");
-            writeText();
+            return "j";
         } else if (resorces == ll3R6.getId()) {
             res2 = resorces;
-            arraylistText.add("k");
-            writeText();
+            return "k";
         } else if (resorces == ll3R7.getId()) {
             res2 = resorces;
-            arraylistText.add("l");
-            writeText();
+            return "l";
         } else if (resorces == ll3R8.getId()) {
             res2 = resorces;
-            arraylistText.add("");
-            writeText();
+            return "clear";
         } else if (resorces == ll3R9.getId()) {
             res2 = resorces;
-            arraylistText.remove(arraylistText.size() - 1);
-            writeText();
+            return "delete";
         } else if (resorces == ll4R1.getId()) {
             res2 = resorces;
-            arraylistText.add("m");
-            writeText();
+            return "m";
         } else if (resorces == ll4R2.getId()) {
             res2 = resorces;
-            arraylistText.add("n");
-            writeText();
+            return "n";
         } else if (resorces == ll4R3.getId()) {
             res2 = resorces;
-            arraylistText.add("o");
-            writeText();
+            return "o";
         } else if (resorces == ll4R4.getId()) {
             res2 = resorces;
-            arraylistText.add("ö");
-            writeText();
+            return "ö";
         } else if (resorces == ll4R5.getId()) {
             res2 = resorces;
-            arraylistText.add("p");
-            writeText();
+            return "p";
         } else if (resorces == ll4R6.getId()) {
             res2 = resorces;
-            arraylistText.add("r");
-            writeText();
+            return "r";
         } else if (resorces == ll4R7.getId()) {
             res2 = resorces;
-            arraylistText.add("s");
-            writeText();
+            return "s";
         } else if (resorces == ll4R8.getId()) {
             res2 = resorces;
-            arraylistText.add("  ");
-            writeText();
+            return " ";
         } else if (resorces == ll4R9.getId()) {
             res2 = resorces;
-            isSpeak = true;
-            writeText();
+            return "speak";
         } else if (resorces == ll5R1.getId()) {
             res2 = resorces;
-            arraylistText.add("ş");
-            writeText();
+            return "ş";
         } else if (resorces == ll5R2.getId()) {
             res2 = resorces;
-            arraylistText.add("t");
-            writeText();
+            return "t";
         } else if (resorces == ll5R3.getId()) {
             res2 = resorces;
-            arraylistText.add("u");
-            writeText();
+            return "u";
         } else if (resorces == ll5R4.getId()) {
             res2 = resorces;
-            arraylistText.add("ü");
-            writeText();
+            return "ü";
         } else if (resorces == ll5R5.getId()) {
             res2 = resorces;
-            arraylistText.add("v");
-            writeText();
+            return "v";
         } else if (resorces == ll5R6.getId()) {
             res2 = resorces;
-            arraylistText.add("y");
-            writeText();
+            return "y";
         } else if (resorces == ll5R7.getId()) {
             res2 = resorces;
-            arraylistText.add("z");
-            writeText();
+            return "z";
         } else if (resorces == ll5R8.getId()) {
             res2 = resorces;
-            arraylistText.add(".");
-            writeText();
+            return ".";
         } else if (resorces == ll5R9.getId()) {
             res2 = resorces;
-            finish();
+
+            return "finish";
         }
+        return "";
     }
 
     void writeText() {
